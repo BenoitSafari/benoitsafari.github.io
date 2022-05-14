@@ -1,0 +1,7 @@
+@use 'reset';
+@use 'variables' as v;
+
+body {
+  background-color: v.$background-primary-color;
+  color: v.$text-color;
+}
