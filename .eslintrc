@@ -5,6 +5,7 @@
     "quotes" : [1, "single"],
     "jsx-quotes": [1, "prefer-single"],
     "indent": "off", 
+    "no-loop-func": "off",
     "@typescript-eslint/indent": ["error", 2],
     "@typescript-eslint/no-unused-vars": "off"
   }

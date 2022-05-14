@@ -1,3 +1,25 @@
+/* Padding & margin */
+$p-container: 1em;
+$p-small: 1em;
+
 /* Color Scheme */
 $background-primary-color: #252525;
 $text-color: #e6e6e6;
+
+$neon-shadow: drop-shadow(3px 5px 2px #000000);
+$neon-color: #ff00ff;
+$neon-light: drop-shadow(0 0 40px $neon-color);
+
+/* Breakpoints */
+$breakpoints: (
+  'mobile': 100%,
+  'tablet': 768px,
+  'laptop': 1024px,
+  'desktop': 1440px,
+) !default;
+
+@mixin breakpoint($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }}}
