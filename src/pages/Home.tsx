@@ -1,7 +1,8 @@
 function Home() {
   return(
-    <div>
-    </div>
+    <main>
+      jambon
+    </main>
   );
 }
 

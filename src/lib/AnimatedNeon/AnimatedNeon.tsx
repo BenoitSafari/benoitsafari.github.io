@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { getRandomInteger } from 'app/calc';
 import Neon from './Neon';
 
-function LogoNeon() {
+function AnimatedNeon() {
   const [ animIsRunning, setAnimIsRunning ] = useState<boolean>(false);
   const svgRef: React.MutableRefObject<SVGElement | undefined> = useRef();
   const pathRefs: React.MutableRefObject<SVGGElement | undefined>[] = [ 
@@ -90,7 +90,6 @@ function LogoNeon() {
   
   return (
     <>
-      <button onClick={() => {neonAnimHandler(0)}}>jambon</button>
       <Neon 
         pathRef0={pathRefs[0]}
         pathRef1={pathRefs[1]}
@@ -120,4 +119,4 @@ function LogoNeon() {
   );
 }
 
-export default LogoNeon;
+export default AnimatedNeon;

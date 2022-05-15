@@ -1,3 +1,38 @@
+@use 'styles/variables' as v;
+@use 'styles/mixins' as mix;
+
 .header {
-  border: 1px red solid;
-};
+  position: sticky;
+  border-bottom: v.$primary-color 1px solid;
+  box-shadow: 0px 0px 10px v.$shadow;
+  &__container {
+    @include mix.container;
+    display: flex;
+    justify-content: space-between;
+    height: v.$header-height;
+    padding: 0 1em;
+  }
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  &__title {
+    display: flex;
+    align-items: center;
+    font-family: 'Allison', cursive;
+    font-size: calc(v.$header-height * 0.7);
+    color: v.$secondary-color;
+    & img {
+      height: calc(v.$header-height * 0.8);
+    }
+    & span {
+      margin-bottom: .15em;
+      transform: rotate(-3deg);
+      -webkit-transform: rotate(-3deg);
+    }
+  }
+}
+
+@include mix.breakpoint('tablet') {
+}
