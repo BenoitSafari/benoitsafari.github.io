@@ -18,6 +18,7 @@ $neon-light: drop-shadow(0 0 40px $neon-color);
 /* Breakpoints */
 $breakpoints: (
   'mobile': 100%,
+  'mobile-xl': 580px,
   'tablet': 768px,
   'laptop': 1024px,
   'desktop': 1440px,

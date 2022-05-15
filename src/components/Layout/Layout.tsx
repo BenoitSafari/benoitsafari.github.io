@@ -11,20 +11,26 @@ function Header() {
           <img src='/img/logo.svg' alt='' />
           <span>Benoit Safari</span>
         </Link>
-        <nav className='header__nav'>  
+        <nav className='header__nav'>
+          <button className='nav-menu'>
+            <img src='/img/ico/ico_menu.svg' alt='' />
+          </button>  
           <Link 
             to='/'
-            className='link'>
+            className='link'
+          >
             Accueil
           </Link>
           <Link 
             to='/'
-            className='link'>
+            className='link'
+          >
             Blog
           </Link>
           <Link 
             to='/'
-            className='link'>
+            className='link'
+          >
             Me contacter
           </Link>
         </nav>
