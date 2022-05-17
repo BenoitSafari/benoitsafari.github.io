@@ -16,13 +16,12 @@
     display: flex;
     align-items: center;
     gap: 1.5rem;
-    & .link {
-      display: none;
+    & .link { display: none; }
+    & .nav-menu img { 
+      width: 2.5rem; 
+      cursor: pointer;
     }
-    & .nav-menu {
-      & img {
-        width: 2.5rem;
-      }}}
+  }
   &__title {
     display: flex;
     align-items: center;
