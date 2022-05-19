@@ -1,11 +1,11 @@
 import { useEffect, useState, useRef } from 'react';
 import { getRandomInteger } from 'app/calc';
-import Neon from './Neon';
+import styles from './Neon.module.scss';
 
 function AnimatedNeon() {
-  const [ animIsRunning, setAnimIsRunning ] = useState<boolean>(false);
-  const svgRef: React.MutableRefObject<SVGElement | undefined> = useRef();
-  const pathRefs: React.MutableRefObject<SVGGElement | undefined>[] = [ 
+  const [ animIsRunning, setAnimIsRunning ] = useState(false);
+  const svgRef = useRef();
+  const pathRefs = [ 
     useRef(),useRef(),useRef(), useRef(),useRef(),useRef(), 
     useRef(),useRef(),useRef(), useRef(),useRef(),useRef(), 
     useRef(),useRef(),useRef(), useRef(),useRef(),useRef(), 
@@ -18,16 +18,16 @@ function AnimatedNeon() {
     return () => clearTimeout(timer);
   });
 
-  const toggleNeon = (target: number=-1) => {
+  const toggleNeon = (target = -1) => {
     if (target < 0) {
       pathRefs.forEach(path => {
-        path.current!.classList.toggle('isOn');
+        path.current.classList.toggle(styles.isOn);
       });
     } else {
-      pathRefs[target].current!.classList.toggle('isOn');
+      pathRefs[target].current.classList.toggle(styles.isOn);
     }};
 
-  const neonAnimHandler = ( requestAnim: number ) => {
+  const neonAnimHandler = (requestAnim) => {
     if (!animIsRunning) {
       let firstPath = 0;
       let secondPath = 0;
