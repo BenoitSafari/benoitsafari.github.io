@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
-import { getRandomInteger } from 'app/calc';
-import styles from './Neon.module.scss';
+import SvgNeon from './AnimatedNeon.svg';
+import styles from './AnimatedNeon.module.scss';
 
 function AnimatedNeon() {
   const [ animIsRunning, setAnimIsRunning ] = useState(false);
@@ -18,6 +18,9 @@ function AnimatedNeon() {
     return () => clearTimeout(timer);
   });
 
+  const getRandomInteger = (min, max) => { 
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
   const toggleNeon = (target = -1) => {
     if (target < 0) {
       pathRefs.forEach(path => {
@@ -26,7 +29,6 @@ function AnimatedNeon() {
     } else {
       pathRefs[target].current.classList.toggle(styles.isOn);
     }};
-
   const neonAnimHandler = (requestAnim) => {
     if (!animIsRunning) {
       let firstPath = 0;
@@ -34,63 +36,63 @@ function AnimatedNeon() {
       let thirdPath = 0;
       setAnimIsRunning(true);
       switch (requestAnim) {
-        case 0:
-          for (let i = 0; i < 300; i += 60) {
-            setTimeout(toggleNeon, i);}
-          for (let i = 1900; i < 2080; i += 40) {
-            setTimeout(toggleNeon, i);}
-          setTimeout(() => {setAnimIsRunning(false);}, 2150);
-          break;
-        case 1:
-          firstPath = getRandomInteger(0, 21);
-          for (let i = 0; i < 300; i += 60) {
-            setTimeout(() => {toggleNeon(firstPath);}, i);}
-          for (let i = 940; i < 1400; i += 40) {
-            setTimeout(() => {toggleNeon(firstPath);}, i);}
-          for (let i = 1900; i < 2080; i += 40) {
-            setTimeout(() => {toggleNeon(firstPath);}, i);}
-          setTimeout(() => {setAnimIsRunning(false);}, 2150);
-          break;
-        case 2:
-          firstPath = getRandomInteger(0, 15);
-          secondPath = firstPath + 1;
-          thirdPath = firstPath + 2;
+      case 0:
+        for (let i = 0; i < 300; i += 60) {
+          setTimeout(toggleNeon, i);}
+        for (let i = 1900; i < 2080; i += 40) {
+          setTimeout(toggleNeon, i);}
+        setTimeout(() => {setAnimIsRunning(false);}, 2150);
+        break;
+      case 1:
+        firstPath = getRandomInteger(0, 21);
+        for (let i = 0; i < 300; i += 60) {
+          setTimeout(() => {toggleNeon(firstPath);}, i);}
+        for (let i = 940; i < 1400; i += 40) {
+          setTimeout(() => {toggleNeon(firstPath);}, i);}
+        for (let i = 1900; i < 2080; i += 40) {
+          setTimeout(() => {toggleNeon(firstPath);}, i);}
+        setTimeout(() => {setAnimIsRunning(false);}, 2150);
+        break;
+      case 2:
+        firstPath = getRandomInteger(0, 15);
+        secondPath = firstPath + 1;
+        thirdPath = firstPath + 2;
+        for (let i = 0; i < 400; i += 60) {
+          setTimeout(() => {toggleNeon(secondPath);}, i);}
+        for (let i = 740; i < 1160; i += 60) {
+          setTimeout(() => {toggleNeon(firstPath);}, i);}
+        for (let i = 840; i < 1340; i += 40) {
+          setTimeout(() => {toggleNeon(thirdPath);}, i);}
+        setTimeout(() => {
           for (let i = 0; i < 400; i += 60) {
             setTimeout(() => {toggleNeon(secondPath);}, i);}
           for (let i = 740; i < 1160; i += 60) {
             setTimeout(() => {toggleNeon(firstPath);}, i);}
           for (let i = 840; i < 1340; i += 40) {
             setTimeout(() => {toggleNeon(thirdPath);}, i);}
-          setTimeout(() => {
-            for (let i = 0; i < 400; i += 60) {
-              setTimeout(() => {toggleNeon(secondPath);}, i);}
-            for (let i = 740; i < 1160; i += 60) {
-              setTimeout(() => {toggleNeon(firstPath);}, i);}
-            for (let i = 840; i < 1340; i += 40) {
-              setTimeout(() => {toggleNeon(thirdPath);}, i);}
-          }, 6340);
-          setTimeout(() => {setAnimIsRunning(false);}, 12700);
-          break;
-        case 3:
-          firstPath = getRandomInteger(0, 5);
-          secondPath = firstPath + getRandomInteger(5, 10);
+        }, 6340);
+        setTimeout(() => {setAnimIsRunning(false);}, 12700);
+        break;
+      case 3:
+        firstPath = getRandomInteger(0, 5);
+        secondPath = firstPath + getRandomInteger(5, 10);
+        for (let i = 0; i < 640; i += 60) {
+          setTimeout(() => {toggleNeon(firstPath);}, i);}
+        for (let i = 360; i < 800; i += 40) {
+          setTimeout(() => {toggleNeon(secondPath);}, i);}
+        setTimeout(() => {
           for (let i = 0; i < 640; i += 60) {
             setTimeout(() => {toggleNeon(firstPath);}, i);}
           for (let i = 360; i < 800; i += 40) {
             setTimeout(() => {toggleNeon(secondPath);}, i);}
-          setTimeout(() => {
-            for (let i = 0; i < 640; i += 60) {
-              setTimeout(() => {toggleNeon(firstPath);}, i);}
-            for (let i = 360; i < 800; i += 40) {
-              setTimeout(() => {toggleNeon(secondPath);}, i);}
-          }, 3000);
-          setTimeout(() => {setAnimIsRunning(false);}, 6500);
-          break;
+        }, 3000);
+        setTimeout(() => {setAnimIsRunning(false);}, 6500);
+        break;
       }}}; 
   
   return (
     <>
-      <Neon 
+      <SvgNeon 
         pathRef0={pathRefs[0]}
         pathRef1={pathRefs[1]}
         pathRef2={pathRefs[2]}

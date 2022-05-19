@@ -11,10 +11,6 @@ $secondary-color: #ffd808;
 $tertiary-color: #ffbd08;
 $shadow: rgba(0, 0, 0, 0.25);
 
-$neon-shadow: drop-shadow(3px 5px 2px #000000);
-$neon-color: #ff00ff;
-$neon-light: drop-shadow(0 0 40px $neon-color);
-
 /* Breakpoints */
 $breakpoints: (
   'mobile': 100%,

@@ -1,4 +1,4 @@
-import styles from './Neon.module.scss';
+import styles from './AnimatedNeon.module.scss';
 
 function SvgNeon({
   pathRef0, pathRef1, pathRef2,

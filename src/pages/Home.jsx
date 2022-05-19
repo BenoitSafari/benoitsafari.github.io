@@ -1,8 +1,10 @@
+import AnimatedNeon from "../lib/AnimatedNeon";
+
 function Home() {
   return(
-    <main>
-      jambon
-    </main>
+	  <main>
+    <AnimatedNeon/>
+	  </main>	
   );
 }
 
