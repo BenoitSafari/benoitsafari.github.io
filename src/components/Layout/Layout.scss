@@ -1,6 +1,13 @@
 @use '@/styles/variables' as v;
 @use '@/styles/mixins' as mix;
 
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 90vh;
+}
+
 .header {
   position: sticky;
   border-bottom: v.$primary-color 1px solid;
@@ -9,7 +16,7 @@
     @include mix.container;
     display: flex;
     justify-content: space-between;
-    height: v.$header-height;
+    height: v.$layout-height;
     padding: 0 1em;
   }
   &__nav {
@@ -20,17 +27,16 @@
     & .nav-menu img { 
       width: 2.5rem; 
       cursor: pointer;
-    }
-  }
+    }}
   &__title {
     display: flex;
     align-items: center;
     font-family: 'Allison', cursive;
-    font-size: calc(v.$header-height * 0.7);
+    font-size: calc(10vh * 0.7);
     color: v.$secondary-color;
     user-select: none;
     & img {
-      height: calc(v.$header-height * 0.7);
+      height: calc(10vh * 0.7);
     }
     & span {
       margin: 0 0 .15em .2em;
@@ -38,6 +44,32 @@
       -webkit-transform: rotate(-3deg);
     }}}
 
+.footer {
+  border-top: v.$primary-color 1px solid;
+  box-shadow: 0px 0px 10px v.$shadow;
+  &__container {
+    @include mix.container;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1em;
+    height: v.$layout-height;
+    padding: 0 1em;
+  }
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    & svg {
+      fill: v.$text-color;
+      width: 1.5rem;
+    }}
+  &__copyright {
+    font-size: .8rem;
+  }
+  }
+    
 @include mix.breakpoint('mobile-xl') {
   .header {
     & .link {

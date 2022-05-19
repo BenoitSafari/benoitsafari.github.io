@@ -1,7 +1,6 @@
 function Home() {
   return(
-	  <main>
-	  </main>	
+    <div>HOME</div>
   );
 }
 
