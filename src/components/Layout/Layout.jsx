@@ -8,7 +8,8 @@ function Footer() {
   return null;
 }
 
-function Layout({children}: Layout) {
+function Layout({ children }) {
+
   return (
     <>
       <Header/>

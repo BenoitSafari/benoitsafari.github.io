@@ -5,7 +5,5 @@ Free for use.
 
 |Dependencies|
 |-|
-|typescript|
 |sass|
 |react-router-dom|
-|typescript-plugin-css-modules|
