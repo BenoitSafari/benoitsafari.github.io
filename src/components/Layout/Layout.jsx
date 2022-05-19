@@ -43,7 +43,7 @@ function Footer() {
   return null;
 }
 
-function Layout({children}: {children: React.ReactNode}) {
+function Layout({ children }) {
   return (
     <>
       <Header/>
