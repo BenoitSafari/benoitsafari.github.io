@@ -3,9 +3,11 @@
   "version": "0.1",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^6.4.3",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
+    "eslint": "^8.15.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",
@@ -14,20 +16,11 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "dev": "react-scripts start",
-    "fix": "eslint --fix ./src",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": ["react-app", "react-app/jest"],
-    "rules": {
-      "semi" : [1,"always"],
-      "quotes" : [1, "single"],
-      "jsx-quotes": [1, "prefer-single"],
-      "indent": [1, 2]
-    }
+    "dev": "craco start",
+    "fix": "eslint --fix ./src/**/*.jsx",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "react-script eject"
   },
   "browserslist": {
     "production": [
@@ -40,5 +33,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint-plugin-react": "^7.30.0"
   }
 }

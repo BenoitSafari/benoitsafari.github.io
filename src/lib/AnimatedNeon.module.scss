@@ -1,0 +1,22 @@
+$neon-shadow: drop-shadow(3px 5px 2px #000000);
+$neon-color: #ff00ff;
+$neon-light: drop-shadow(0 0 40px $neon-color);
+
+.neon {
+  width: fit-content;
+  transform: rotate(-6deg);
+  -webkit-transform: rotate(-6deg);
+  overflow: visible;
+  & .path {
+    fill:#363636;
+    fill-opacity: 0.55;
+    filter: $neon-shadow;
+    -webkit-filter: $neon-shadow;
+  }
+  & .isOn .path {
+    fill: $neon-color!important;
+    fill-opacity: .8!important;
+    filter: $neon-light $neon-shadow!important;
+    -webkit-filter: $neon-light $neon-shadow!important;
+  }
+}
