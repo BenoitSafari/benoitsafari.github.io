@@ -1,18 +1,38 @@
 import './Input.scss';
 
-function SearchBar({name, placeholder, onChange, value}) {
+/**
+ * return input type text
+ * @param {HTMLSvgElement | HTMLImgElement} children  use this to pass an icon
+ * @param {function}  onChange    handler for onChange event
+ * @param {string}    name        Input name field
+ * @param {string}    value       Input value field
+ * @param {string}    placeholder Input placeholder field
+ * @param {string}    styles      'rounded' to get rounded borders
+ */
+function SearchBar({children, styles, name, placeholder, onChange, value}) {
+  const styleResolver = (searchedString) => {
+    if (RegExp(`\\b${searchedString}\\b`).test(styles)) {
+      return searchedString;
+    } else {
+      return false;
+    }};
+    
+  const className = ['lib__input-search-bar'];
+  // Add new style state below
+  // Add class modifier in 'Input.scss' like so '.lib__input-button--MyStyle'
+  (styleResolver  ('rounded')) && className.push(`${className[0]}--rounded`);
+
   return (
-    <div className={'lib__input-search-bar'}>
+    <div className={className.join(' ')}>
       <input 
+        className={children && 'search-bar-has-icon'}
         type='text'
         placeholder={placeholder}
         name={name}
         onChange={onChange}
         value={value}
       />
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-      </svg>
+      {children}
     </div>
   );
 }

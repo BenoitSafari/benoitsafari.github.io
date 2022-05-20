@@ -42,8 +42,7 @@ $icon-ratio: 1.2;
   }
   &--white {
     background-color: $color;
-  }
-}
+  }}
 
 .lib__input-search-bar {
   position: relative;
@@ -58,9 +57,11 @@ $icon-ratio: 1.2;
     gap: $gap;
     padding: $padding-x $padding-y;
     user-select: none;
-    margin-left: calc(calc($font-size * $icon-ratio) + $padding-y);
     &::placeholder {
       color: $placeholder-color;
+    }
+    &.search-bar-has-icon {
+      margin-left: calc(calc($font-size * $icon-ratio) + $padding-y);
     }}
   & svg, img {
     position: absolute;
@@ -68,4 +69,7 @@ $icon-ratio: 1.2;
     left: calc($padding-y);
     width: calc($font-size * $icon-ratio);
     fill: rgba($color: $placeholder-color, $alpha: .45);
+  }
+  &--rounded {
+    border-radius: 50px;
   }}

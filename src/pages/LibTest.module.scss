@@ -1,4 +1,7 @@
+@use '@/styles/mixins' as mix;
+
 .lib-frame {
+  @include mix.container;
   margin: auto;
   width: 90%;
 }

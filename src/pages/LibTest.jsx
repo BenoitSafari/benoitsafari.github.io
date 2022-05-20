@@ -4,11 +4,11 @@ import styles from './LibTest.module.scss';
 function LibTest() {
   return(
     <div className={styles['lib-frame']}>
-      <Button styles='rounded'>Jambon</Button>
+      <Button styles=''>Jambon</Button>
       <SearchBar
         name='search'
-        placeholder='Jambon...'
-      />
+        placeholder='Jambon...'>
+      </SearchBar>
     </div>
   );
 }
