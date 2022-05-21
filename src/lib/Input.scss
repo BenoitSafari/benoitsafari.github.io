@@ -3,7 +3,8 @@ $secondary-color: #000000;
 $placeholder-color: #ffffff;
 $font-size: 1rem;
 $font-weight-button: 500;
-$font-weight-searchBar: 400;
+$font-weight-searchBar: 300;
+$font-style-searchBar: italic;
 $font-family: inherit;
 $border-empty: 1px solid $color;
 $border-radius: 4px;
@@ -59,7 +60,12 @@ $icon-ratio: 1.2;
     user-select: none;
     &::placeholder {
       color: $placeholder-color;
+      font-style: $font-style-searchBar;
     }
+    &::-webkit-input-placeholder { color: $placeholder-color; font-style: $font-style-searchBar; }
+    &::-moz-placeholder { color: $placeholder-color; font-style: $font-style-searchBar; }
+    &:-moz-placeholder { color: $placeholder-color; font-style: $font-style-searchBar; }
+    &:-ms-input-placeholder { color: $placeholder-color; font-style: $font-style-searchBar; }
     &.search-bar-has-icon {
       margin-left: calc(calc($font-size * $icon-ratio) + $padding-y);
     }}
