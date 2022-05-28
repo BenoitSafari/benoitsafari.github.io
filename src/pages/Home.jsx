@@ -7,7 +7,7 @@ import './Home.scss';
 
 function Home() {
   return(
-    <div className='home'>
+    <section className='home'>
       <div className='home__neon-container'>
         <Link
           to={'/index'}>
@@ -37,7 +37,7 @@ function Home() {
         </div>
         <div className='home__copyright'>Benoit Safari ©</div>
       </nav>
-    </div>
+    </section>
   );
 }
 

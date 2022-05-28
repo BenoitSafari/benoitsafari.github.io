@@ -2,21 +2,44 @@
 
 .home {
   height: 100vh;
-  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   flex-direction: column;
   &__neon-container {
-    width: 65vw;
-    display: flex;
+  display: flex;
     justify-content: center;
-  }
+    & a {
+      & svg {
+        min-width: 280px;
+        max-width: 80vw;
+      }
+      &::before {
+        margin-top: 20px;
+        content: 'click!';
+        position: absolute;
+        font-size: 2rem;
+        font-family: Allison;
+        transform: rotate(-20deg);
+        -webkit-transform: rotate(-20deg);
+      }
+      &::after {
+        margin-left: -90px;
+        margin-top: 60px;
+        content: 'click on t\'a dit..!';
+        position: absolute;
+        font-size: 2rem;
+        font-family: Allison;
+        transform: rotate(-15deg);
+        -webkit-transform: rotate(-15deg);
+      }
+    }}
   &__copyright {
     color: v.$primary-color;
     font-size: .8rem;
   }
   &__nav {
+      max-width: 300px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -27,12 +50,31 @@
         gap: 3rem;
       }
       & a svg {
+          position: relative;
           fill: v.$primary-color;
-          width: 3rem;
+          max-width: 3rem;
           transition: .3s;
           filter: drop-shadow(1px 7px 7px #000);
+          -webkit-filter: drop-shadow(1px 7px 7px #000);
       }
       & a svg:hover {
           fill: v.$tertiary-color;
           transition: .3s;
       }}}
+
+@media screen and (max-width: 385px) {
+  .home__nav__links { gap: 3rem; 
+    & a svg {
+      -webkit-transform: scale(.7);
+      transform: scale(.7);
+    }}}
+@media screen and (max-width: 520px) {
+  .home__neon-container a {  
+    &::before {
+      font-size: 1.6rem;
+    }
+    &::after {
+      font-size: 1.6rem;
+      margin-top: 70px;
+    }
+  }}
