@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import './Home.scss';
 
-const transition = { duration: 0.5 }; 
+const transition = { duration: 0.5, staggerChildren: 2 }; 
 const pageVariants = {
   hidden: { opacity: 0, transition },
   show:   { opacity: 1, transition },

@@ -3,7 +3,7 @@
 
 .article {
   border: red 1px solid;
+  margin-top: v.$layout-height;
   @include mix.container;
   width: 100%;
-  
 }

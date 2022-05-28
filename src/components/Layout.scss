@@ -1,16 +1,12 @@
 @use '@/styles/variables' as v;
 @use '@/styles/mixins' as mix;
 
-$layout-height: 5rem;
-
-.content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 90vh;
-}
 .header {
-  position: sticky;
+  position: absolute;
+  top: 0;
+  background-color: v.$background-primary-color;
+  width: 100%;
+  z-index: 10;
   overflow: hidden;
   border-bottom: v.$primary-color 1px solid;
   box-shadow: 0px 0px 10px v.$shadow;
@@ -18,7 +14,7 @@ $layout-height: 5rem;
     @include mix.container;
     display: flex;
     justify-content: space-between;
-    height: $layout-height;
+    height: v.$layout-height;
     padding: 0 1em;
   }
   &__nav {
@@ -42,11 +38,11 @@ $layout-height: 5rem;
     display: flex;
     align-items: center;
     font-family: 'Allison', cursive;
-    font-size: calc($layout-height * 0.7);
+    font-size: calc(v.$layout-height * 0.7);
     color: v.$secondary-color;
     user-select: none;
     & img {
-      height: calc($layout-height * 0.7);
+      height: calc(v.$layout-height * 0.7);
     }
     & span {
       margin: 0 0 .15em .2em;

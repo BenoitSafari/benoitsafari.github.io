@@ -1,0 +1,21 @@
+@use '@/styles/variables' as v;
+@use '@/styles/mixins' as mix;
+
+.index {
+  margin-top: v.$layout-height;
+  @include mix.container;
+  height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  & .Ouhlala {
+    font-family: 'Allison', cursive;
+    font-size: 2.5rem;
+    transform: rotate(-10deg);
+    -webkit-transform: rotate(-10deg);
+    text-align: center;
+    & span {
+      font-size: 1.8rem;
+    }
+  }
+}
