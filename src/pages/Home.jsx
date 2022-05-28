@@ -2,12 +2,24 @@ import AnimatedNeon from '@lib/AnimatedNeon';
 import { ReactComponent as SvgGithub } from '@svg/ico_github.svg';
 import { ReactComponent as SvgLinkedin } from '@svg/ico_linkedin.svg';
 import { ReactComponent as SvgMail } from '@svg/ico_mail.svg';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import './Home.scss';
 
+const transition = { duration: 0.5 }; 
+const pageVariants = {
+  hidden: { opacity: 0, transition },
+  show:   { opacity: 1, transition },
+};
+
 function Home() {
   return(
-    <section className='home'>
+    <motion.section 
+      variants={pageVariants}
+      initial='hidden'
+      animate='show'
+      exit='hidden'
+      className='home'>
       <div className='home__neon-container'>
         <Link
           to={'/index'}>
@@ -37,7 +49,7 @@ function Home() {
         </div>
         <div className='home__copyright'>Benoit Safari ©</div>
       </nav>
-    </section>
+    </motion.section>
   );
 }
 

@@ -1,0 +1,9 @@
+@use '@/styles/variables' as v;
+@use '@/styles/mixins' as mix;
+
+.article {
+  border: red 1px solid;
+  @include mix.container;
+  width: 100%;
+  
+}

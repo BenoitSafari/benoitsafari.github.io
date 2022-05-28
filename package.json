@@ -9,6 +9,7 @@
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
     "eslint": "^8.15.0",
+    "framer-motion": "^6.3.4",
     "gh-pages": "^4.0.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
@@ -19,7 +20,7 @@
   },
   "scripts": {
     "predeploy": "craco build",
-    "deploy": "gh-pages -d build", 
+    "deploy": "gh-pages -d build",
     "dev": "craco start",
     "fix": "eslint --fix ./src/**/*.jsx",
     "build": "craco build",

@@ -7,7 +7,7 @@
   justify-content: space-evenly;
   flex-direction: column;
   &__neon-container {
-  display: flex;
+    display: flex;
     justify-content: center;
     & a {
       & svg {
@@ -16,7 +16,7 @@
       }
       &::before {
         margin-top: 20px;
-        content: 'click!';
+        content: 'clic!';
         position: absolute;
         font-size: 2rem;
         font-family: Allison;
@@ -26,7 +26,7 @@
       &::after {
         margin-left: -90px;
         margin-top: 60px;
-        content: 'click on t\'a dit..!';
+        content: 'clic on t\'a dit..!';
         position: absolute;
         font-size: 2rem;
         font-family: Allison;

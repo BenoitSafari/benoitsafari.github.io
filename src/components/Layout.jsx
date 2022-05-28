@@ -17,7 +17,7 @@ function Header() {
   return(
     <header className='header'>
       <div className='header__container'>
-        <Link to='/index' className='header__title'>
+        <Link to='/' className='header__title'>
           <img src='/img/logo.svg' alt='' />
           <span>Benoit Safari</span>
         </Link>
@@ -34,7 +34,7 @@ function Header() {
             <img src='/img/ico/ico_menu.svg' alt='' />
           </button>  
           <Link to='/index' className='header__link'>Index</Link>
-          <Link to='/index' className='header__link'>Me contacter</Link>
+          <Link to='/contact' className='header__link'>Me contacter</Link>
         </nav>
       </div>
     </header>
