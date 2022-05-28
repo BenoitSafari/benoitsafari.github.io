@@ -44,26 +44,24 @@ function Header() {
 function Footer() {
   return(
     <footer className='footer'>
-      <div className='footer__container'>
-        <nav className='footer__nav'>
-          <a target="_blank" rel='noreferrer'
-            className='footer__link'
-            href={links.linkedin}>
-            <SvgLinkedin/>
-          </a>
-          <a target="_blank" rel='noreferrer'
-            className='footer__link'
-            href={links.github}>
-            <SvgGithub/>
-          </a>
-          <a target="_blank" rel='noreferrer'
-            className='footer__link'
-            href={links.mail}>
-            <SvgMail/>
-          </a>
-        </nav>
-        <div className='footer__copyright'>Benoit Safari ©</div>
-      </div>
+      <nav className='footer__nav'>
+        <a target="_blank" rel='noreferrer'
+          className='footer__link'
+          href={links.linkedin}>
+          <SvgLinkedin/>
+        </a>
+        <a target="_blank" rel='noreferrer'
+          className='footer__link'
+          href={links.github}>
+          <SvgGithub/>
+        </a>
+        <a target="_blank" rel='noreferrer'
+          className='footer__link'
+          href={links.mail}>
+          <SvgMail/>
+        </a>
+      </nav>
+      <div className='footer__copyright'>Benoit Safari ©</div>
     </footer>
   );
 }
