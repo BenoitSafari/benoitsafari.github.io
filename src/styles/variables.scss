@@ -1,21 +1,5 @@
-/* Padding & margin */
-$layout-height: 5rem;
-$p-container: 1em;
-$p-small: 1em;
-
 /* Color Scheme */
 $background-primary-color: #1b1b1b;
-$text-color: #d4d4d4;
-$primary-color: #8d8d8d;
-$secondary-color: #ffd808;
-$tertiary-color: #ffbd08;
-$shadow: rgba(0, 0, 0, 0.25);
-
-/* Breakpoints */
-$breakpoints: (
-  'mobile': 100%,
-  'mobile-xl': 580px,
-  'tablet': 768px,
-  'laptop': 1024px,
-  'desktop': 1440px,
-) !default;
+$primary-color: #a89d9d;
+$secondary-color: #fa3de1;
+$shadow-color: #000000;

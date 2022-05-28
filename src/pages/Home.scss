@@ -1,0 +1,27 @@
+@use '@/styles/variables' as v;
+
+.content {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+.neon-container {
+  width: 65vw;
+}
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    & a svg {
+        fill: v.$primary-color;
+        width: 3rem;
+        transition: .3s;
+        filter: drop-shadow(1px 7px 7px v.$shadow-color);
+    }
+    & a svg:hover {
+        fill: v.$secondary-color;
+        transition: .3s;
+    }}
