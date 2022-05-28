@@ -14,7 +14,7 @@ function AnimatedNeon() {
   
   useEffect(() => {
     const timer = setInterval(() => {
-      neonAnimHandler(getRandomInteger(0, 3));}, 15000);
+      neonAnimHandler(getRandomInteger(0, 3));}, 9000);
     return () => clearTimeout(timer);
   });
 

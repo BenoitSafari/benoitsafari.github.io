@@ -1,5 +1,6 @@
 {
-  "name": "benoit.safari.github.io",
+  "homepage": "https://benoitsafari.github.io/",
+  "name": "benoitsafari.github.io",
   "version": "0.1",
   "private": true,
   "dependencies": {

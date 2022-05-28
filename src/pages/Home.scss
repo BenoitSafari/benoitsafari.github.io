@@ -1,0 +1,38 @@
+@use '@/styles/variables' as v;
+
+.home {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  &__neon-container {
+    width: 65vw;
+    display: flex;
+    justify-content: center;
+  }
+  &__copyright {
+    color: v.$primary-color;
+    font-size: .8rem;
+  }
+  &__nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      &__links {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+      }
+      & a svg {
+          fill: v.$primary-color;
+          width: 3rem;
+          transition: .3s;
+          filter: drop-shadow(1px 7px 7px #000);
+      }
+      & a svg:hover {
+          fill: v.$tertiary-color;
+          transition: .3s;
+      }}}

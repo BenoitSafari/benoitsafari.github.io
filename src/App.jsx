@@ -10,11 +10,10 @@ function App() {
     <>
       <Router>
         <RouterScrollReset/>
-        <Layout>
-          <Routes>
-            <Route path='*' element={<Home />}/>
-          </Routes>
-        </Layout>
+        <Routes>
+          <Route path='/'       element={ <Home />  }/>
+          <Route path='/index'  element={ <Layout><Home /></Layout> }/>
+        </Routes>
       </Router>
     </>
   );
