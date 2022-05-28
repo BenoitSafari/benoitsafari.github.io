@@ -18,7 +18,7 @@ function Index() {
       <div className='Ouhlala'>
         Ouh là là!
         <br/>Mais il n'y a rien du tout ici!
-        <br/><span>(Repassez plus tard, quand j'aurais trouvez des trucs a dire.)</span>
+        <br/><span>(Repassez plus tard, quand j'aurais trouvé des trucs a dire.)</span>
       </div>
     </motion.section>
   );
