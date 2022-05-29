@@ -4,9 +4,9 @@ import { RouterScrollReset } from '@lib/RouterScrollReset';
 import Layout from '@components/Layout';
 import Home from '@pages/Home';
 import Index from '@pages/Index';
-// import Cloudinary from '@pages/ArticleCloudinary';
 import '@styles/reset.scss';
 import '@styles/globals.scss';
+import ContactForm from './components/ContactForm';
 
 function App() {
   const location = useLocation();
@@ -18,8 +18,7 @@ function App() {
           <Routes location={location} key={location.pathname}>
             <Route path='/' element={<Home />}/>
             <Route path='/index'        element={<Index />}/>
-            <Route path='/contact'      element={<Index />}/>
-            {/* <Route path='/articles/1'   element={<Cloudinary />}/> */}
+            <Route path='/contact'      element={<ContactForm />}/>
             {/* <Route path='*'             element={<Error />}/> */}
           </Routes>
         </AnimatePresence>
