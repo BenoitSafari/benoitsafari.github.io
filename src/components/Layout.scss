@@ -6,10 +6,10 @@
   top: 0;
   background-color: v.$background-primary-color;
   width: 100%;
-  z-index: 10;
+  z-index: 2;
   overflow: hidden;
   border-bottom: v.$primary-color 1px solid;
-  box-shadow: 0px 0px 10px v.$shadow;
+  box-shadow: 0px 0px 10px v.$boxshadow;
   &__container {
     @include mix.container;
     display: flex;
@@ -53,6 +53,7 @@
     position: relative;
     transition: .3s;
     display: none;
+    cursor: pointer;
     &:hover {
       color: v.$tertiary-color;
       transition: .3s;

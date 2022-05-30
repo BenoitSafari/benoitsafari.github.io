@@ -1,6 +1,6 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
-import { RouterScrollReset } from '@lib/RouterScrollReset';
+import { RouterScrollReset } from '@components/RouterScrollReset';
 import Layout from '@components/Layout';
 import Home from '@pages/Home';
 import Index from '@pages/Index';
@@ -9,6 +9,7 @@ import '@styles/globals.scss';
 
 function App() {
   const location = useLocation();
+  
   return(
     <>
       <RouterScrollReset/>

@@ -1,4 +1,4 @@
-import AnimatedNeon from '@lib/AnimatedNeon';
+import AnimatedNeon from '@components/AnimatedNeon';
 import { ReactComponent as SvgGithub } from '@svg/ico_github.svg';
 import { ReactComponent as SvgLinkedin } from '@svg/ico_linkedin.svg';
 import { ReactComponent as SvgMail } from '@svg/ico_mail.svg';

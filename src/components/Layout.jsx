@@ -1,18 +1,25 @@
 import { ReactComponent as SvgLinkedin } from '@svg/ico_linkedin.svg';
 import { ReactComponent as SvgGithub } from '@svg/ico_github.svg';
 import { ReactComponent as SvgMail } from '@svg/ico_mail.svg';
-import { ReactComponent as SvgSearch } from '@svg/ico_searchbar.svg';
+// import { ReactComponent as SvgSearch } from '@svg/ico_searchbar.svg';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState  } from 'react';
-import { SearchBar } from '@lib/Input';
+import { useModal } from '@hooks/useModal';
+import ContactForm from '@components/ContactForm';
+// import { SearchBar } from '@components/Input';
 import './Layout.scss';
 
+// TODO: Implement searchbar.
+// TODO: Create functionnal drop down menu for mobile.
+
+// Data
 const links = {
   linkedin: 'https://www.linkedin.com/in/gregory-michalak-b1613b22a/',
   github: 'https://github.com/BenoitSafari',
   mail: 'mailto:benoit.safari.officiel@gmail.com'
 };
+// Animations Setup
 const transition = { duration: .5 }; 
 const headerVariants = {
   hidden: { y: -90,     transition },
@@ -24,6 +31,11 @@ const footerVariants = {
 };
 
 function Header({ isDisplayed }) {
+  const { setModal } = useModal();
+  const handleModal = () => {
+    setModal(<ContactForm/>);
+  };
+
   return(
     <AnimatePresence exitBeforeEnter>
       { isDisplayed &&
@@ -47,11 +59,14 @@ function Header({ isDisplayed }) {
             </div> */}
             <nav className='header__nav'>
               <button className='nav-menu'>
-                {/* TODO: Create functionnal drop down menu */}
                 <img src='/img/ico/ico_menu.svg' alt='' />
               </button>  
               <Link to='/index' className='header__link'>Index</Link>
-              <Link to='/contact' className='header__link'>Me contacter</Link>
+              <button 
+                onClick={handleModal} 
+                className='header__link'>
+                Me contacter
+              </button>
             </nav>
           </div>
         </motion.header>
@@ -95,8 +110,9 @@ function Footer({ isDisplayed }) {
 }
 
 function Layout({ children }) {
+  // Prevent Layout from showing on Home Page
   const { pathname } = useLocation();
-  const [layoutIsDisplayed, setLayoutIsDisplayed] = useState(false);
+  const [ layoutIsDisplayed, setLayoutIsDisplayed ] = useState(false);
   useEffect(() => {
     (pathname !== '/') && setLayoutIsDisplayed(true);
     (pathname === '/') && setLayoutIsDisplayed(false);
