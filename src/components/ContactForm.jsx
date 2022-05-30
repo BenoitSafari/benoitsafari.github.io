@@ -1,9 +1,26 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
+import { ReactComponent as SvgUser } from '@svg/ico_input-user.svg';
+import { ReactComponent as SvgMail } from '@svg/ico_input-mail.svg';
+import { ReactComponent as SvgSend } from '@svg/ico_send.svg';
+import { InputText, Button } from './Input';
 import './ContactForm.scss';
+// TODO: Add toast error management
 
 function ContactForm () {
   const form = useRef();
+  const maxLength = 2500;
+  const [ nameField, setNameField] = useState();
+  const [ mailField, setMailField] = useState();
+  const [ textField, setTextField] = useState();
+  const [ charLimit, setCharLimit] = useState(`0 / ${maxLength}`);
+  const nameFieldHandler = (e) => {setNameField(e.target.value);};
+  const mailFieldHandler = (e) => {setMailField(e.target.value);};
+  const textFieldHandler = (e) => {
+    const value = e.target.value;
+    setTextField(value);
+    setCharLimit(`${value.length} / ${maxLength}`);
+  };
   const sendEmail = (e) => {
     e.preventDefault();
     emailjs.sendForm(
@@ -18,21 +35,42 @@ function ContactForm () {
       );};
 
   return(
-    <form ref={form} onSubmit={sendEmail}>
-      <label>Nom</label>
-      <input 
-        type='text' 
-        name='user_name'/>
-      <label>Email</label>
-      <input 
-        type='email'
-        name='user_email' />
-      <label>Message</label>
-      <textarea 
-        name='message' />
-      {/* <input 
-        type='submit' 
-        value='Send' /> */}
+    <form 
+      ref={form} 
+      onSubmit={sendEmail}
+      className='contact-form'>
+      <div className='contact-form__inputs'>
+        <InputText 
+          name='user_name'
+          type='text' 
+          placeholder='Nom'
+          onChange={nameFieldHandler}
+          value={nameField}
+        ><SvgUser/>
+        </InputText>
+        <InputText 
+          name='user_email'
+          type='email' 
+          placeholder='adresse email'
+          onChange={mailFieldHandler}
+          value={mailField}
+        ><SvgMail/>
+        </InputText>
+      </div>
+      <div className='contact-form__text-area'>
+        <label className='contact-form__text-area__label'>
+          <span>Votre message</span>
+          <span>{charLimit}</span>
+        </label>
+        <textarea
+          name='message'
+          placeholder="Bonjour, j'adore c'que vous faites! D'ailleurs, j'aimerais beaucoup vous embaucher..."
+          maxLength={maxLength}
+          value={textField}          
+          onChange={textFieldHandler}
+        />
+      </div>
+      <Button onClick={sendEmail}><SvgSend/>Envoyer</Button>
     </form>
   );
 }

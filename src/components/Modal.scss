@@ -19,10 +19,11 @@
   box-shadow: 2px 2px 5px v.$boxshadow;
   background-color: v.$background-primary-color;
   border-radius: 5px;
-  padding: .5rem .5rem 1rem 1rem;
+  padding: .6rem 1rem 1rem 1rem;
   & .modal-head {
     display: flex;
     justify-content: flex-end;
+    margin-bottom: .6rem;
     & svg {
       box-sizing: content-box;
       fill: v.$secondary-color;

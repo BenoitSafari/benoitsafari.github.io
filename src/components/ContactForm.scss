@@ -1,5 +1,51 @@
-form {
-  margin: 250px 0;
-  //REMOVE-ME
+@use '@/styles/variables' as v;
 
-}
+$color: v.$text-color;
+$placeholder-color: v.$text-color;
+$font-weight-input-text: 300;
+$font-style-input-text: italic;
+$font-family: inherit;
+$border: 1px solid $color;
+$border-radius: 4px;
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  & button {
+    align-self: flex-end;
+    width: fit-content;
+  }
+  &__inputs {
+    display: flex;
+    gap: 1.5rem;
+  }
+  &__text-area {
+    display: flex;
+    flex-direction: column;
+    &__label {
+      display: flex;
+      justify-content: space-between;
+      font-style: italic;
+      margin-bottom: .5rem;
+    }
+    & textarea {
+      height: 12rem;
+      overflow: scroll;
+      background-color: v.$background-secondary-color;
+      color: $color;
+      font-family: $font-family;
+      border: $border;
+      border-radius: $border-radius;
+      padding: .5rem;
+      resize: none;
+      outline: none;
+      &::placeholder {
+        color: $placeholder-color;
+        font-style: $font-style-input-text;
+      }
+      &::-webkit-input-placeholder { color: $placeholder-color; font-style: $font-style-input-text; }
+      &::-moz-placeholder { color: $placeholder-color; font-style: $font-style-input-text; }
+      &:-moz-placeholder { color: $placeholder-color; font-style: $font-style-input-text; }
+      &:-ms-input-placeholder { color: $placeholder-color; font-style: $font-style-input-text; }
+    }}}
