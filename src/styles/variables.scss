@@ -5,11 +5,12 @@ $p-small: 1em;
 
 /* Color Scheme */
 $background-primary-color: #1b1b1b;
+$background-secondary-color: #313030;
 $text-color: #d4d4d4;
 $primary-color: #8d8d8d;
 $secondary-color: #ffd808;
 $tertiary-color: #ffbd08;
-$shadow: rgba(0, 0, 0, 0.25);
+$boxshadow: rgba(0, 0, 0, 0.25);
 
 /* Breakpoints */
 $breakpoints: (
