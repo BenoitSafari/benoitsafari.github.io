@@ -2,9 +2,7 @@
 
 .modal-back {
   position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  z-index: 2;
   top: 0;
   z-index: 3;
   width: 100vw;
@@ -13,12 +11,15 @@
 }
 
 .modal {
+  position: fixed;
+  left: 0; right: 0;
+  width: fit-content;
+  margin: 10rem auto;
+  z-index: 4;
   box-shadow: 2px 2px 5px v.$boxshadow;
   background-color: v.$background-primary-color;
   border-radius: 5px;
   padding: .5rem .5rem 1rem 1rem;
-  min-width: 150px;
-  min-height: 150px;
   & .modal-head {
     display: flex;
     justify-content: flex-end;

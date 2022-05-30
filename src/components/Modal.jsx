@@ -18,9 +18,11 @@ function Modal ({ modal, unSetModal }) {
   }, [modal, unSetModal]);
   
   return ReactDOM.createPortal(
-    <div 
-      onClick={unSetModal}
-      className='modal-back'>
+    <>
+      <div 
+        onClick={unSetModal}
+        className='modal-back'>
+      </div>
       <div className='modal'>
         <div className='modal-head'>
           <button
@@ -33,7 +35,7 @@ function Modal ({ modal, unSetModal }) {
           {modal}
         </div>
       </div>
-    </div>
+    </>
     , portalRoot);
 }
 
