@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Input.scss';
 
 /**
@@ -23,13 +24,13 @@ function Button({ children, styles, onClick, href })  {
   return(
     <>
       { href &&
-        <a 
+        <Link 
           className={className.join(' ')}
-          href={href}
+          to={href}
           onClick={onClick}         
         >
           {children}
-        </a>
+        </Link>
       }
       { (!href) &&
         <button

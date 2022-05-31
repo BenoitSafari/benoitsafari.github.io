@@ -35,3 +35,9 @@
     border-radius: 15px;
       background-color:  v.$background-secondary-color;
     }}}
+
+@media screen and (max-width: 580px) {
+  .modal {
+    width: 95%;
+  }
+}

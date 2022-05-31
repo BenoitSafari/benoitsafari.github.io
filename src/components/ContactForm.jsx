@@ -29,7 +29,7 @@ function ContactForm () {
   };
   const sendEmail = (e) => {
     e.preventDefault();
-    if (!nameField && !mailField && !textField) return;
+    if (!nameField || !mailField || !textField || !isMailValid) return;
     setLoading(true);
     emailjs.sendForm(
       process.env.REACT_APP_EMAILJS_SVRC_ID, 
@@ -98,10 +98,10 @@ function ContactForm () {
             />
           </div>
           <div 
-            className={`button-field ${(!nameField || !mailField || !textField) && 'button-field__forbidden'}`}>
-            { (!nameField || !mailField || !textField) &&
+            className={`button-field ${(!nameField || !mailField || !textField || !isMailValid) && 'button-field__forbidden'}`}>
+            { (!nameField || !mailField || !textField || !isMailValid) &&
               <div className='button-field__warn'>
-                Vous devez remplir tout les champs.
+                <span>Vous devez remplir tout les champs.</span>
               </div>
             }
             <Button 

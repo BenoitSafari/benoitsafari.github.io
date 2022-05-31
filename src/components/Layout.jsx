@@ -7,11 +7,10 @@ import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState  } from 'react';
 import { useModal } from '@hooks/useModal';
 import ContactForm from '@components/ContactForm';
+import NavMenu from '@components/NavMenu';
 // import { InputText } from '@components/Input';
 import './Layout.scss';
-
 // TODO: Implement searchbar.
-// TODO: Create functionnal drop down menu for mobile.
 
 // Data
 const links = {
@@ -35,6 +34,12 @@ function Header({ isDisplayed }) {
   const handleModal = () => {
     setModal(<ContactForm/>);
   };
+  const handleNavMenu = () => {
+    const backNavMenu = document.querySelector('#mobile-drop-down-back');
+    const navMenu     = document.querySelector('#mobile-nav-menu');
+    backNavMenu.classList.toggle('mobile-drop-down-back--is-closed');
+    navMenu.classList.toggle('mobile-nav-menu--is-open');
+  };
 
   return(
     <AnimatePresence exitBeforeEnter>
@@ -57,8 +62,14 @@ function Header({ isDisplayed }) {
               ><SvgSearch/>
               </InputText>
             </div> */}
+            <NavMenu
+              handler={handleNavMenu}
+              contactHandler={handleModal}
+            />
             <nav className='header__nav'>
-              <button className='nav-menu'>
+              <button 
+                onClick={handleNavMenu}
+                className='nav-menu'>
                 <img src='/img/ico/ico_menu.svg' alt='' />
               </button>  
               <Link to='/index' className='header__link'>Index</Link>

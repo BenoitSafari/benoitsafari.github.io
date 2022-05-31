@@ -2,6 +2,7 @@
 
 $color: v.$text-color;
 $secondary-color: v.$tertiary-color;
+$tertiary-color: v.$background-primary-color;
 $placeholder-color: v.$text-color;
 $font-size: 1rem;
 $font-weight-button: 500;
@@ -38,6 +39,7 @@ $icon-ratio: 1.2;
   }
   &--fill {
     background-color: $color;
+    color: $tertiary-color;
   }
   &--empty {
     border: $border-empty;
