@@ -1,0 +1,23 @@
+@use '@/styles/variables' as v;
+@use '@/styles/mixins' as mix;
+
+.error {
+  margin-top: v.$layout-height;
+  @include mix.container;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  height: 500px;
+  &__title {
+    font-family: 'Allison', cursive;
+    font-size: 5rem;
+    color: v.$tertiary-color;
+    transform: rotate(-5deg);
+    -webkit-transform: rotate(-5deg);
+  }
+  &__content{
+    color: v.$primary-color;
+    font-style: italic;
+  }}
