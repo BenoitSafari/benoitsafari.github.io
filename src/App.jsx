@@ -9,7 +9,6 @@ import '@styles/globals.scss';
 
 function App() {
   const location = useLocation();
-  
   return(
     <>
       <RouterScrollReset/>

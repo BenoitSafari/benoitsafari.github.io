@@ -8,6 +8,13 @@ $font-family: inherit;
 $border: 1px solid $color;
 $border-radius: 4px;
 
+.form-is-loading {
+  width: 350px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -16,10 +23,43 @@ $border-radius: 4px;
     align-self: flex-end;
     width: fit-content;
   }
+  & .button-field {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    & button {
+      color: v.$tertiary-color;
+      width: fit-content;
+    }
+    &__warn {
+      color: v.$primary-color;
+      font-style: italic;
+      margin-left: .2rem;
+      font-size: .9rem;
+    }
+    &__forbidden {
+      justify-content: space-between;
+    }
+    &__forbidden button {
+      color: v.$primary-color;
+      cursor: not-allowed;
+      border-radius: 5px;
+    }}
   &__inputs {
     display: flex;
     gap: 1.5rem;
-  }
+    &--invalid-mail div:nth-child(2) {
+      position: relative;
+      border: 1px solid red;
+      &::after {
+        position: absolute;
+        content: 'adresse invalide';
+        top: -14px;
+        left: 10px;
+        font-size: .7rem;
+        font-style: italic;
+        color: red;
+      }}}
   &__text-area {
     display: flex;
     flex-direction: column;
@@ -49,3 +89,14 @@ $border-radius: 4px;
       &:-moz-placeholder { color: $placeholder-color; font-style: $font-style-input-text; }
       &:-ms-input-placeholder { color: $placeholder-color; font-style: $font-style-input-text; }
     }}}
+
+@media screen and (max-width: 580px) {
+  .contact-form {
+    &__inputs {
+      flex-direction: column;
+      & div {
+        width: unset;
+      }}
+    & .button-field__warn {
+      width: 125px;
+      }}}
