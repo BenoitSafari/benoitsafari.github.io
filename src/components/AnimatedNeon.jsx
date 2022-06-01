@@ -8,8 +8,6 @@ function AnimatedNeon() {
   const pathRefs = [ 
     useRef(),useRef(),useRef(), useRef(),useRef(),useRef(), 
     useRef(),useRef(),useRef(), useRef(),useRef(),useRef(), 
-    useRef(),useRef(),useRef(), useRef(),useRef(),useRef(), 
-    useRef(),useRef(),useRef(), useRef() 
   ];
   
   useEffect(() => {
@@ -44,7 +42,7 @@ function AnimatedNeon() {
         setTimeout(() => {setAnimIsRunning(false);}, 2150);
         break;
       case 1:
-        firstPath = getRandomInteger(0, 21);
+        firstPath = getRandomInteger(0, 12);
         for (let i = 0; i < 300; i += 60) {
           setTimeout(() => {toggleNeon(firstPath);}, i);}
         for (let i = 940; i < 1400; i += 40) {
@@ -54,7 +52,7 @@ function AnimatedNeon() {
         setTimeout(() => {setAnimIsRunning(false);}, 2150);
         break;
       case 2:
-        firstPath = getRandomInteger(0, 15);
+        firstPath = getRandomInteger(0, 8);
         secondPath = firstPath + 1;
         thirdPath = firstPath + 2;
         for (let i = 0; i < 400; i += 60) {
@@ -75,7 +73,7 @@ function AnimatedNeon() {
         break;
       case 3:
         firstPath = getRandomInteger(0, 5);
-        secondPath = firstPath + getRandomInteger(5, 10);
+        secondPath = firstPath + getRandomInteger(5, 9);
         for (let i = 0; i < 640; i += 60) {
           setTimeout(() => {toggleNeon(firstPath);}, i);}
         for (let i = 360; i < 800; i += 40) {
@@ -105,16 +103,6 @@ function AnimatedNeon() {
         pathRef9={pathRefs[9]}
         pathRef10={pathRefs[10]}
         pathRef11={pathRefs[11]}
-        pathRef12={pathRefs[12]}
-        pathRef13={pathRefs[13]}
-        pathRef14={pathRefs[14]}
-        pathRef15={pathRefs[15]}
-        pathRef16={pathRefs[16]}
-        pathRef17={pathRefs[17]}
-        pathRef18={pathRefs[18]}
-        pathRef19={pathRefs[19]}
-        pathRef20={pathRefs[20]}
-        pathRef21={pathRefs[21]}
         svgRef={svgRef}
       />
     </>
