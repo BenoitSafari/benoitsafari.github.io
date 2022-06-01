@@ -1,3 +1,4 @@
+import { Button } from '@components/InputButton';
 import { motion } from 'framer-motion';
 import './Error.scss';
 
@@ -6,7 +7,8 @@ const variants = {
   hidden:      { opacity: 0, transition },
   show:        { opacity: 1, transition },
   showTitle:   { opacity: 1, transition },
-  showContent: { opacity: 1, transition: { duration: .5, delay: 1}},
+  showContent: { opacity: 1, transition: { duration: 1, delay: 1}},
+  showLink:    { opacity: 1, transition: { duration: 2, delay: 2.5}},
 };
 
 function Index() {
@@ -30,6 +32,15 @@ function Index() {
         animate='showContent'
         className='error__content'>
         Vous n'auriez jamais du venir ici...
+      </motion.div>
+      <motion.div 
+        variants={variants}
+        initial='hidden'
+        animate='showLink'>
+        <Button
+          href='/index'
+        >Retourner à l'index
+        </Button>
       </motion.div>
     </motion.section>
   );
