@@ -1,14 +1,12 @@
 import { ReactComponent as SvgLinkedin } from '@svg/ico_linkedin.svg';
 import { ReactComponent as SvgGithub } from '@svg/ico_github.svg';
 import { ReactComponent as SvgMail } from '@svg/ico_mail.svg';
-// import { ReactComponent as SvgSearch } from '@svg/ico_input-searchbar.svg';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState  } from 'react';
 import { useModal } from '@hooks/useModal';
 import ContactForm from '@components/ContactForm';
 import NavMenu from '@components/NavMenu';
-// import { InputText } from '@components/Input';
 import './Layout.scss';
 // TODO: Implement searchbar.
 
@@ -55,13 +53,6 @@ function Header({ isDisplayed }) {
               <img src='/img/logo.svg' alt='' />
               <span>Benoit Safari</span>
             </Link>
-            {/* <div className='header__search'>
-              <InputText
-                styles='rounded'
-                placeholder='Rechercher un article...'
-              ><SvgSearch/>
-              </InputText>
-            </div> */}
             <NavMenu
               handler={handleNavMenu}
               contactHandler={handleModal}

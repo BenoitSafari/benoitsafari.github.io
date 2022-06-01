@@ -15,7 +15,6 @@
     display: flex;
     justify-content: space-between;
     height: v.$layout-height;
-    padding: 0 1em;
   }
   &__nav {
     display: flex;
@@ -26,14 +25,6 @@
       width: 2.5rem; 
       cursor: pointer;
     }}
-  &__search {
-    display: flex;
-    align-items: center;
-    display: none;
-    & input {
-      width: 165px;
-    }
-  }
   &__title {
     display: flex;
     align-items: center;
@@ -52,6 +43,7 @@
   &__link {
     position: relative;
     transition: .3s;
+    font-size: 1.2rem;
     display: none;
     cursor: pointer;
     &:hover {
@@ -106,15 +98,7 @@
     &__link {
       display: block;
     }
-    &__search {
-      display: flex;
-    }
     & .nav-menu {
       & img {
         display: none;
       }}}}
-@include mix.breakpoint('laptop') {
-  .header {
-    &__search input {
-      width: 280px;
-    }}}

@@ -14,7 +14,7 @@ const pageVariants = {
 
 function Home() {
   return(
-    <motion.section 
+    <motion.main 
       variants={pageVariants}
       initial='hidden'
       animate='show'
@@ -49,7 +49,7 @@ function Home() {
         </div>
         <div className='home__copyright'>Benoit Safari ©</div>
       </nav>
-    </motion.section>
+    </motion.main>
   );
 }
 

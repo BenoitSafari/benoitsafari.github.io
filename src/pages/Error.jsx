@@ -13,7 +13,7 @@ const variants = {
 
 function Index() {
   return(
-    <motion.section 
+    <motion.main 
       variants={variants}
       initial='hidden'
       animate='show'
@@ -42,7 +42,7 @@ function Index() {
         >Retourner à l'index
         </Button>
       </motion.div>
-    </motion.section>
+    </motion.main>
   );
 }
 

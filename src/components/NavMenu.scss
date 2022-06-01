@@ -11,6 +11,7 @@
   transition: .5s;
   & a, button {
     width: fit-content;
+    box-shadow: 2px 5px 3px black;
   }
   &--is-open {
     opacity: 1;

@@ -1,5 +1,15 @@
 @use 'variables' as v;
 
+@mixin head {
+  margin-top: calc(v.$layout-height + 3rem);
+}
+
+@mixin title-1 {
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: .05rem;
+}
+
 @mixin breakpoint($breakpoint) {
   @if map-has-key(v.$breakpoints, $breakpoint) {
     @media (min-width: map-get(v.$breakpoints, $breakpoint)) {
@@ -11,6 +21,7 @@
     @include breakpoint($name) {
       margin-left: auto;
       margin-right: auto;
+      padding: 0 1em;
       max-width: $value;
     }}
   }
