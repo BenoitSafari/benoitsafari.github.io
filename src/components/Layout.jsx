@@ -63,6 +63,7 @@ function Header({ isDisplayed }) {
                 <img src='/img/ico/ico_menu.svg' alt='' />
               </button>  
               <Link to='/index' className='header__link'>Index</Link>
+              <Link to='/about' className='header__link'>À propos</Link>
               <button 
                 onClick={handleModal} 
                 className='header__link'>

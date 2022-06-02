@@ -4,6 +4,7 @@ import { RouterScrollReset } from '@components/RouterScrollReset';
 import Layout from '@components/Layout';
 import Home from '@pages/Home';
 import Index from '@pages/Index';
+import About from '@pages/About';
 import Error from '@pages/Error';
 import '@styles/reset.scss';
 import '@styles/globals.scss';
@@ -18,6 +19,7 @@ function App() {
           <Routes location={location} key={location.pathname}>
             <Route path='/'        element={<Home />}/>
             <Route path='/index'   element={<Index />}/>
+            <Route path='/about'   element={<About />}/>
             <Route path='*'        element={<Error />}/>
           </Routes>
         </AnimatePresence>

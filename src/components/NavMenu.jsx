@@ -27,6 +27,12 @@ function NavMenu ({ handler, contactHandler }) {
           styles='rounded-fill'
         >Contact
         </Button>
+        <Button
+          onClick={handler}
+          styles='rounded-fill'
+          href='/about'
+        >About
+        </Button>
       </div>
     </>
   );

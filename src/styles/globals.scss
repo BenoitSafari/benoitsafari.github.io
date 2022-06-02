@@ -1,6 +1,18 @@
 @use 'reset';
 @use 'variables' as v;
-@import url('https://fonts.googleapis.com/css2?family=Allison&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+
+@font-face {
+  font-family: 'roboto';
+  src: url('./fonts/roboto-regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'allison';
+  src: url('./fonts/allison-regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'consola';
+  src: url('./fonts/consola.ttf') format('truetype');
+}
 
 * { 
   box-sizing: border-box; 
@@ -9,5 +21,4 @@ body {
   background-color: v.$background-primary-color;
   color: v.$text-color;
   font-family: 'Roboto', sans-serif;
-  overflow: hidden;
 }
