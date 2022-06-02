@@ -1,7 +1,6 @@
 import AnimatedNeon from '@components/AnimatedNeon';
 import { ReactComponent as SvgGithub } from '@svg/ico_github.svg';
 import { ReactComponent as SvgLinkedin } from '@svg/ico_linkedin.svg';
-import { ReactComponent as SvgMail } from '@svg/ico_mail.svg';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import './Home.scss';
@@ -39,12 +38,6 @@ function Home() {
             target='_blank'
             rel='noreferrer'>
             <SvgLinkedin/>
-          </a>
-          <a 
-            href='mailto:benoit.safari.officiel@gmail.com' 
-            target='_blank'
-            rel='noreferrer'>
-            <SvgMail/>
           </a>
         </div>
         <div className='home__copyright'>Benoit Safari ©</div>

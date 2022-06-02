@@ -3,17 +3,48 @@
 
 .index {
   @include mix.container;
-  height: 75vh;
 }
 
 .articles {
-  margin-top: 5rem;
+  margin: 5rem 0;
   &__search {
     display: flex;
     justify-content: center;
     align-items: center;
+    & .lib__input-text {
+      width: 100%;
+    }
   }
   &__list {
-    
+    margin-top: 2rem;
+    background-color: v.$background-secondary-color;
+    border-radius: 5px;
+    border: 1px solid v.$text-color;
+    overflow: hidden;
+    &__empty {
+      display: flex;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-style: italic;
+      font-weight: 500;
+      padding: .8rem 1rem;
+
+    }
   }
 }
+
+@include mix.breakpoint('tablet') {
+  .articles {
+    .lib__input-text {
+      width: 70%;
+    }}}
+@include mix.breakpoint('laptop') {
+  .articles {
+    .lib__input-text {
+      width: 50%;
+    }}}
+@include mix.breakpoint('desktop') {
+  .articles {
+    .lib__input-text {
+      width: 40%;
+    }}}

@@ -1,0 +1,39 @@
+@use '@/styles/variables' as v;
+@use '@/styles/mixins' as mix;
+
+$transition: .3s;
+
+.article-card {
+  padding: .8rem 1rem;
+  display: grid;
+  grid-template-columns: 3fr 1fr 10fr 1fr 3fr;
+  align-items: center;
+  justify-items: center;
+  border-bottom: 1px solid v.$primary-color;
+  font-size: 1.1rem;
+  color: v.$text-color;
+  cursor: pointer;
+  transition: $transition;
+  &:hover {
+    transition: $transition;
+    color: v.$tertiary-color;
+    & svg { fill: v.$tertiary-color; }}
+  &__title {
+    font-style: italic;
+    font-weight: 500;
+  }
+  &__stack {
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+    font-weight: 500;
+  }
+  &__date {
+    text-align: right;
+  }
+  & svg {
+    transition: $transition;
+    width: 1.5rem;
+    fill: v.$text-color;
+  }
+}

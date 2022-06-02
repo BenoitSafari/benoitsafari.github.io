@@ -8,7 +8,6 @@ import { useModal } from '@hooks/useModal';
 import ContactForm from '@components/ContactForm';
 import NavMenu from '@components/NavMenu';
 import './Layout.scss';
-// TODO: Implement searchbar.
 
 // Data
 const links = {
@@ -78,6 +77,10 @@ function Header({ isDisplayed }) {
 }
 
 function Footer({ isDisplayed }) {
+  const { setModal } = useModal();
+  const handleModal = () => {
+    setModal(<ContactForm/>);
+  };
   return(
     <AnimatePresence exitBeforeEnter>
       { isDisplayed &&
@@ -98,11 +101,11 @@ function Footer({ isDisplayed }) {
               href={links.github}>
               <SvgGithub/>
             </a>
-            <a target="_blank" rel='noreferrer'
+            <button
               className='footer__link'
-              href={links.mail}>
+              onClick={handleModal}>
               <SvgMail/>
-            </a>
+            </button>
           </nav>
           <div className='footer__copyright'>Benoit Safari ©</div>
         </motion.footer>

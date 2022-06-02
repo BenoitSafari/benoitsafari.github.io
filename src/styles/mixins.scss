@@ -18,10 +18,10 @@
     
 @mixin container {
   @each $name, $value in v.$breakpoints {
+    padding: 0 2em;
     @include breakpoint($name) {
       margin-left: auto;
       margin-right: auto;
-      padding: 0 1em;
       max-width: $value;
     }}
   }
