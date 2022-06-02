@@ -4,26 +4,16 @@
 .index {
   @include mix.container;
   height: 75vh;
+}
 
-  &__head {
-    @include mix.head;
-    &__title {
-      @include mix.title-1;
-      & span {
-        color: v.$tertiary-color;
-      }}
-      &__sub {
-        font-size: .9rem;
-        font-style: italic;
-        margin: .3rem 0 0 .3rem;
-      }}
-
-  &__articles {
-    margin-top: 5rem;
-    &__search {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+.articles {
+  margin-top: 5rem;
+  &__search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__list {
+    
   }
 }

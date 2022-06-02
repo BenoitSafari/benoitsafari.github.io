@@ -1,0 +1,15 @@
+@use '@/styles/variables' as v;
+@use '@/styles/mixins' as mix;
+
+.page-title {
+  @include mix.page-title;
+  &__title {
+    @include mix.title-1;
+    & span {
+      color: v.$tertiary-color;
+    }}
+    &__sub {
+      font-size: .9rem;
+      font-style: italic;
+      margin: .3rem 0 0 .3rem;
+    }}

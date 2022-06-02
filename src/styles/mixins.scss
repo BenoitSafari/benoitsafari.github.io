@@ -1,6 +1,6 @@
 @use 'variables' as v;
 
-@mixin head {
+@mixin page-title {
   margin-top: calc(v.$layout-height + 3rem);
 }
 
