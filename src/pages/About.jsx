@@ -35,7 +35,7 @@ function About () {
   <span class='counter'>22</span>  <span class='ind'> </span>  <span class='ind'> </span>  <span class='ind'> </span>  <span class='value'>"Figma"</span><span class='sym'>,</span> 
   <span class='counter'>23</span>  <span class='ind'> </span>  <span class='ind'> </span>  <span class='ind'> </span>  <span class='value'>"Photoshop"</span> 
   <span class='counter'>24</span>  <span class='ind ind--closing'> </span>  <span class='ind ind--closing'> </span>  <span class='arr'>]</span>
-  <span class='counter'>25</span>  <span class='ind ind--closing'> </span>  <span class='arr'>&#125;</span>
+  <span class='counter'>25</span>  <span class='ind ind--closing'> </span>  <span class='sym'>&#125;</span>
   <span class='counter'>26</span>  <span class='curl ind--closing'>&#125;</span>
   `;
   

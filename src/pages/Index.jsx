@@ -1,11 +1,12 @@
 import { ReactComponent as SvgSearch } from '@svg/ico_input-searchbar.svg';
 import { InputText } from '@components/Input';
-import PageTitle from '@components/PageTitle';
 import { articles } from '@pages/Index.articleData';
+import PageTitle from '@components/PageTitle';
+import Portfolio from '@pages/Index.Portfolio';
 import Article from '@pages/Index.Article';
 import { motion } from 'framer-motion';
-import './Index.scss';
 import { useEffect, useState } from 'react';
+import './Index.scss';
 
 // Animations Setup
 const pageTransition = { duration: .5 }; 
@@ -36,6 +37,7 @@ function Index() {
       <PageTitle title="l'index">
         Des articles sur mes explorations, essais et projets.
       </PageTitle>
+      <Portfolio/>
       <section className='articles'>
         <div className='articles__search'>
           <InputText
