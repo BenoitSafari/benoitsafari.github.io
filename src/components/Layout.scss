@@ -21,8 +21,7 @@
     align-items: center;
     gap: 1.5rem;
     & .link { display: none; }
-    & .nav-menu img { 
-      width: 2.5rem; 
+    & .nav-menu svg { 
       cursor: pointer;
     }}
   &__title {
@@ -101,6 +100,6 @@
       display: block;
     }
     & .nav-menu {
-      & img {
+      & svg {
         display: none;
       }}}}

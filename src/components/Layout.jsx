@@ -1,6 +1,7 @@
 import { ReactComponent as SvgLinkedin } from '@svg/ico_linkedin.svg';
 import { ReactComponent as SvgGithub } from '@svg/ico_github.svg';
 import { ReactComponent as SvgMail } from '@svg/ico_mail.svg';
+import { ReactComponent as SvgMenu } from '@svg/ico_menu.svg';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState  } from 'react';
@@ -60,15 +61,11 @@ function Header({ isDisplayed }) {
               <button 
                 onClick={handleNavMenu}
                 className='nav-menu'>
-                <img src='/img/ico/ico_menu.svg' alt='' />
+                <SvgMenu />
               </button>  
               <Link to='/index' className='header__link'>Index</Link>
               <Link to='/about' className='header__link'>À propos</Link>
-              <button 
-                onClick={handleModal} 
-                className='header__link'>
-                Me contacter
-              </button>
+              <button onClick={handleModal} className='header__link'>Me contacter</button>
             </nav>
           </div>
         </motion.header>

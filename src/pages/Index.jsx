@@ -1,8 +1,7 @@
 import { ReactComponent as SvgSearch } from '@svg/ico_input-searchbar.svg';
 import { InputText } from '@components/Input';
-import { articles } from '@pages/Index.articleData';
+import { articles } from '@pages/Index.Data';
 import PageTitle from '@components/PageTitle';
-import Portfolio from '@pages/Index.Portfolio';
 import Article from '@pages/Index.Article';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
@@ -14,12 +13,12 @@ const IndexVariants  = {
   hidden:       { opacity: 0, pageTransition },
   show:         { opacity: 1, pageTransition },
 };
+
 function Index() {
+  // Filter logic
   const [ inputValue, setInputValue ] = useState('');
   const [ filter,     setFilter     ] = useState(articles);
-  const handleOnChange = (e) => {
-    setInputValue(e.target.value);
-  };
+  const handleOnChange = (e) => { setInputValue(e.target.value); };
   useEffect(() => {
     const filteredData = articles.filter(article => {
       return article.title.toLowerCase().includes(inputValue.toLowerCase());
@@ -37,7 +36,18 @@ function Index() {
       <PageTitle title="l'index">
         Des articles sur mes explorations, essais et projets.
       </PageTitle>
-      <Portfolio/>
+      <section className='portfolio'>
+        <div className='portfolio__list'>
+          <div className='cinevoraces'>
+            <a href='https://cinevoraces.herokuapp.com/' target='_blank' rel='noreferrer'>
+              <img src='img/portfolio/logo_cinevoraces.svg' alt='' />
+            </a>
+          </div>
+          <div className='webfrontend'>
+            <img className='is-white unavailable' src='img/portfolio/logo_webfe.svg' alt='' />
+          </div>
+        </div>
+      </section>
       <section className='articles'>
         <div className='articles__search'>
           <InputText

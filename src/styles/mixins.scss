@@ -9,6 +9,11 @@
   font-weight: 500;
   letter-spacing: .05rem;
 }
+@mixin title-2 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: .03rem;
+}
 
 @mixin breakpoint($breakpoint) {
   @if map-has-key(v.$breakpoints, $breakpoint) {

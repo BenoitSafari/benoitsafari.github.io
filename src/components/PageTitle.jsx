@@ -15,7 +15,7 @@ function PageTitle ({title, children}) {
         initial='hidden'
         animate='titleShow'
         className='page-title__title'>
-        Vous êtes sur <span>{title}</span>,
+        Vous êtes sur <span>{title}</span>
       </motion.h1>
       <motion.div
         variants={IndexVariants}
