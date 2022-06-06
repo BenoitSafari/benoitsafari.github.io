@@ -8,12 +8,22 @@
   font-size: 2rem;
   font-weight: 500;
   letter-spacing: .05rem;
-}
+  @media screen and (max-width: 580px) {
+    font-size: 1.7rem;
+  }
+  @media screen and (max-width: 390px) {
+    font-size: 1.5rem;
+  }}
 @mixin title-2 {
   font-size: 1.6rem;
   font-weight: 500;
   letter-spacing: .03rem;
-}
+  @media screen and (max-width: 580px) {
+    font-size: 1.3rem;
+  }
+  @media screen and (max-width: 390px) {
+    font-size: 1.1rem;
+  }}
 
 @mixin breakpoint($breakpoint) {
   @if map-has-key(v.$breakpoints, $breakpoint) {

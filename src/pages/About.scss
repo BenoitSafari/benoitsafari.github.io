@@ -80,6 +80,7 @@ $json-border: v.$text-color 1px solid;
     border-left: $json-border;
     border-top: $json-border-fade;
     border-bottom: $json-border-fade;
+    max-width: 100vw;
   }}
 
 .about span.em       { color: v.$secondary-color;}
@@ -136,12 +137,29 @@ $json-border: v.$text-color 1px solid;
     &__json {
       align-self: center;
     }}}
-@media screen and (max-width: 472px) {
+@media screen and (max-width: 580px) {
   .about {
     &__desc {
-      width: 90%;
+      font-size: .9rem;
+      width: 95%;
+    }
+    &__me {
+      font-size: 3rem;
     }
     &__json { 
-      margin-top: -1.5rem;
-      scale: .9;                    
+      margin-top: -4rem;
+      margin-left: -1rem;
+      scale: .8;                    
     }}}
+@media screen and (max-width: 390px) {
+  .about {
+    &__json {
+      margin-top: -6.8rem;
+      margin-left: -3.8rem;
+      scale: .7;
+    }
+}}
+// @media screen and (max-width: 472px) {
+//   .about__json { 
+//       scale: .9;                    
+//     }}

@@ -14,6 +14,9 @@
     align-items: center;
     & .lib__input-text {
       width: 100%;
+      & input::placeholder {
+        font-size: .9rem;
+      }
     }}
   &__list {
     margin-top: 2rem;
@@ -86,7 +89,9 @@
   .articles {
     .lib__input-text {
       width: 70%;
-    }}
+      & input::placeholder {
+        font-size: 1.1rem;
+    }}}
   .portfolio {
     &__list {
       flex-direction: row;

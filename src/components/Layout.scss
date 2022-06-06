@@ -93,6 +93,11 @@
 @keyframes header-link-hover {
   from  { width: 0%; }
   to    { width: 100%; }}
+
+@media screen and (max-width: 390px) {
+  .header__title {
+    font-size: calc(v.$layout-height * 0.6);
+  }}
     
 @include mix.breakpoint('tablet') {
   .header {

@@ -49,7 +49,7 @@ function Header({ isDisplayed }) {
           exit='hidden'
           className='header'>
           <div className='header__container'>
-            <Link to='/' className='header__title'>
+            <Link to='/index' className='header__title'>
               <img src='/img/logo.svg' alt='' />
               <span>Benoit Safari</span>
             </Link>

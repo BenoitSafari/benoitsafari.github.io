@@ -6,11 +6,11 @@ $transition: .3s;
 .article-card {
   padding: .8rem .5rem;
   display: grid;
-  grid-template-columns: .5fr 3fr .9fr;
+  grid-template-columns: 5fr 1.5fr;
   align-items: center;
   justify-items: center;
   border-bottom: 1px solid v.$primary-color;
-  font-size: 1rem;
+  font-size: .9rem;
   color: v.$text-color;
   cursor: pointer;
   transition: $transition;
@@ -23,10 +23,7 @@ $transition: .3s;
     text-align: center;
   }
   &__stack {
-    display: flex;
-    align-items: center;
-    gap: .3rem;
-    font-weight: 600;
+    display: none;
   }
   &__date {
     text-align: right;
@@ -46,5 +43,11 @@ $transition: .3s;
       transition: $transition;
       width: 1.5rem;
       fill: v.$text-color;
+    }
+    &__stack {
+      display: flex;
+      align-items: center;
+      gap: .3rem;
+      font-weight: 600;
     }
   }}

@@ -13,7 +13,7 @@ function Article1 () {
         <div className='code-block'>
           <CopyBlock
             text={codeBlocks[0]}
-            language='jsx'
+            language='javascript'
             theme={dracula}
           />
         </div>
@@ -21,7 +21,7 @@ function Article1 () {
         <div className='code-line'>
           <CopyBlock
             text={codeBlocks[1]}
-            language='jsx'
+            language='javascript'
             theme={dracula}
           />
         </div>
@@ -39,7 +39,7 @@ function Article1 () {
         <div className='code-block'>
           <CopyBlock
             text={codeBlocks[3]}
-            language='jsx'
+            language='javascript'
             theme={dracula}
           />
         </div>
@@ -48,7 +48,7 @@ function Article1 () {
         <div className='code-block'>
           <CopyBlock
             text={codeBlocks[4]}
-            language='jsx'
+            language='javascript'
             theme={dracula}
             highlight='2, 5, 8, 11'
           />
@@ -57,7 +57,7 @@ function Article1 () {
         <div className='code-block'>
           <CopyBlock
             text={codeBlocks[5]}
-            language='jsx'
+            language='javascript'
             theme={dracula}
           />
         </div>
@@ -65,9 +65,9 @@ function Article1 () {
         <div className='code-block'>
           <CopyBlock
             text={codeBlocks[6]}
-            language='jsx'
+            language='javascript'
             theme={dracula}
-            highlight='4, 11-13'
+            highlight='4,9,10,11'
           />
         </div>
         <h2>Utilisation</h2>
@@ -75,7 +75,7 @@ function Article1 () {
         <div className='code-block'>
           <CopyBlock
             text={codeBlocks[7]}
-            language='jsx'
+            language='javascript'
             theme={dracula}
           />
         </div>
@@ -90,146 +90,137 @@ function Article1 () {
 
 const codeBlocks =[
   `
-  import ReactDOM from 'react-dom';
-  import './Modal.css';
-
-  const portalRoot = document.querySelector('#portal-root');
-
-  function Modal () {
-      // Créé une autre "instance" de notre application.
-      return ReactDOM.createPortal(
-        <>
-          <div className='modal-back'></div>
-          <div className='modal'>
-            <div className='modal-head'>
-              <button>X</button>
-            </div>
-            <div className='modal-content'>
-            </div>
+import ReactDOM from 'react-dom';
+import './Modal.css';
+const portalRoot = document.querySelector('#portal-root');
+function Modal () {
+    // Créé une autre "instance" de notre application.
+    return ReactDOM.createPortal(
+      <>
+        <div className='modal-back'></div>
+        <div className='modal'>
+          <div className='modal-head'>
+            <button>X</button>
           </div>
-        </>
-        , portalRoot);
-    }
-  
-    export default Modal;`,
-  `
-  <div id="portal-root"></div>`,
-  `
-  .modal-back {
-    position: fixed;
-    top: 0;
-    z-index: 3;
-    width: 100vw;
-    height: 100vh;
-    background-color: #00000075;
-  }
-  
-  .modal {
-    position: fixed;
-    left: 0; right: 0;
-    width: fit-content;
-    max-width: 50%;
-    margin: 10rem auto;
-    z-index: 4;
-    box-shadow: 2px 2px 5px black;
-    background-color: #313030;
-    border-radius: 5px;
-    padding: 1rem;
-  }
-  
-  .modal-head {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: .6rem;
-  }
-
-  .modal-head button {
-    cursor: pointer;
-  }`,
-  `
-  import {useCallback, useState, createContext} from 'react';
-  import Modal from '../components/Modal';
-  
-  // Créé le context puis le provider de la modal
-  const ModalContext = createContext();
-  const ModalProvider = ({children}) => {
-    // Créé l'état initial du contenu de la modal
-    const [modal, setModal] = useState();
-    // "Vide" le contenu de la modal
-    const unSetModal = useCallback(() => {
-      setModal();
-    }, [setModal]);
-    return (
-      <ModalContext.Provider 
-        value={{unSetModal, setModal}}
-      >
-        {children}
-        {/* Affiche la modal uniquement si elle contient quelque chose */}
-        {modal && <Modal modal={ modal } unSetModal={ unSetModal } />}
-      </ModalContext.Provider>
-    );
-  };
-  
-  export {ModalContext, ModalProvider};`,
-  `
-  function Modal ({ modal, unSetModal }) {
-      return ReactDOM.createPortal(
-        <>
-          <div onClick={unSetModal} className='modal-back'></div>
-          <div className='modal'>
-            <div className='modal-head'>
-              <button onClick={unSetModal}>X</button>
-            </div>
-            <div className='modal-content'>
-              {modal}
-            </div>
+          <div className='modal-content'>
           </div>
-        </>
-        , portalRoot);
-    }
-  
-    export default Modal;`,
-  `
-  import {useContext} from 'react';
-  import {ModalContext} from '../context/ModalContext';
-
-  const useModal = () => {
-    const context = useContext(ModalContext);
-    return context;
-  };
-
-  export {useModal};`,
-  `
-  import React from 'react';
-  import { createRoot } from 'react-dom/client';
-  import { ModalProvider } from './context/ModalContext';
-  import App from './App';
-
-  const appRootElement = document.querySelector('#app-root');
-  const root = createRoot(appRootElement);
-
-  root.render(
-    <ModalProvider>
-      <App/>
-    </ModalProvider>
-  );`,
-  `
-  import { useModal } from './hooks/useModal';
-  import './style.css';
-
-  function App() {
-    const { setModal } = useModal();
-    const openModal = () => {
-      setModal(<div>Hello, je suis une Modal! Dingue non?</div>);
-    };
-    return(
-      <button className='open-modal' onClick={openModal}>
-        Vas-y clic! Allez!
-      </button>
-    );
+        </div>
+      </>
+      , portalRoot);
   }
 
-  export default App;`
+  export default Modal;`,
+  `
+<div id="portal-root"></div>`,
+  `
+.modal-back {
+  position: fixed;
+  top: 0;
+  z-index: 3;
+  width: 100vw;
+  height: 100vh;
+  background-color: #00000075;
+}
+
+.modal {
+  position: fixed;
+  left: 0; right: 0;
+  width: fit-content;
+  max-width: 50%;
+  margin: 10rem auto;
+  z-index: 4;
+  box-shadow: 2px 2px 5px black;
+  background-color: #313030;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.modal-head {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: .6rem;
+}
+.modal-head button {
+  cursor: pointer;
+}`,
+  `
+import {useCallback, useState, createContext} from 'react';
+import Modal from '../components/Modal';
+
+// Créé le context puis le provider de la modal
+const ModalContext = createContext();
+const ModalProvider = ({children}) => {
+  // Créé l'état initial du contenu de la modal
+  const [modal, setModal] = useState();
+  // "Vide" le contenu de la modal
+  const unSetModal = useCallback(() => {
+    setModal();
+  }, [setModal]);
+  return (
+    <ModalContext.Provider 
+      value={{unSetModal, setModal}}
+    >
+      {children}
+      {/* Affiche la modal uniquement si elle contient quelque chose */}
+      {modal && <Modal modal={ modal } unSetModal={ unSetModal } />}
+    </ModalContext.Provider>
+  );
+};
+
+export {ModalContext, ModalProvider};`,
+  `
+function Modal ({ modal, unSetModal }) {
+    return ReactDOM.createPortal(
+      <>
+        <div onClick={unSetModal} className='modal-back'></div>
+        <div className='modal'>
+          <div className='modal-head'>
+            <button onClick={unSetModal}>X</button>
+          </div>
+          <div className='modal-content'>
+            {modal}
+          </div>
+        </div>
+      </>
+      , portalRoot);
+  }
+
+  export default Modal;`,
+  `
+import {useContext} from 'react';
+import {ModalContext} from '../context/ModalContext';
+const useModal = () => {
+  const context = useContext(ModalContext);
+  return context;
+};
+export {useModal};`,
+  `
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { ModalProvider } from './context/ModalContext';
+import App from './App';
+const appRootElement = document.querySelector('#app-root');
+const root = createRoot(appRootElement);
+root.render(
+  <ModalProvider>
+    <App/>
+  </ModalProvider>
+);`,
+  `
+import { useModal } from './hooks/useModal';
+import './style.css';
+function App() {
+  const { setModal } = useModal();
+  const openModal = () => {
+    setModal(<div>Hello, je suis une Modal! Dingue non?</div>);
+  };
+  return(
+    <button className='open-modal' onClick={openModal}>
+      Vas-y clic! Allez!
+    </button>
+  );
+}
+export default App;`
 ];
 
 export default Article1;
