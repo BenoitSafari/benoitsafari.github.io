@@ -6,15 +6,16 @@ import {
 import Modal from '@components/Modal';
 
 const ModalContext = createContext();
-const ModalProvider = (props) => {
+const ModalProvider = ({children}) => {
   const [ modal, setModal ] = useState();
   const unSetModal = useCallback(() => { setModal(); }, [ setModal ]);
   return (
-    <ModalContext.Provider value={{ unSetModal, setModal }} {...props} >
-      {props.children}
+    <ModalContext.Provider value={{ unSetModal, setModal }}>
+      {children}
       {modal && <Modal modal={ modal } unSetModal={ unSetModal } />}
     </ModalContext.Provider>
-  );};
+  );
+};
 
 const useModal = () => {
   const context = useContext(ModalContext);

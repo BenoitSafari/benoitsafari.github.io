@@ -27,7 +27,6 @@
       font-style: italic;
       font-weight: 500;
       padding: .8rem 1rem;
-
     }}}
 
 .portfolio {
@@ -35,7 +34,10 @@
   &__list {
     margin-top: 2rem;
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
+    align-items: center;
+    gap: 6rem;
     & img {
       display: block;
       width: 17rem;
@@ -76,10 +78,18 @@
         -webkit-transform: rotate(-4deg);
       }}}}
 
+@media screen and (max-width: 580px) {
+  .index {
+    padding: 0 1rem!important;
+  }}
 @include mix.breakpoint('tablet') {
   .articles {
     .lib__input-text {
       width: 70%;
+    }}
+  .portfolio {
+    &__list {
+      flex-direction: row;
     }}}
 @include mix.breakpoint('laptop') {
   .articles {

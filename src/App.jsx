@@ -14,9 +14,9 @@ function App() {
   const location = useLocation();
   return(
     <>
-      <RouterScrollReset/>
       <Layout>
         <AnimatePresence exitBeforeEnter>
+          <RouterScrollReset/>
           <Routes location={location} key={location.pathname}>
             <Route path='/'             element={<Home />}/>
             <Route path='/index'        element={<Index />}/>

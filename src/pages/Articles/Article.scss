@@ -13,6 +13,7 @@
     margin-top: 4rem;
     & h2 {
       @include mix.title-2;
+      margin-top: 2.5rem;
       margin-bottom: 1rem;
     }
     & p {
@@ -32,13 +33,33 @@
         font-style: italic;
       }
     }
+    &__links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      & a {
+        position: relative;
+        transition: .3s;
+        font-size: 1.2rem;
+        cursor: pointer;
+        &:hover {
+          color: v.$tertiary-color;
+          transition: .3s;
+          &::before {
+            content: '';
+            animation: header-link-hover .15s ease-in;
+            position: absolute;
+            bottom: -5px;
+            width: 100%;
+            height: 2px;
+            background-color: v.$tertiary-color;
+          }}}}
     & .code-block div, .code-line div {
+      margin: 2rem 0;
       padding-top: 0px;
       padding-bottom: 1rem;
       padding-left: 1rem;
       font-family: consola;
-      overflow-x: auto;
-      max-height: 23rem;
       box-shadow: 2px 2px 4px rgba(0,0,0,0.35);
       & button {
         cursor: pointer;
@@ -58,3 +79,17 @@
       & code {
         padding-right: 2.6rem;
       }}}}
+
+@keyframes header-link-hover {
+  from  { width: 0%; }
+  to    { width: 100%; }}
+
+@media screen and (max-width: 580px) {
+  .articles-layout__content {
+    &__links {
+      flex-direction: column;
+      align-items: center;
+    }
+    & .code-block div, .code-line div {
+      font-size: .8rem;
+    }}}
