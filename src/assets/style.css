@@ -1,0 +1,31 @@
+@font-face {
+  font-family: 'roboto';
+  src: url('./fonts/roboto-regular.ttf') format('truetype');
+}
+* { 
+  box-sizing: border-box; 
+}
+#app-root, #portal-root {
+  font-family: 'Roboto', sans-serif;
+  color: #d4d4d4;
+}
+#app-root {
+  height: 100vh; width: 100vw;
+  background-color: #1b1b1b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.open-modal {
+  cursor: pointer;
+  padding: 1rem;
+  background-color: #313030;
+  box-shadow: 2px 3px 2px black;
+  transition: .3s;
+}
+.open-modal:hover {
+  scale: 1.1;
+  box-shadow: 2px 3px 2px #f0f;
+  color: #f0f;
+}

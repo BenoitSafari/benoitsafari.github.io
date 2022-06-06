@@ -1,0 +1,39 @@
+.modal-back {
+  position: fixed;
+  top: 0;
+  z-index: 3;
+  width: 100vw;
+  height: 100vh;
+  background-color: #00000075;
+}
+
+.modal {
+  position: fixed;
+  left: 0; right: 0;
+  width: fit-content;
+  max-width: 50%;
+  margin: 10rem auto;
+  z-index: 4;
+  box-shadow: 2px 2px 5px black;
+  background-color: #313030;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.modal-head {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: .6rem;
+}
+.modal-head svg {
+  box-sizing: content-box;
+  cursor: pointer;
+  fill: #f0f;
+  transition: .3s;
+  border-radius: 7px;
+}
+.modal-head svg:hover {
+  transition: .3s;
+  border-radius: 15px;
+  background-color: #1b1b1b;
+}

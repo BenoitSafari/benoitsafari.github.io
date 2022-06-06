@@ -3,7 +3,7 @@ import {
   useState, 
   useContext, 
   createContext } from 'react';
-import Modal from '@components/Modal';
+import Modal from './Modal';
 
 const ModalContext = createContext();
 const ModalProvider = (props) => {
