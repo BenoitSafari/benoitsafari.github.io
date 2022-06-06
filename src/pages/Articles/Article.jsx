@@ -8,6 +8,7 @@ const variants  = {
   hidden:       { opacity: 0, transition },
   show:         { opacity: 1, transition },
 };
+
 function Article ({children, name}) {
   return(
     <motion.main 
@@ -24,4 +25,13 @@ function Article ({children, name}) {
   );
 }
 
-export default Article;
+function ArticleContent ({children}) {
+
+  return(
+    <section className='articles-layout__content'>
+      {children}
+    </section>
+  );
+}
+
+export { Article, ArticleContent };

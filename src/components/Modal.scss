@@ -2,7 +2,6 @@
 
 .modal-back {
   position: fixed;
-  z-index: 2;
   top: 0;
   z-index: 3;
   width: 100vw;
@@ -19,7 +18,7 @@
   box-shadow: 2px 2px 5px v.$boxshadow;
   background-color: v.$background-primary-color;
   border-radius: 5px;
-  padding: .6rem 1rem 1rem 1rem;
+  padding: 1rem;
   & .modal-head {
     display: flex;
     justify-content: flex-end;
