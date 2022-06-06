@@ -51,7 +51,8 @@
     & .cinevoraces, .webfrontend {
       position: relative;
       & :hover {
-        scale: 1.1;
+        transform: scale(1.1); 
+        -webkit-transform: scale(1.1);
       }
       &::after {
         content: '';  

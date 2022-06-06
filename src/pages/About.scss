@@ -149,17 +149,15 @@ $json-border: v.$text-color 1px solid;
     &__json { 
       margin-top: -4rem;
       margin-left: -1rem;
-      scale: .8;                    
+      transform: scale(0.8); 
+      -webkit-transform: scale(0.8);
     }}}
 @media screen and (max-width: 390px) {
   .about {
     &__json {
       margin-top: -6.8rem;
       margin-left: -3.8rem;
-      scale: .7;
+      transform: scale(0.7); 
+      -webkit-transform: scale(0.7);
     }
 }}
-// @media screen and (max-width: 472px) {
-//   .about__json { 
-//       scale: .9;                    
-//     }}
