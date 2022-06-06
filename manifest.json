@@ -1,11 +1,11 @@
 {
-  "short_name": "",
-  "name": "",
+  "short_name": "BenoitSafari",
+  "name": "BenoitSafari.com",
   "icons": [
     {
-      "src": "favicon.png",
+      "src": "img/logo.svg",
       "sizes": "256x256",
-      "type": "image/png"
+      "type": "icon"
     }
   ],
   "start_url": "./",
