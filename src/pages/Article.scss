@@ -53,34 +53,9 @@
             width: 100%;
             height: 2px;
             background-color: v.$tertiary-color;
-          }}}}
-    & .code-block div, .code-line div {
-      overflow: scroll;
-      margin: 2rem 0;
-      padding-top: 0px;
-      padding-bottom: 1rem;
-      padding-left: 1rem;
-      font-family: consola;
-      box-shadow: 2px 2px 4px rgba(0,0,0,0.35);
-      -webkit-box-shadow: 2px 2px 4px rgba(0,0,0,0.35);
-      & button {
-        cursor: pointer;
-        &:hover {
-          background-color: #00000060;
-        }}
-      & .react-syntax-highlighter-line-number {
-        font-style: italic;
-        font-weight: 600;
-        &:first-child {
-          opacity: 0;
-          user-select: none;
-        }}
-    }
-    & .code-line {
-      width: fit-content;
-      & code {
-        padding-right: 2.6rem;
-      }}}}
+          }}}
+    }}}
+    
 
 @keyframes header-link-hover {
   from  { width: 0%; }
@@ -100,7 +75,4 @@
       & span.note {
         font-size: .8rem;
       }
-    }
-    & .code-block div, .code-line div {
-      font-size: .8rem;
     }}}

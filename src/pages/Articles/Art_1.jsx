@@ -1,5 +1,5 @@
-import { CopyBlock, dracula } from 'react-code-blocks';
 import { Link } from 'react-router-dom';
+import CodeBlock from '@components/CodeBlock'; 
 
 function Art1 () {
   return(
@@ -8,75 +8,41 @@ function Art1 () {
       <p>Créez un composant <strong>Modal</strong>. Dans notre exemple, la modal se fermera au clique sur background ou via un bouton marqué d'un <em>"X"</em>.
         <br/><span className='note'>Note: un <em>portal</em> permet de séparer du contenu de l'app principale. Bien qu'approprié dans le cas d'une modal, l'utilisation de <strong>createPortal</strong> est optionnel.</span>
       </p>
-      <div className='code-block'>
-        <CopyBlock
-          text={codeBlocks[0]}
-          language='javascript'
-          theme={dracula}
-        />
-      </div>
+      <CodeBlock>
+        {codeBlocks[0]}
+      </CodeBlock>
       <p>Dans le cas d'utilisation d'un <strong>portal</strong>, ajoutez une <em>&lt;div&gt;</em> dans le <strong>body</strong> de votre <strong>index.html</strong>.</p>
-      <div className='code-line'>
-        <CopyBlock
-          text={codeBlocks[1]}
-          language='javascript'
-          theme={dracula}
-        />
-      </div>
+      <CodeBlock>
+        {codeBlocks[1]}
+      </CodeBlock>
       <p>Un peu de CSS, le plus important est de bien placer son background et sa modal, de sorte à pouvoir fermer la modal au clique sur background.
         <br/><span className='note'>Note: à modifier si vous n'utilisez pas de portal.. Ou si vous avez du goût!</span>.</p>
-      <div className='code-block'>
-        <CopyBlock
-          text={codeBlocks[2]}
-          language='css'
-          theme={dracula}
-        />
-      </div>
+      <CodeBlock>
+        {codeBlocks[2]}
+      </CodeBlock>
       <h2>Créer un contexte</h2>
       <p>Nous voulons pouvoir appeler notre <em>modal</em> un peu partout dans notre application via un hook. Pour ça nous allons avoir besoin de lui donner un <em>contexte</em>.</p>
-      <div className='code-block'>
-        <CopyBlock
-          text={codeBlocks[3]}
-          language='javascript'
-          theme={dracula}
-        />
-      </div>
+      <CodeBlock>
+        {codeBlocks[3]}
+      </CodeBlock>
       <p>Retournez ensuite sur votre <strong>Modal</strong> pour apporter quelques modifications. Ajoutez en props <em>modal</em> et <em>unSetModal</em> puis passez les respectivement sur les balises déstinées a fermer la modal et celle destinée à accueillir le contenu.
       </p>
-      <div className='code-block'>
-        <CopyBlock
-          text={codeBlocks[4]}
-          language='javascript'
-          theme={dracula}
-          highlight='2, 5, 8, 11'
-        />
-      </div>
+      <CodeBlock>
+        {codeBlocks[4]}
+      </CodeBlock>
       <p>On peut maintenant créer notre hook <strong>useModal</strong>.</p>
-      <div className='code-block'>
-        <CopyBlock
-          text={codeBlocks[5]}
-          language='javascript'
-          theme={dracula}
-        />
-      </div>
+      <CodeBlock>
+        {codeBlocks[5]}
+      </CodeBlock>
       <p>Il reste encore à rendre disponible notre <em>contexte</em> dans notre application. Ouvrez votre <strong>app.jsx</strong> ou <strong>index.jsx</strong> et importez-y le provider.</p>
-      <div className='code-block'>
-        <CopyBlock
-          text={codeBlocks[6]}
-          language='javascript'
-          theme={dracula}
-          highlight='4,9,10,11'
-        />
-      </div>
+      <CodeBlock>
+        {codeBlocks[6]}
+      </CodeBlock>
       <h2>Utilisation</h2>
       <p>Importez <strong>useModal</strong> à l'endroit ou vous souhaitez l'appeler, récuperez la methode <em>setModal</em> et passez lui en paramètre le contenu souhaité.</p>
-      <div className='code-block'>
-        <CopyBlock
-          text={codeBlocks[7]}
-          language='javascript'
-          theme={dracula}
-        />
-      </div>
+      <CodeBlock>
+        {codeBlocks[7]}
+      </CodeBlock>
       <section className='articles-layout__content__links'>
         <a target='_blank' rel='noreferrer' href='https://github.com/BenoitSafari/benoitsafari.github.io/tree/lib-useModal'>Voir le repo git</a>
         <Link to='/index'>Retourner à l'index</Link>
@@ -86,30 +52,32 @@ function Art1 () {
 }
 
 const codeBlocks =[
-  `
+  `~~~jsx
 import ReactDOM from 'react-dom';
 import './Modal.css';
 const portalRoot = document.querySelector('#portal-root');
 function Modal () {
-    // Créé une autre "instance" de notre application.
-    return ReactDOM.createPortal(
-      <>
-        <div className='modal-back'></div>
-        <div className='modal'>
-          <div className='modal-head'>
-            <button>X</button>
-          </div>
-          <div className='modal-content'>
-          </div>
+  // Créé une autre "instance" de notre application.
+  return ReactDOM.createPortal(
+    <>
+      <div className='modal-back'></div>
+      <div className='modal'>
+        <div className='modal-head'>
+          <button>X</button>
         </div>
-      </>
-      , portalRoot);
-  }
+        <div className='modal-content'>
+        </div>
+      </div>
+    </>
+  , portalRoot);
+}
 
-  export default Modal;`,
-  `
-<div id="portal-root"></div>`,
-  `
+export default Modal;
+~~~`,
+  `~~~jsx
+<div id="portal-root"></div>
+~~~`,
+  `~~~css
 .modal-back {
   position: fixed;
   top: 0;
@@ -139,8 +107,9 @@ function Modal () {
 }
 .modal-head button {
   cursor: pointer;
-}`,
-  `
+}
+~~~`,
+  `~~~jsx
 import {useCallback, useState, createContext} from 'react';
 import Modal from '../components/Modal';
 
@@ -164,26 +133,31 @@ const ModalProvider = ({children}) => {
   );
 };
 
-export {ModalContext, ModalProvider};`,
-  `
+export {ModalContext, ModalProvider};
+~~~`,
+  `~~~jsx
 function Modal ({ modal, unSetModal }) {
-    return ReactDOM.createPortal(
-      <>
-        <div onClick={unSetModal} className='modal-back'></div>
-        <div className='modal'>
-          <div className='modal-head'>
-            <button onClick={unSetModal}>X</button>
-          </div>
-          <div className='modal-content'>
-            {modal}
-          </div>
+  return ReactDOM.createPortal(
+    <>
+      {/* On rajoute ici la function de fermeture de la modal */}
+      <div onClick={unSetModal} className='modal-back'></div>
+      <div className='modal'>
+        <div className='modal-head'>
+          {/* Et ici aussi */}
+          <button onClick={unSetModal}>X</button>
         </div>
-      </>
-      , portalRoot);
-  }
+        <div className='modal-content'>
+          {/* On passe le contenu de la modal */}
+          {modal}
+        </div>
+      </div>
+    </>
+  ,portalRoot);
+}
 
-  export default Modal;`,
-  `
+export default Modal;
+~~~`,
+  `~~~jsx
 import {useContext} from 'react';
 import {ModalContext} from '../context/ModalContext';
 const useModal = () => {
@@ -191,7 +165,7 @@ const useModal = () => {
   return context;
 };
 export {useModal};`,
-  `
+  `~~~jsx
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { ModalProvider } from './context/ModalContext';
@@ -199,11 +173,13 @@ import App from './App';
 const appRootElement = document.querySelector('#app-root');
 const root = createRoot(appRootElement);
 root.render(
+  {/* On ajoute le provider */}
   <ModalProvider>
     <App/>
   </ModalProvider>
-);`,
-  `
+);
+~~~`,
+  `~~~jsx
 import { useModal } from './hooks/useModal';
 import './style.css';
 function App() {
@@ -217,7 +193,8 @@ function App() {
     </button>
   );
 }
-export default App;`
+export default App;
+~~~`
 ];
 
 export default Art1;

@@ -1,0 +1,35 @@
+$padding: 1rem;
+
+.code-block {
+  position: relative;
+  & button {
+    width: 24px; height: 24px;
+    position: absolute;
+    z-index: 2;
+    top: $padding; right: $padding;
+    cursor: pointer;
+  }
+  & svg {
+    position: absolute;
+    z-index: 1;
+    top: $padding; right: $padding;
+  }
+  & pre {
+    & div {
+      background-color: #292a33!important;
+      box-shadow: 2px 2px 4px rgba(0,0,0,0.35);
+      -webkit-box-shadow: 2px 2px 4px rgba(0,0,0,0.35);
+      padding: $padding!important;
+      border-radius: 5px;
+      & code {
+        font-family: consola!important;
+      }}}}
+
+@media screen and (max-width: 580px) {
+  .code-block {
+    & button {
+      display: none;
+    }
+    & svg {
+      display: none;
+    }}}
