@@ -1,17 +1,24 @@
-import { ReactComponent as SvgSearch } from '@svg/ico_input-searchbar.svg';
-import { InputText } from '@components/Input';
-import { articles } from '@pages/Index.Data';
-import PageTitle from '@components/PageTitle';
-import Article from '@pages/Index.Article';
-import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { ReactComponent as SvgSearch } from '@svg/ico_input-searchbar.svg';
+import { ReactComponent as SvgReact } from '@svg/ico_tech-react.svg';
+import { ReactComponent as SvgJs } from '@svg/ico_tech-javascript.svg';
+import { ReactComponent as SvgDot } from '@svg/ico_dot.svg';
+import { articles } from '@pages/Article';
+import { InputText } from '@components/Input';
+import PageTitle from '@components/PageTitle';
 import './Index.scss';
 
+// Data
+const links = {
+  cinevoraces: 'https://cinevoraces.herokuapp.com/'
+};
 // Animations Setup
-const pageTransition = { duration: .5 }; 
-const IndexVariants  = {
-  hidden:       { opacity: 0, pageTransition },
-  show:         { opacity: 1, pageTransition },
+const transition = { duration: .5 }; 
+const variants  = {
+  hidden: { opacity: 0, transition },
+  show:   { opacity: 1, transition },
 };
 
 function Index() {
@@ -28,18 +35,15 @@ function Index() {
 
   return(
     <motion.main 
-      variants={IndexVariants}
-      initial='hidden'
-      animate='show'
-      exit='hidden'
-      className='index'>
+      variants={variants} initial='hidden' animate='show' exit='hidden' className='index'>
       <PageTitle title="l'index">
         Des articles sur mes explorations, essais et projets.
       </PageTitle>
-      <section className='portfolio'>
-        <div className='portfolio__list'>
+
+      <section className='index__portfolio'>
+        <div className='index__portfolio__list'>
           <div className='cinevoraces'>
-            <a href='https://cinevoraces.herokuapp.com/' target='_blank' rel='noreferrer'>
+            <a href={links.cinevoraces} target='_blank' rel='noreferrer'>
               <img src='img/portfolio/logo_cinevoraces.svg' alt='' />
             </a>
           </div>
@@ -48,25 +52,42 @@ function Index() {
           </div>
         </div>
       </section>
-      <section className='articles'>
-        <div className='articles__search'>
-          <InputText
-            value={inputValue}
-            onChange={handleOnChange}
-            styles='rounded'
-            placeholder='Rechercher un article...'
-          ><SvgSearch/>
+
+      <section className='index__articles'>
+        <div className='index__articles__search'>
+          <InputText value={inputValue} onChange={handleOnChange} styles='rounded' placeholder='Rechercher un article...'>
+            <SvgSearch/>
           </InputText>
         </div>
-        <div className='articles__list'>
+        <div className='index__articles__list'>
           { filter.map(({ stack, title, date, link, id }) => (
             <Article key={id} stack={stack} title={title} date={date} link={link}/> ))}
           { (filter.length <= 0) &&
-            <div className='articles__list__empty'>J'ai pas ça en stock, déso...</div>
-          }
+            <div className='index__articles__list__empty'>J'ai pas ça en stock, déso...</div>}
         </div>
       </section>
+
     </motion.main>
+  );
+}
+
+// Article component
+function Article ({stack, title, date, link}) {
+  return(
+    <Link to={link}>
+      <div className='index__article-card'>
+        <div className='index__article-card__stack'>
+          { (stack === 'react') && <><SvgJs/><SvgReact/>  <span>React</span></>      }
+          { (stack === 'js')    && <><SvgJs/><span>Vanilla Js</span></> }
+        </div>
+        <SvgDot/>
+        <div className='index__article-card__title'>
+          {title}
+        </div>
+        <SvgDot/>
+        <div className='index__article-card__date'>{date}</div>
+      </div>
+    </Link>
   );
 }
 

@@ -16,6 +16,7 @@
   margin: 10rem auto;
   z-index: 4;
   box-shadow: 2px 2px 5px v.$boxshadow;
+  -webkit-box-shadow: 2px 2px 5px v.$boxshadow;
   background-color: v.$background-primary-color;
   border-radius: 5px;
   padding: 1rem;

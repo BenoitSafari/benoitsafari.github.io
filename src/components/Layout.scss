@@ -9,6 +9,7 @@
   z-index: 2;
   border-bottom: v.$primary-color 1px solid;
   box-shadow: 0px 0px 10px v.$boxshadow;
+  -webkit-box-shadow: 0px 0px 10px v.$boxshadow;
   &__container {
     @include mix.container;
     position: relative;

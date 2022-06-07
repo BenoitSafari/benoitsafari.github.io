@@ -2,7 +2,7 @@ import { ReactComponent as SvgLinkedin } from '@svg/ico_linkedin.svg';
 import { ReactComponent as SvgGithub } from '@svg/ico_github.svg';
 import { ReactComponent as SvgMail } from '@svg/ico_mail.svg';
 import { ReactComponent as SvgMenu } from '@svg/ico_menu.svg';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState  } from 'react';
 import { useModal } from '@hooks/useModal';
@@ -40,7 +40,7 @@ function Header({ isDisplayed }) {
   };
 
   return(
-    <AnimatePresence exitBeforeEnter>
+    <>
       { isDisplayed &&
         <motion.header 
           variants={headerVariants}
@@ -70,7 +70,7 @@ function Header({ isDisplayed }) {
           </div>
         </motion.header>
       }
-    </AnimatePresence>
+    </>
   );
 }
 
@@ -80,7 +80,7 @@ function Footer({ isDisplayed }) {
     setModal(<ContactForm/>);
   };
   return(
-    <AnimatePresence exitBeforeEnter>
+    <>
       { isDisplayed &&
         <motion.footer 
           variants={footerVariants}
@@ -108,7 +108,7 @@ function Footer({ isDisplayed }) {
           <div className='footer__copyright'>Benoit Safari ©</div>
         </motion.footer>
       }
-    </AnimatePresence>
+    </>
   );
 }
 

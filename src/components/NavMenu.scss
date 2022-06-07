@@ -12,7 +12,8 @@
   & a, button {
     width: fit-content;
     box-shadow: 2px 5px 3px black;
-  }
+    -webkit-box-shadow: 2px 5px 3px black;
+}
   &--is-open {
     opacity: 1;
     transition: .5s;

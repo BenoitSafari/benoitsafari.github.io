@@ -3,7 +3,6 @@
 @mixin page-title {
   margin-top: calc(v.$layout-height + 3rem);
 }
-
 @mixin title-1 {
   font-size: 2rem;
   font-weight: 500;
@@ -24,6 +23,11 @@
   @media screen and (max-width: 390px) {
     font-size: 1.1rem;
   }}
+@mixin text {
+  font-size: 1.1rem;
+  @media screen and (max-width: 580px) {
+    font-size: .9rem;
+  }}
 
 @mixin breakpoint($breakpoint) {
   @if map-has-key(v.$breakpoints, $breakpoint) {
@@ -32,6 +36,9 @@
     }}}
     
 @mixin container {
+  @media screen and (max-width: 580px) {
+    padding: 0 1rem!important;
+  }
   @each $name, $value in v.$breakpoints {
     padding: 0 2em;
     @include breakpoint($name) {

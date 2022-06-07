@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import './Home.scss';
 
 const transition = { duration: 0.5, staggerChildren: 2 }; 
-const pageVariants = {
+const variants = {
   hidden: { opacity: 0, transition },
   show:   { opacity: 1, transition },
 };
@@ -14,7 +14,7 @@ const pageVariants = {
 function Home() {
   return(
     <motion.main 
-      variants={pageVariants}
+      variants={variants}
       initial='hidden'
       animate='show'
       exit='hidden'

@@ -9,11 +9,9 @@ if (!appRootElement) throw new Error('Cannot find \'#app-root\' element');
 const root = createRoot(appRootElement);
 
 root.render(
-  <React.StrictMode>
-    <ModalProvider>
-      <Router>
-        <App/>
-      </Router>
-    </ModalProvider>
-  </React.StrictMode>
+  <ModalProvider>
+    <Router>
+      <App/>
+    </Router>
+  </ModalProvider>
 );
