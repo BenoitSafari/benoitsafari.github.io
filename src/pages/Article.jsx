@@ -3,6 +3,7 @@ import Error from '@pages/Error';
 import { motion } from 'framer-motion';
 import { useParams } from 'react-router-dom';
 import Art1 from './Articles/Art_1';
+import Art2 from './Articles/Art_2';
 import './Article.scss';
 
 // Animations Setup
@@ -45,6 +46,14 @@ const articles = [
     link: '/article/1',
     content: <Art1/>,
     id: 1
+  },
+  {
+    stack: 'react', 
+    title: 'Créer un double Input range.',
+    date: '10 Juin 2022',
+    link: '/article/2',
+    content: <Art2/>,
+    id: 2
   },
 ];
 
