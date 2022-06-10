@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import CodeBlock from '@components/CodeBlock';
 import styles from './Art_2.module.scss';
@@ -9,9 +9,10 @@ function Art2 () {
       <p style={{margin: '2rem 0 -1.5rem'}}>Dans cette article nous allons créer un <em>input range</em> à deux entrées.</p>
       <h2>Résultat final</h2>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum mollitia nostrum nam, iure officia nihil voluptate impedit iste quas cupiditate laudantium facere reprehenderit enim eveniet, magni facilis eligendi doloremque nulla.</p>
-      
-      <DoubleInputRange/>
-      
+      <DoubleInputRange
+        baseValueMin={1900}
+        baseValueMax={2077}
+      />
       <CodeBlock>
         {codeBlocks[0]}
       </CodeBlock>
@@ -48,47 +49,24 @@ export default Modal;
 ~~~`,
 ];
 
-function DoubleInputRange() {
-  const [baseValueMin, setBaseValueMin] = useState(1900);
-  const [baseValueMax, setBaseValueMax] = useState(2077);
-  const [stateValueMin, setStateValueMin] = useState(1900);
-  const [stateValueMax, setStateValueMax] = useState(2077);
+function DoubleInputRange({baseValueMin, baseValueMax}) {
+  const [stateValueMin, setStateValueMin] = useState(baseValueMin);
+  const [stateValueMax, setStateValueMax] = useState(baseValueMax);
   const minValRef = useRef(baseValueMin);
   const maxValRef = useRef(baseValueMax);
-  const range = useRef(null);
-
   const handleMinThumb = (event) => {
     const value = Math.min(Number(event.target.value), stateValueMax - 1);
     setStateValueMin(value);
-    // dispatch(setPeriodeMinVal(value));
     minValRef.current = value;
   };
   const handleMaxThumb = (event) => {
     const value = Math.max(Number(event.target.value), stateValueMin + 1);
     setStateValueMax(value);
-    // dispatch(setPeriodeMaxVal(value));
     maxValRef.current = value;
   };
-  const getPercent = useCallback((value) => 
-    Math.round(((value - baseValueMin) / (baseValueMax - baseValueMin)) * 100), [baseValueMin, baseValueMax]
-  );
-
-  useEffect(() => {
-    const minPercent = getPercent(stateValueMin);
-    const maxPercent = getPercent(maxValRef.current);
-    if (range.current) {
-      range.current.style.left = `${minPercent}%`;
-      range.current.style.width = `${maxPercent - minPercent}%`;
-    }}, [stateValueMin, getPercent]);
-  useEffect(() => {
-    const minPercent = getPercent(minValRef.current);
-    const maxPercent = getPercent(stateValueMax);
-    if (range.current) {
-      range.current.style.width = `${maxPercent - minPercent}%`;
-    }}, [stateValueMax, getPercent]);
 
   return (
-    <fieldset className={styles['double-input-range']}>
+    <div className={styles['double-input-range']}>
       <label htmlFor='time'>Période</label>
       <div className={styles['input-container']}>
         <div className={`${styles['value']}`}>{stateValueMin}</div>
@@ -100,7 +78,6 @@ function DoubleInputRange() {
             max={baseValueMax}
             value={stateValueMin}
             onChange={handleMinThumb}
-            style={{ zIndex: (stateValueMin > baseValueMax - 100) ? '5' : 'unset' }}
           />
           <input
             id='time'
@@ -113,7 +90,7 @@ function DoubleInputRange() {
         </div>
         <div className={`${styles['value']}`}>{stateValueMax}</div>
       </div>
-    </fieldset>
+    </div>
   );
 };
 
