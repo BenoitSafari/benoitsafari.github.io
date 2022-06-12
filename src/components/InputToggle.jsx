@@ -7,7 +7,6 @@ function InputToggle () {
   const [checkbox, setCheckbox] = useState((lang === 'fr') ? false : true);
   useEffect(() => {
     setLang(checkbox ? 'en' : 'fr');
-    console.log(lang);
   }, [checkbox, setLang, lang]);
 
   const handleOnChange = () => {
