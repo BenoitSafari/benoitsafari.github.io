@@ -49,7 +49,7 @@ const articles = [
   },
   {
     stack: 'react', 
-    title: 'Créer un double Input range.',
+    title: 'Créer un double Input range',
     date: '10 Juin 2022',
     link: '/article/2',
     content: <Art2/>,

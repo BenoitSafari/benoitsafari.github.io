@@ -12,7 +12,7 @@ import './Index.scss';
 
 // Data
 const links = {
-  cinevoraces: 'https://cinevoraces.herokuapp.com/'
+  cinevoraces: 'https://cinevoraces-front.herokuapp.com/'
 };
 // Animations Setup
 const transition = { duration: .5 }; 

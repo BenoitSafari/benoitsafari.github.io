@@ -1,39 +1,45 @@
-$gap: 1rem;
 $range-slide-width: 100%;
 $range-slide-thickness: 8px;
+$range-slide-margin: 3.5rem;
 $range-slide-radius: 50px;
-$range-slide-color: blue;
+$range-slide-color: #459660;
+$range-value-width: 2.5rem;
+$range-value-font-size: inherit;
+$range-value-font-weight: inherit;
 $range-thumb-size: 1em;
 $range-thumb-radius: 100%;
-$range-thumb-color: #f0f;
+$range-thumb-color: #07ce49;
 
 /* Reset */
+input {
+  all: unset;
+  outline: 0;
+}
 input[type='range'] {
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
     -webkit-tap-highlight-color: transparent;
+    height: 0;
     border: none;
-    cursor: pointer;
+    outline: none;
+    pointer-events: none;
+
   }
   &::-webkit-slider-runnable-track {
     border: none;
-    cursor: pointer;
   }
   &::-moz-range-track {
     border: none;
-    cursor: pointer;
   }
   &::-moz-range-thumb {
     box-shadow: none;
     border: none;
     background: none;
-    cursor: pointer;
   }
   &::-ms-track {
     background: transparent;
     border-color: transparent;
     color: transparent;
-    cursor: pointer;
   }
   &::-ms-fill-lower {
     box-shadow: none;
@@ -52,65 +58,73 @@ input[type='range'] {
   }}
 
   /* Main style */
-.double-input-range {
-  & .input-container {    
-    position: relative;
-    display: flex;
-    gap: $gap;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    & .slider {
-      position: absolute;
-      right: 3.5em;
-      left: 3.5em;
+  .double-input-range {
+    & label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 1rem;
     }
-    & .value {
-      width: 2.5rem;
-    }
-    & input[type='range'] {
-      position: absolute;
-      height: 0;
-      width: $range-slide-width;
-      outline: none;
-      pointer-events: none;
-      &::-webkit-slider-thumb {
-        background-color: $range-thumb-color;
-        border-radius: $range-thumb-radius;
-        height: $range-thumb-size;
-        width: $range-thumb-size;
-        pointer-events: all;
-        position: relative;
-        z-index: 5;
-        margin-left: calc($range-thumb-size / 2);
+    & .input-container {    
+      /* Contient les valeurs et les inputs */ 
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      & .slider {
+        position: absolute;
+        /* Définit l'espacement entre les valeurs et les input */
+        right: $range-slide-margin;
+        left: $range-slide-margin;
       }
-      // FIREFOX
-      &::-moz-range-thumb {
-        background-color: $range-thumb-color;
-        pointer-events: all;
+      & .value {
+        width: $range-value-width; // Force une taille pour éviter le redimensionnement sur les valeurs extrêmes
+        font-size: $range-value-font-size;
+        font-weight: $range-value-font-weight;
+        text-align: center;
       }
-      &::-moz-range-track {
-        height: $range-slide-thickness;
-        border-radius: $range-slide-radius;
-      }
-      // GOOGLE CHROME
-      &::-webkit-slider-thumb {
-        margin-top: - calc($range-slide-thickness / 2);
-        pointer-events: all;
-      }
-      &::-webkit-slider-runnable-track {
-        height: $range-slide-thickness;
-        background: $range-slide-color;
-        border-radius: $range-slide-radius;
-      }}
-      & input[type='range']:nth-child(1) {
-        /* FIREFOX Put slider color on bottom */ 
+      & input[type='range'] {
+        position: absolute;
+        width: $range-slide-width;
+        cursor: pointer;
+        // FIREFOX
+        &::-moz-range-thumb {
+          background-color: $range-thumb-color;
+          pointer-events: all;
+          cursor: pointer;
+        }
         &::-moz-range-track {
-          background: $range-slide-color;
+          height: $range-slide-thickness;
+          border-radius: $range-slide-radius;
+          cursor: pointer;
         }
+        // WEBKIT
         &::-webkit-slider-thumb {
-        /* CHROME Prevent thumbs to merge  */ 
-          margin-left: - calc($range-thumb-size / 3);
+          background-color: $range-thumb-color;
+          border-radius: $range-thumb-radius;
+          height: $range-thumb-size;
+          width: $range-thumb-size;
+          pointer-events: all;
+          cursor: pointer;
+          position: relative;
+          z-index: 5;
+          margin-left: calc($range-thumb-size / 2);
+          margin-top: - calc($range-slide-thickness / 2);
         }
-      }
-    }}
+        &::-webkit-slider-runnable-track {
+          height: $range-slide-thickness;
+          background: $range-slide-color;
+          border-radius: $range-slide-radius;
+          cursor: pointer;
+        }}
+        & input[type='range']:nth-child(1) {
+          // FIREFOX 
+          &::-moz-range-track {
+            /*  Définit la couleur de fond sur le premier élément input seulement,
+                afin de toujours avoir les thumbs en premier plan */
+            background: $range-slide-color;
+          }
+          &::-webkit-slider-thumb {
+            /*  WEBKIT Empêche les thumbs de se superposer 
+                (Si quelqu'un sait comment obtenir ce résultat sur FIREFOX je suis preneur!) */ 
+            margin-left: - calc($range-thumb-size / 3);
+          }}}}
