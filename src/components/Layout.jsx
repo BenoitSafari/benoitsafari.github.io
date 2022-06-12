@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState  } from 'react';
 import { useModal } from '@hooks/useModal';
+import { useLang } from '@hooks/useLang';
 import { InputToggle } from '@components/Input';
 import ContactForm from '@components/ContactForm';
 import NavMenu from '@components/NavMenu';
@@ -29,6 +30,7 @@ const footerVariants = {
 };
 
 function Header({ isDisplayed }) {
+  const { lang } = useLang();
   const { setModal } = useModal();
   const handleModal = () => {
     setModal(<ContactForm/>);
@@ -65,8 +67,14 @@ function Header({ isDisplayed }) {
                 <SvgMenu />
               </button>  
               <Link to='/index' className='header__link'>Index</Link>
-              <Link to='/about' className='header__link'>À propos</Link>
-              <button onClick={handleModal} className='header__link'>Me contacter</button>
+              <Link to='/about' className='header__link'>
+                {(lang === 'fr') && 'À propos'}
+                {(lang === 'en') && 'About'}
+              </Link>
+              <button onClick={handleModal} className='header__link'>
+                {(lang === 'fr') && 'Me contacter'}
+                {(lang === 'en') && 'Contact me'}
+              </button>
               <InputToggle/>
             </nav>
           </div>

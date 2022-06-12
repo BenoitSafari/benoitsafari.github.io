@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import CodeBlock from '@components/CodeBlock';
 import styles from './Art_2.module.scss';

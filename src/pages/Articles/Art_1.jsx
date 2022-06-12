@@ -4,7 +4,7 @@ import CodeBlock from '@components/CodeBlock';
 function Art1 () {
   return(
     <>
-      <p style={{margin: '2rem 0 -1.5rem'}}>Dans cette article nous allons créer un hook <strong>useModal</strong> que nous pourrons appeler n'importe ou ailleurs dans notre application.</p>
+      <p style={{margin: '2rem 0 -1.5rem'}}>Dans cette article nous allons créer un hook <strong>useModal</strong> que nous pourrons appeler n'importe où dans notre application.</p>
       <h2>Créer son composant</h2>
       <p>Créez un composant <strong>Modal</strong>. Dans notre exemple, la modal se fermera au clique sur background ou via un bouton marqué d'un <em>"X"</em>.
         <br/><span className='note'>Note: un <em>portal</em> permet de séparer du contenu de l'app principale. Bien qu'approprié dans le cas d'une modal, l'utilisation de <strong>createPortal</strong> est optionnel.</span>
