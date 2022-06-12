@@ -40,6 +40,10 @@
       transform: rotate(-3deg);
       -webkit-transform: rotate(-3deg);
     }}
+  & .lib__input-toggle {
+    position: absolute;
+    left: 1rem; bottom: -2rem;
+  }
   &__link {
     position: relative;
     transition: .3s;
@@ -104,6 +108,12 @@
   .header {
     &__link {
       display: block;
+    }
+    & .lib__input-toggle {
+      position: relative;
+      left: 0; bottom: 0;
+      display: block;
+      margin-top: .3rem;
     }
     & .nav-menu {
       & svg {

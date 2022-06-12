@@ -1,4 +1,5 @@
-import { Button } from './InputButton';
+import { Button } from '@components/Input';
+
 import './NavMenu.scss';
 
 function NavMenu ({ handler, contactHandler }) {

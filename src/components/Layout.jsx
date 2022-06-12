@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState  } from 'react';
 import { useModal } from '@hooks/useModal';
+import { InputToggle } from '@components/Input';
 import ContactForm from '@components/ContactForm';
 import NavMenu from '@components/NavMenu';
 import './Layout.scss';
@@ -66,6 +67,7 @@ function Header({ isDisplayed }) {
               <Link to='/index' className='header__link'>Index</Link>
               <Link to='/about' className='header__link'>À propos</Link>
               <button onClick={handleModal} className='header__link'>Me contacter</button>
+              <InputToggle/>
             </nav>
           </div>
         </motion.header>

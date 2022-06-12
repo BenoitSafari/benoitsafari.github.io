@@ -53,4 +53,4 @@ function InputText({
   );
 }
 
-export { InputText };
+export {InputText};

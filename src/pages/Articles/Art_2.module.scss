@@ -19,11 +19,7 @@ input[type='range'] {
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
     -webkit-tap-highlight-color: transparent;
-    height: 0;
     border: none;
-    outline: none;
-    pointer-events: none;
-
   }
   &::-webkit-slider-runnable-track {
     border: none;
@@ -57,7 +53,6 @@ input[type='range'] {
     outline: none;
   }}
 
-  /* Main style */
   .double-input-range {
     & label {
       font-weight: 600;
@@ -65,26 +60,27 @@ input[type='range'] {
       margin-bottom: 1rem;
     }
     & .input-container {    
-      /* Contient les valeurs et les inputs */ 
       position: relative;
       display: flex;
       justify-content: space-between;
       align-items: center;
       & .slider {
         position: absolute;
-        /* Définit l'espacement entre les valeurs et les input */
-        right: $range-slide-margin;
-        left: $range-slide-margin;
+        right: 3.5em;
+        left: 3.5em;
       }
       & .value {
-        width: $range-value-width; // Force une taille pour éviter le redimensionnement sur les valeurs extrêmes
+        width: $range-value-width;
         font-size: $range-value-font-size;
         font-weight: $range-value-font-weight;
         text-align: center;
       }
       & input[type='range'] {
         position: absolute;
+        height: 0;
         width: $range-slide-width;
+        outline: none;
+        pointer-events: none;
         cursor: pointer;
         // FIREFOX
         &::-moz-range-thumb {
@@ -117,14 +113,11 @@ input[type='range'] {
           cursor: pointer;
         }}
         & input[type='range']:nth-child(1) {
-          // FIREFOX 
+          /* FIREFOX Put slider color on bottom */ 
           &::-moz-range-track {
-            /*  Définit la couleur de fond sur le premier élément input seulement,
-                afin de toujours avoir les thumbs en premier plan */
             background: $range-slide-color;
           }
           &::-webkit-slider-thumb {
-            /*  WEBKIT Empêche les thumbs de se superposer 
-                (Si quelqu'un sait comment obtenir ce résultat sur FIREFOX je suis preneur!) */ 
+          /* CHROME Prevent thumbs to merge  */ 
             margin-left: - calc($range-thumb-size / 3);
           }}}}

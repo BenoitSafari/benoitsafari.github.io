@@ -5,20 +5,17 @@
   z-index: 6;
   top: calc(v.$layout-height + 1rem);
   right: 1rem;
-  display: flex;
+  display: none;
   gap: 1rem;
-  opacity: 0;
-  transition: .5s;
   & a, button {
     width: fit-content;
     box-shadow: 2px 5px 3px black;
     -webkit-box-shadow: 2px 5px 3px black;
 }
-  &--is-open {
-    opacity: 1;
-    transition: .5s;
+&--is-open {
+  display: flex;
   }}
-.mobile-drop-down-back {
+  .mobile-drop-down-back {
   position: fixed;
   overflow: hidden;
   width: 100vw;
