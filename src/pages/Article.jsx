@@ -3,8 +3,8 @@ import Error from '@pages/Error';
 import { motion } from 'framer-motion';
 import { useParams } from 'react-router-dom';
 import { useLang } from '@hooks/useLang';
-import Art1 from './Articles/Art_1';
-import Art2 from './Articles/Art_2';
+import { Art1, Art1En } from './Articles/Art_1';
+import { Art2, Art2EN } from './Articles/Art_2';
 import './Article.scss';
 
 // Animations Setup
@@ -83,7 +83,7 @@ const articles = {
       title: 'Create a re-usable Modal with useContext',
       date: '06-06-2022',
       link: '/article/1',
-      content: <Art1/>,
+      content: <Art1En/>,
       id: 1
     },
     {
@@ -91,7 +91,7 @@ const articles = {
       title: 'Create a two-thumbs Input range',
       date: '06-12-2022',
       link: '/article/2',
-      content: <Art2/>,
+      content: <Art2EN/>,
       id: 2
     },
   ]

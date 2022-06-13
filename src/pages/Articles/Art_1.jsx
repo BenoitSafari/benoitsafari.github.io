@@ -198,4 +198,201 @@ export default App;
 ~~~`
 ];
 
-export default Art1;
+function Art1En () {
+  return(
+    <>
+      <p style={{margin: '2rem 0 -1.5rem'}}>In this article we're going to create a <strong>useModal</strong> hook that'll allow us to call our modal from anywhere.</p>
+      <h2>Make the component</h2>
+      <p>We want our <strong>Modal</strong> component to close itself on background clic or with a <em>button</em>.
+        <br/><span className='note'>I've used a <em>portal</em> in order to separate the Modal from the App. <strong>createPortal</strong> usage is optional.</span>
+      </p>
+      <CodeBlock>
+        {codeBlocksEN[0]}
+      </CodeBlock>
+      <p>Add the following line in your <strong>index.html</strong> body.</p>
+      <CodeBlock>
+        {codeBlocksEN[1]}
+      </CodeBlock>
+      <p>Next we set our Modal style. Remember that we want to close the Modal on background clic, adapt your CSS accordingly.</p>
+      <CodeBlock>
+        {codeBlocksEN[2]}
+      </CodeBlock>
+      <h2>Create the context</h2>
+      <p>To make our Modal available anywhere, we're gonna need a <em>context</em>.</p>
+      <CodeBlock>
+        {codeBlocksEN[3]}
+      </CodeBlock>
+      <p>Now let's get back on the <strong>Modal</strong> component. Add <em>modal</em> and <em>unSetModal</em> props then pass them to the JSX.
+      </p>
+      <CodeBlock>
+        {codeBlocksEN[4]}
+      </CodeBlock>
+      <p>We can now create our <strong>useModal</strong> hook.</p>
+      <CodeBlock>
+        {codeBlocksEN[5]}
+      </CodeBlock>
+      <p>Finally we're gonna pass the <em>ModalProvider</em> that we've created earlier at the top of the App.</p>
+      <CodeBlock>
+        {codeBlocksEN[6]}
+      </CodeBlock>
+      <h2>Usage</h2>
+      <p>Import <strong>useModal</strong> and use <em>setModal</em> method with the content as a parameter.</p>
+      <CodeBlock>
+        {codeBlocksEN[7]}
+      </CodeBlock>
+      <section className='articles-layout__content__links'>
+        <a target='_blank' rel='noreferrer' href='https://github.com/BenoitSafari/benoitsafari.github.io/tree/lib-useModal'>
+          See git repo</a>
+        <Link to='/index'>Go back</Link>
+      </section>
+    </>
+  );
+}
+
+const codeBlocksEN =[
+  `~~~jsx
+import ReactDOM from 'react-dom';
+import './Modal.css';
+const portalRoot = document.querySelector('#portal-root');
+function Modal () {
+  // Create a root outside of our app.
+  return ReactDOM.createPortal(
+    <>
+      <div className='modal-back'></div>
+      <div className='modal'>
+        <div className='modal-head'>
+          <button>X</button>
+        </div>
+        <div className='modal-content'>
+        </div>
+      </div>
+    </>
+  , portalRoot);
+}
+
+export default Modal;
+~~~`,
+  `~~~jsx
+<div id="portal-root"></div>
+~~~`,
+  `~~~css
+.modal-back {
+  position: fixed;
+  top: 0;
+  z-index: 3;
+  width: 100vw;
+  height: 100vh;
+  background-color: #00000075;
+}
+
+.modal {
+  position: fixed;
+  left: 0; right: 0;
+  width: fit-content;
+  max-width: 50%;
+  margin: 10rem auto;
+  z-index: 4;
+  box-shadow: 2px 2px 5px black;
+  background-color: #313030;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.modal-head {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: .6rem;
+}
+.modal-head button {
+  cursor: pointer;
+}
+~~~`,
+  `~~~jsx
+import {useCallback, useState, createContext} from 'react';
+import Modal from '../components/Modal';
+
+// Create context and provider
+const ModalContext = createContext();
+const ModalProvider = ({children}) => {
+  // Init modal content state
+  const [modal, setModal] = useState();
+  // Function that empty content state
+  const unSetModal = useCallback(() => {
+    setModal();
+  }, [setModal]);
+  return (
+    <ModalContext.Provider 
+      value={{unSetModal, setModal}}
+    >
+      {children}
+      {/* Display Modal only if there is content */}
+      {modal && <Modal modal={ modal } unSetModal={ unSetModal } />}
+    </ModalContext.Provider>
+  );
+};
+
+export {ModalContext, ModalProvider};
+~~~`,
+  `~~~jsx
+function Modal ({ modal, unSetModal }) {
+  return ReactDOM.createPortal(
+    <>
+      {/* Pass closing function */}
+      <div onClick={unSetModal} className='modal-back'></div>
+      <div className='modal'>
+        <div className='modal-head'>
+          {/* Pass closing function */}
+          <button onClick={unSetModal}>X</button>
+        </div>
+        <div className='modal-content'>
+          {/* Pass content */}
+          {modal}
+        </div>
+      </div>
+    </>
+  ,portalRoot);
+}
+
+export default Modal;
+~~~`,
+  `~~~jsx
+import {useContext} from 'react';
+import {ModalContext} from '../context/ModalContext';
+const useModal = () => {
+  const context = useContext(ModalContext);
+  return context;
+};
+export {useModal};`,
+  `~~~jsx
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { ModalProvider } from './context/ModalContext';
+import App from './App';
+const appRootElement = document.querySelector('#app-root');
+const root = createRoot(appRootElement);
+root.render(
+  {/* Setup provider */}
+  <ModalProvider>
+    <App/>
+  </ModalProvider>
+);
+~~~`,
+  `~~~jsx
+import { useModal } from './hooks/useModal';
+import './style.css';
+function App() {
+  const { setModal } = useModal();
+  const openModal = () => {
+    setModal(<div>Hi, I'm a Modal! Isn't that great?</div>);
+  };
+  return(
+    <button className='open-modal' onClick={openModal}>
+      C'mon! Clic! Clic!
+    </button>
+  );
+}
+export default App;
+~~~`
+];
+
+export { Art1, Art1En };

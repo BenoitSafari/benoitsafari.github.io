@@ -235,6 +235,236 @@ input[type='range'] {
 ~~~`,
 ];
 
+function Art2EN () {
+  return(
+    <>
+      <p style={{margin: '2rem 0'}}>In this article we're going to create a <em>double-thumbs input range</em>.</p>
+      <div style={{
+        marginBottom: '2rem',
+        padding: '1rem',
+        borderRadius: '5px',
+        maxWidth: '500px',
+        backgroundColor: '#292a33',
+        boxShadow: '2px 2px 4px rgba(0,0,0,0.35)'
+      }}>
+        <DoubleInputRange
+          label="<DoubleInputRange/>"
+          baseValueMin={-400}
+          baseValueMax={2077}
+        />
+      </div>
+      <h2>JSX</h2>
+      <CodeBlock>
+        {codeBlocksEN[0]}
+      </CodeBlock>
+      <h2>CSS</h2>
+      <p>First we need to reset <em>input[type='range']</em> default style.</p>
+      <CodeBlock>
+        {codeBlocksEN[1]}
+      </CodeBlock>
+      <p>And then the fun part.</p>
+      <CodeBlock>
+        {codeBlocksEN[2]}
+      </CodeBlock>
+      <section className='articles-layout__content__links'>
+        <Link to='/index'>Go back</Link>
+      </section>
+    </>
+  );
+}
+
+const codeBlocksEN = [
+  `~~~jsx
+  import { useState } from 'react';
+  import './DoubleInputRange.scss';
+
+  function DoubleInputRange({
+    baseValueMin,   // Define minimal selectable value (number)
+    baseValueMax,   // Define maximal selectable value (number)
+    label           // Give component a label (string)
+  }) {
+    // We store the base values in a useState
+    const [stateValueMin, setStateValueMin] = useState(baseValueMin);
+    const [stateValueMax, setStateValueMax] = useState(baseValueMax);
+    // onChange handlers
+    const handleMinThumb = (event) => {
+      // We get value from target if it's smaller than the input max value 
+      // It prevents min value to be greater than max value
+      const value = Math.min(Number(event.target.value), stateValueMax - 1);
+      setStateValueMin(value);
+    };
+    // Rinse and repeat
+    const handleMaxThumb = (event) => {
+      const value = Math.max(Number(event.target.value), stateValueMin + 1);
+      setStateValueMax(value);
+    };
+  
+    return (
+      <div className='double-input-range'>
+        <label htmlFor='time'>{label}</label>
+        <div className='input-container'>
+          {/* display min value */}
+          <div className='value'>{stateValueMin}</div>
+          <div className={styles['slider']}>
+            {/* Pass states, values and handlers */}
+            <input
+              id='time'
+              type='range'
+              min={baseValueMin}
+              max={baseValueMax}
+              value={stateValueMin}
+              onChange={handleMinThumb}
+            />
+            <input
+              id='time'
+              type='range'
+              min={baseValueMin}
+              max={baseValueMax}
+              value={stateValueMax}
+              onChange={handleMaxThumb}
+            />
+          </div>
+          {/* display max value */}
+          <div className='value'>{stateValueMax}</div>
+        </div>
+      </div>
+    );
+  };
+  
+  export default DoubleInputRange;
+~~~`,
+  `~~~scss
+/* Reset */
+input {
+  all: unset;
+  outline: 0;
+}
+input[type='range'] {
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    border: none;
+  }
+  &::-webkit-slider-runnable-track {
+    border: none;
+  }
+  &::-moz-range-track {
+    border: none;
+  }
+  &::-moz-range-thumb {
+    box-shadow: none;
+    border: none;
+    background: none;
+  }
+  &::-ms-track {
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+  &::-ms-fill-lower {
+    box-shadow: none;
+    border: none;
+  }
+  &::-ms-fill-upper {
+    box-shadow: none;
+    border: none;
+  }
+  &::-ms-thumb {
+    box-shadow: none;
+    border: none;
+  }
+  &:focus {
+    outline: none;
+  }}
+~~~`,
+  `~~~scss
+  /*  To maximise compatibility between browsers we will repeat ourselves.
+      That's why we're gonna use a lot of variables */
+  $range-slide-width: 100%;
+  $range-slide-thickness: 8px;
+  $range-slide-margin: 3.5rem;
+  $range-slide-radius: 50px;
+  $range-slide-color: #459660;
+  $range-value-width: 2.5rem;
+  $range-value-font-size: inherit;
+  $range-value-font-weight: inherit;
+  $range-thumb-size: 1em;
+  $range-thumb-radius: 100%;
+  $range-thumb-color: #07ce49;
+
+  .double-input-range {
+    & label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 1rem;
+    }
+    & .input-container {    
+      /* Main flex container that holds extreme values and slider */ 
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      & .slider {
+        position: absolute;
+        /* Define margin between values and slider */
+        right: $range-slide-margin;
+        left: $range-slide-margin;
+      }
+      & .value {
+        width: $range-value-width; // Force width prevent automatic resizing
+        font-size: $range-value-font-size;
+        font-weight: $range-value-font-weight;
+        text-align: center;
+      }
+      & input[type='range'] {
+        position: absolute;
+        width: $range-slide-width;
+        cursor: pointer;
+        // FIREFOX
+        &::-moz-range-thumb {
+          background-color: $range-thumb-color;
+          pointer-events: all;
+          cursor: pointer;
+        }
+        &::-moz-range-track {
+          height: $range-slide-thickness;
+          border-radius: $range-slide-radius;
+          cursor: pointer;
+        }
+        // WEBKIT
+        &::-webkit-slider-thumb {
+          background-color: $range-thumb-color;
+          border-radius: $range-thumb-radius;
+          height: $range-thumb-size;
+          width: $range-thumb-size;
+          pointer-events: all;
+          cursor: pointer;
+          position: relative;
+          z-index: 5;
+          margin-left: calc($range-thumb-size / 2);
+          margin-top: - calc($range-slide-thickness / 2);
+        }
+        &::-webkit-slider-runnable-track {
+          height: $range-slide-thickness;
+          background: $range-slide-color;
+          border-radius: $range-slide-radius;
+          cursor: pointer;
+        }}
+        & input[type='range']:nth-child(1) {
+          // FIREFOX 
+          &::-moz-range-track {
+            /*  Define slider color only to first child
+                in order to keep both thumbs up front */
+            background: $range-slide-color;
+          }
+          // WEBKIT 
+          &::-webkit-slider-thumb {
+            // Prevent thumbs to merge on small range
+            margin-left: - calc($range-thumb-size / 3);
+          }}}}
+~~~`,
+];
+
 function DoubleInputRange({baseValueMin, baseValueMax, label}) {
   const [stateValueMin, setStateValueMin] = useState(baseValueMin);
   const [stateValueMax, setStateValueMax] = useState(baseValueMax);
@@ -276,4 +506,4 @@ function DoubleInputRange({baseValueMin, baseValueMax, label}) {
   );
 };
 
-export default Art2;
+export { Art2, Art2EN };
