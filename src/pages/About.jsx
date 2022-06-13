@@ -1,15 +1,19 @@
 import { motion } from 'framer-motion';
-import PageTitle from '@components/PageTitle';
+import { useState } from 'react';
+import { useLang } from '@hooks/useLang';
+import { PageTitle, Title, SubTitle } from '@components/PageTitle';
 import './About.scss';
 
 // Animations Setup
-const pageTransition = { duration: .5 }; 
-const IndexVariants  = {
-  hidden:       { opacity: 0, pageTransition },
-  show:         { opacity: 1, pageTransition },
+const transition = { duration: .5 }; 
+const variants  = {
+  hidden:       { opacity: 0, transition },
+  show:         { opacity: 1, transition },
 };
 
 function About () {
+  const { lang } = useLang();
+  const [ text, setText ] = useState((lang === 'fr') ? textContent.fr : textContent.en);
   const json = `
   <span class='counter'> 1</span>  <span class='curl'>&#123;</span>
   <span class='counter'> 2</span>  <span class='ind'> </span>  <span class='key'>"identity"</span><span class='sym'>: &#123;</span>
@@ -42,17 +46,24 @@ function About () {
   return(
     <>
       <motion.div 
-        variants={IndexVariants}
+        variants={variants}
         initial='hidden'
         animate='show'
         exit='hidden'
         className='about-title-wrapper'>
-        <PageTitle title="mon CV">
-          Le résumé d'une vie.
+        <PageTitle>
+          <Title>
+            {(lang === 'fr') && 'à propos'}
+            {(lang === 'en') && 'about page'}
+          </Title>
+          <SubTitle>
+            {(lang === 'fr') && 'Le résumé d\'une vie.'}
+            {(lang === 'en') && 'Story of my life.'}
+          </SubTitle>
         </PageTitle>
       </motion.div>
       <motion.div 
-        variants={IndexVariants}
+        variants={variants}
         initial='hidden'
         animate='show'
         exit='hidden'
@@ -60,17 +71,39 @@ function About () {
         <div className='about__profile'>
           <img className='about__pic' src='https://avatars.githubusercontent.com/u/88612813?v=4' alt='portrait de benoit safari'/>
           <div className='about__me'>
-            <span>À propos de moi</span>
+            <span>
+              {(lang === 'fr') && 'À propos de moi'}
+              {(lang === 'en') && 'About me'}
+            </span>
           </div>
           <div className='about__desc'>
-            <span className='em'>“Je suis Gregory MICHALAK</span>,
-          j’ai 30 ans et je suis <span className='em'>développeur</span>.
+            <span className='em'>“
+              {(lang === 'fr') && 'Je suis Gregory MICHALAK'}
+              {(lang === 'en') && 'My name is Gregory MICHALAK'}
+            </span>,&nbsp;
+            {(lang === 'fr') && 'j’ai 30 ans et je suis'}
+            {(lang === 'en') && 'I\'m 30 and I\'m a'}
+            &nbsp;
+            <span className='em'>
+              {(lang === 'fr') && 'développeur'}
+              {(lang === 'en') && 'developer'}
+            </span>.
             <br/>
             <br/>
-          Après 7 ans dans le commerce de jeux-vidéo et 5 ans de logistique, 
-          j'ai décidé de faire de ma passion un métier en suivant le cursus fullstack
-          JavaScript de l'école <a target='_blank' href='https://oclock.io/' rel="noreferrer">O'Clock</a>, débouchant sur le titre professionnel
-            <span className='em'> développeur Web et Web mobile.”</span>
+            {(lang === 'fr') && 
+              <>Après 7 ans dans le commerce de jeux-vidéo et 5 ans de logistique,
+              j'ai décidé de faire de ma passion un métier en suivant le cursus fullstack
+              JavaScript de l'école</> }
+            {(lang === 'en') && 
+              <>After 7 year in the gaming business as a salesperson and 5 years as a logistician,
+              I've decided to get a job that I actually like. I've studied JavaScript web development online with 
+              </>}
+              &nbsp;<a target='_blank' href='https://oclock.io/' rel="noreferrer">O'Clock</a>
+            {(lang === 'fr') && 
+              <>,&nbsp;débouchant sur le titre professionnel
+                <span className='em'> développeur Web et Web mobile.”</span>
+              </> }
+            {(lang === 'en') && <> to achieve that goal.</>}  
           </div>
         </div>
         <pre className='about__json' dangerouslySetInnerHTML={{__html: json}}/>
@@ -78,5 +111,18 @@ function About () {
     </>
   );
 }
+
+const textContent = {
+  fr: {
+    pageTitle: 'à propos',
+    pageSubtitle: 'Le résumé d\'une vie.',
+    aboutTitle: 'À propos de moi',
+  },
+  en: {
+    pageTitle: 'about me',
+    pageSubtitle: 'Story of my life.',
+    aboutTitle: 'About me',
+  }
+};
 
 export default About;

@@ -11,7 +11,7 @@ function Art2 () {
         marginBottom: '2rem',
         padding: '1rem',
         borderRadius: '5px',
-        width: '500px',
+        maxWidth: '500px',
         backgroundColor: '#292a33',
         boxShadow: '2px 2px 4px rgba(0,0,0,0.35)'
       }}>

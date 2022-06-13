@@ -1,5 +1,6 @@
 import { Button } from '@components/InputButton';
 import { motion } from 'framer-motion';
+import { useLang } from '@hooks/useLang';
 import './Error.scss';
 
 const transition = { duration: .5 }; 
@@ -12,6 +13,7 @@ const variants = {
 };
 
 function Index() {
+  const { lang } = useLang();
   return(
     <motion.main 
       variants={variants}
@@ -24,14 +26,16 @@ function Index() {
         initial='hidden'
         animate='showTitle'
         className='error__title'>
-        Erreur 404
+        {(lang === 'fr') && 'Erreur 404'}
+        {(lang === 'en') && 'Error 404'}
       </motion.div>
       <motion.div 
         variants={variants}
         initial='hidden'
         animate='showContent'
         className='error__content'>
-        Vous n'auriez jamais du venir ici...
+        {(lang === 'fr') && 'Vous n\'auriez jamais du venir ici...'}
+        {(lang === 'en') && 'You shouldn\'t have come here'}
       </motion.div>
       <motion.div 
         variants={variants}
@@ -39,7 +43,9 @@ function Index() {
         animate='showLink'>
         <Button
           href='/index'
-        >Retourner à l'index
+        >
+          {(lang === 'fr') && 'Retourner à l \'index'}
+          {(lang === 'en') && 'Leave now'}
         </Button>
       </motion.div>
     </motion.main>

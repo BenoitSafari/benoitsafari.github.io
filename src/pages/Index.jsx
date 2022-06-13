@@ -7,8 +7,10 @@ import { ReactComponent as SvgJs } from '@svg/ico_tech-javascript.svg';
 import { ReactComponent as SvgDot } from '@svg/ico_dot.svg';
 import { articles } from '@pages/Article';
 import { InputText } from '@components/Input';
-import PageTitle from '@components/PageTitle';
+import { PageTitle, Title, SubTitle } from '@components/PageTitle';
+import { useLang } from '@hooks/useLang';
 import './Index.scss';
+
 
 // Data
 const links = {
@@ -22,22 +24,39 @@ const variants  = {
 };
 
 function Index() {
+  const { lang } = useLang();
   // Filter logic
   const [ inputValue, setInputValue ] = useState('');
-  const [ filter,     setFilter     ] = useState(articles);
+  const [ filter,     setFilter     ] = useState((lang === 'fr') ? articles.fr : articles.en);
   const handleOnChange = (e) => { setInputValue(e.target.value); };
+  
   useEffect(() => {
-    const filteredData = articles.filter(article => {
-      return article.title.toLowerCase().includes(inputValue.toLowerCase());
-    });
-    setFilter(filteredData);
-  }, [inputValue, setFilter]);
+    if (lang === 'fr') {
+      const filteredData = articles.fr.filter(article => {
+        return article.title.toLowerCase().includes(inputValue.toLowerCase());
+      });
+      setFilter(filteredData);
+    }
+    if (lang === 'en') {
+      const filteredData = articles.en.filter(article => {
+        return article.title.toLowerCase().includes(inputValue.toLowerCase());
+      });
+      setFilter(filteredData);
+    }
+  }, [inputValue, setFilter, lang]);
 
   return(
     <motion.main 
       variants={variants} initial='hidden' animate='show' exit='hidden' className='index'>
-      <PageTitle title="l'index">
-        Des articles sur mes explorations, essais et projets.
+      <PageTitle>
+        <Title>
+          {(lang === 'fr') && 'l\'Index'}
+          {(lang === 'en') && 'Index page'}
+        </Title>
+        <SubTitle>
+          {(lang === 'fr') && 'Des articles sur mes explorations, essais et projets.'}
+          {(lang === 'en') && 'My projects & explorations.'}
+        </SubTitle>
       </PageTitle>
 
       <section className='index__portfolio'>
@@ -48,6 +67,10 @@ function Index() {
             </a>
           </div>
           <div className='webfrontend'>
+            <div className='webfrontend__before'>
+              {(lang === 'fr') && 'Bientôt en ligne!'}
+              {(lang === 'en') && 'Coming soon!'}
+            </div>
             <img className='is-white unavailable' src='img/portfolio/logo_webfe.svg' alt='' />
           </div>
         </div>
@@ -55,9 +78,26 @@ function Index() {
 
       <section className='index__articles'>
         <div className='index__articles__search'>
-          <InputText value={inputValue} onChange={handleOnChange} styles='rounded' placeholder='Rechercher un article...'>
-            <SvgSearch/>
-          </InputText>
+          {(lang === 'fr') && 
+            <InputText 
+              value={inputValue} 
+              onChange={handleOnChange} 
+              styles='rounded' 
+              placeholder='Rechercher un article...'
+            >
+              <SvgSearch/>
+            </InputText>
+          }
+          {(lang === 'en') && 
+            <InputText 
+              value={inputValue} 
+              onChange={handleOnChange} 
+              styles='rounded' 
+              placeholder='Search an article...'
+            >
+              <SvgSearch/>
+            </InputText>
+          }
         </div>
         <div className='index__articles__list'>
           { filter.map(({ stack, title, date, link, id }) => (

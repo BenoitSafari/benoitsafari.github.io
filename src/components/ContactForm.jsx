@@ -13,7 +13,7 @@ if (!portalRoot) throw new Error('Cannot find \'#portal-root\' element');
 
 function ContactForm () {
   const { lang } = useLang();
-  const [ text, setText ] = useState((lang === 'fr') ? textContent.fr : textContent.en);
+  const [ text ] = useState((lang === 'fr') ? textContent.fr : textContent.en);
   const form = useRef();
   const maxLength = 2500;
   const [ loading,     setLoading     ] = useState(false);

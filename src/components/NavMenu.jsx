@@ -1,8 +1,9 @@
 import { Button } from '@components/Input';
-
+import { useLang } from '@hooks/useLang';
 import './NavMenu.scss';
 
 function NavMenu ({ handler, contactHandler }) {
+  const { lang } = useLang();
   const handleToContact = () => {
     contactHandler();
     handler();
@@ -32,7 +33,9 @@ function NavMenu ({ handler, contactHandler }) {
           onClick={handler}
           styles='rounded-fill'
           href='/about'
-        >About
+        >
+          {(lang === 'fr') && 'À propos'}
+          {(lang === 'en') && 'About'}
         </Button>
       </div>
     </>

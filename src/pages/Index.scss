@@ -41,9 +41,8 @@ $transition: .3s;
       & .is-white { background-color: white; }
       & .webfrontend {
         cursor: not-allowed;
-        &::before {
+        &__before {
           position: absolute;
-          content: 'Bientôt en ligne!';
           color: v.$tertiary-color;
           margin-left: 75px;
           margin-top: -45px;

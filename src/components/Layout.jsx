@@ -11,6 +11,7 @@ import { InputToggle } from '@components/Input';
 import ContactForm from '@components/ContactForm';
 import NavMenu from '@components/NavMenu';
 import './Layout.scss';
+import Loader from './Loader';
 
 // Data
 const links = {
