@@ -4,7 +4,6 @@
   "version": "0.1",
   "private": true,
   "dependencies": {
-    "@craco/craco": "^6.4.3",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
@@ -22,12 +21,12 @@
     "typescript": "^4.6.4"
   },
   "scripts": {
-    "predeploy": "craco build",
+    "predeploy": "react-scripts build",
     "deploy": "gh-pages -d build",
-    "dev": "craco start",
+    "dev": "react-scripts start",
     "fix": "eslint --fix ./src/**/*.jsx",
-    "build": "craco build",
-    "test": "craco test",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
     "eject": "react-script eject"
   },
   "browserslist": {

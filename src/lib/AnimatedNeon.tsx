@@ -1,14 +1,98 @@
+import React, { useEffect, useState, useRef } from 'react';
 import styles from './AnimatedNeon.module.scss';
 
-function SvgNeon({
-  pathRef0, pathRef1, pathRef2, pathRef3, pathRef4, pathRef5,
-  pathRef6, pathRef7, pathRef8, pathRef9, pathRef10, pathRef11,
-  svgRef
-}) {
-      
+function AnimatedNeon() {
+  const [ animIsRunning, setAnimIsRunning ] = useState(false);
+  const SvgRef = useRef<SVGSVGElement | null>(null);
+  const pathRefs = [ 
+    useRef<SVGGElement | null>(null),useRef<SVGGElement | null>(null),useRef<SVGGElement | null>(null), 
+    useRef<SVGGElement | null>(null),useRef<SVGGElement | null>(null),useRef<SVGGElement | null>(null), 
+    useRef<SVGGElement | null>(null),useRef<SVGGElement | null>(null),useRef<SVGGElement | null>(null), 
+    useRef<SVGGElement | null>(null),useRef<SVGGElement | null>(null),useRef<SVGGElement | null>(null),
+  ];
+  
+  useEffect(() => {
+    const timer = setInterval(() => {
+      neonAnimHandler(getRandomInteger(0, 3));}, 9000);
+    return () => clearTimeout(timer);
+  });
+
+  const getRandomInteger: (min: number, max: number) => number = (min, max) => { 
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
+
+  const toggleNeon = (target = -1) => {
+    if (target < 0) {
+      pathRefs.forEach(path => {
+        path.current?.classList.toggle(styles.isOn);
+      });
+    } else {
+      pathRefs[target].current?.classList.toggle(styles.isOn);
+    }};
+  const neonAnimHandler: (requestedAnim: number) => void = (requestedAnim) => {
+    if (!animIsRunning) {
+      let firstPath = 0;
+      let secondPath = 0;
+      let thirdPath = 0;
+      setAnimIsRunning(true);
+      switch (requestedAnim) {
+      case 0:
+        for (let i = 0; i < 300; i += 60) {
+          setTimeout(toggleNeon, i);}
+        for (let i = 1900; i < 2080; i += 40) {
+          setTimeout(toggleNeon, i);}
+        setTimeout(() => {setAnimIsRunning(false);}, 2150);
+        break;
+      case 1:
+        firstPath = getRandomInteger(0, 12);
+        for (let i = 0; i < 300; i += 60) {
+          setTimeout(() => {toggleNeon(firstPath);}, i);}
+        for (let i = 940; i < 1400; i += 40) {
+          setTimeout(() => {toggleNeon(firstPath);}, i);}
+        for (let i = 1900; i < 2080; i += 40) {
+          setTimeout(() => {toggleNeon(firstPath);}, i);}
+        setTimeout(() => {setAnimIsRunning(false);}, 2150);
+        break;
+      case 2:
+        firstPath = getRandomInteger(0, 8);
+        secondPath = firstPath + 1;
+        thirdPath = firstPath + 2;
+        for (let i = 0; i < 400; i += 60) {
+          setTimeout(() => {toggleNeon(secondPath);}, i);}
+        for (let i = 740; i < 1160; i += 60) {
+          setTimeout(() => {toggleNeon(firstPath);}, i);}
+        for (let i = 840; i < 1340; i += 40) {
+          setTimeout(() => {toggleNeon(thirdPath);}, i);}
+        setTimeout(() => {
+          for (let i = 0; i < 400; i += 60) {
+            setTimeout(() => {toggleNeon(secondPath);}, i);}
+          for (let i = 740; i < 1160; i += 60) {
+            setTimeout(() => {toggleNeon(firstPath);}, i);}
+          for (let i = 840; i < 1340; i += 40) {
+            setTimeout(() => {toggleNeon(thirdPath);}, i);}
+        }, 6340);
+        setTimeout(() => {setAnimIsRunning(false);}, 12700);
+        break;
+      case 3:
+        firstPath = getRandomInteger(0, 5);
+        secondPath = firstPath + getRandomInteger(5, 9);
+        for (let i = 0; i < 640; i += 60) {
+          setTimeout(() => {toggleNeon(firstPath);}, i);}
+        for (let i = 360; i < 800; i += 40) {
+          setTimeout(() => {toggleNeon(secondPath);}, i);}
+        setTimeout(() => {
+          for (let i = 0; i < 640; i += 60) {
+            setTimeout(() => {toggleNeon(firstPath);}, i);}
+          for (let i = 360; i < 800; i += 40) {
+            setTimeout(() => {toggleNeon(secondPath);}, i);}
+        }, 3000);
+        setTimeout(() => {setAnimIsRunning(false);}, 6500);
+        break;
+      }}}; 
+  
   return (
     <svg
-      ref={svgRef}
+      ref={SvgRef}
       className={styles.neon}
       width={576}
       height={128}
@@ -18,7 +102,7 @@ function SvgNeon({
       <g style={{ fill: '#aeaeae' }}>
         <g 
           className={styles.isOn}
-          ref={pathRef0}
+          ref={pathRefs[0]}
         >
           <path
             className={styles.path}
@@ -33,7 +117,7 @@ function SvgNeon({
         </g>
         <g 
           className={styles.isOn}
-          ref={pathRef1}
+          ref={pathRefs[1]}
         >
           <path
             className={styles.path}
@@ -48,7 +132,7 @@ function SvgNeon({
         </g>
         <g 
           className={styles.isOn}
-          ref={pathRef2}
+          ref={pathRefs[2]}
         >
           <path
             className={styles.path}
@@ -63,7 +147,7 @@ function SvgNeon({
         </g>
         <g 
           className={styles.isOn}
-          ref={pathRef3}
+          ref={pathRefs[3]}
         >
           <path
             className={styles.path}
@@ -78,7 +162,7 @@ function SvgNeon({
         </g>
         <g 
           className={styles.isOn}
-          ref={pathRef4}
+          ref={pathRefs[4]}
         >
           <path
             className={styles.path}
@@ -93,7 +177,7 @@ function SvgNeon({
         </g>
         <g 
           className={styles.isOn}
-          ref={pathRef5}
+          ref={pathRefs[5]}
         >
           <path
             className={styles.path}
@@ -108,7 +192,7 @@ function SvgNeon({
         </g>
         <g 
           className={styles.isOn}
-          ref={pathRef6}
+          ref={pathRefs[6]}
         >
           <path
             className={styles.path}
@@ -123,7 +207,7 @@ function SvgNeon({
         </g>
         <g 
           className={styles.isOn}
-          ref={pathRef7}
+          ref={pathRefs[7]}
         >
           <path
             className={styles.path}
@@ -138,7 +222,7 @@ function SvgNeon({
         </g>
         <g 
           className={styles.isOn}
-          ref={pathRef8}
+          ref={pathRefs[8]}
         >
           <path
             className={styles.path}
@@ -153,7 +237,7 @@ function SvgNeon({
         </g>
         <g 
           className={styles.isOn}
-          ref={pathRef9}
+          ref={pathRefs[9]}
         >
           <path
             className={styles.path}
@@ -168,7 +252,7 @@ function SvgNeon({
         </g>
         <g 
           className={styles.isOn}
-          ref={pathRef10}
+          ref={pathRefs[10]}
         >
           <path
             className={styles.path}
@@ -183,7 +267,7 @@ function SvgNeon({
         </g>
         <g 
           className={styles.isOn}
-          ref={pathRef11}
+          ref={pathRefs[11]}
         >
           <path
             className={styles.path}
@@ -200,5 +284,5 @@ function SvgNeon({
     </svg>
   );
 }
-      
-export default SvgNeon; 
+
+export default AnimatedNeon;
