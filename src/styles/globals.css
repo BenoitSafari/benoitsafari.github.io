@@ -10,7 +10,7 @@
 }
 
 body {
-  background-color: var(--background-primary-color);
+  background-color: var(--background-color);
   color: var(--text-color);
   font-family: 'Lato', sans-serif;
 }

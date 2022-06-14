@@ -1,5 +1,5 @@
-import '@styles/reset.scss';
-import '@styles/globals.scss';
+import '@styles/reset.css';
+import '@styles/globals.css';
 
 function App() {
   return(
