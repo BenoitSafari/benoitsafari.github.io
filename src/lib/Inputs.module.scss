@@ -176,6 +176,7 @@ $toggle-transition: transform 200ms;
   $checkbox-clip-path-padding: 3px;
   $checkbox-transition: 120ms transform ease-in-out;
   &__checkbox {
+    width: fit-content;
     display: flex;
     gap: $checkbox-gap;
     &__input {
