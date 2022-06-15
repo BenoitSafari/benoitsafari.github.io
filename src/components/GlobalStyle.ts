@@ -55,8 +55,6 @@ export default createGlobalStyle`
   }
 
   // GLOBAL STYLE
-  @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-
   :root {
     --background-color:             #1b1b1b;
     --background-secondary-color:   #282828;
@@ -80,15 +78,35 @@ export const Container = styled.div`
   border-radius: 4px;
   background-color: var(--background-secondary-color);
 `;
-export const H2 = styled.h2`
+export const Title = styled.h1`
+  font-family: 'Allison', cursive;
+  font-size: 8rem;
+  transform: rotate(-4deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5rem;
+  @media screen and (max-width: 580px) {
+    font-size: 6rem;
+  }
+  @media screen and (max-width: 380px) {
+    font-size: 4rem;
+  }
+`;
+export const Summary = styled.summary`
   font-size: 1.7rem;
   font-weight: 600;
-  text-decoration: underline;
   margin-bottom: 2.5rem;
+  @media screen and (max-width: 580px) {
+    font-size: 1.3rem;
+  }
 `;
 export const H3 = styled.h3`
   font-size: 1.2rem;
   margin-bottom: 2.5rem;
+  @media screen and (max-width: 580px) {
+    font-size: 1.1rem;
+  }
 `;
 export const State = styled.div`
   font-size: .9rem;

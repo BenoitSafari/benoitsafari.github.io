@@ -5,8 +5,9 @@ type LayoutProps = {
 }
 
 const Container = styled.div`
-    width: fit-content;
+    padding: 2rem;
     margin: 2rem auto;
+    max-width: 900px;
     display: flex; 
     flex-direction: column;
     `;

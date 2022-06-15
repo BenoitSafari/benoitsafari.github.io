@@ -2,6 +2,7 @@ import React from 'react';
 import { ReactComponent as SvgMail } from 'assets/ico_mail.svg';
 import { Button, InputToggle, InputText, InputCheckbox, InputRadio, InputRange, InputDoubleRange } from 'lib/Inputs';
 import { Container, H3, State } from './GlobalStyle';
+import CodeBlock from './CodeBlock';
 
 function LibInputs () {
   const [inputToggle, setInputToggle]                 = React.useState(false);
@@ -12,12 +13,19 @@ function LibInputs () {
   const [inputDoubleRangeMin, setInputDoubleRangeMin] = React.useState(-400);
   const [inputDoubleRangeMax, setInputDoubleRangeMax] = React.useState(400);
 
+  const codeTest = `~~~jsx
+  const jambon = true;
+  ~~~`;
+
   return(
     <>
       {/* COMPONENT: Button */}
       <Container>
         <H3>Button</H3>
         <Button>OK</Button>
+        {/* <CodeBlock>
+          {codeTest}
+        </CodeBlock> */}
       </Container>
 
       {/* COMPONENT: InputToggle */}
@@ -59,7 +67,7 @@ function LibInputs () {
           state={inputCheckbox}
           name='newsletter'
         >
-      Yes! Send me a 100 newsletter mails per day
+          Yes! Send me a 100 newsletter mails per day
         </InputCheckbox>
         <State>State:
           {inputCheckbox && <span style={{color: 'green'}}>{String(inputCheckbox)}</span>}
