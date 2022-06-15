@@ -1,3 +1,4 @@
+import { Value } from 'sass';
 import styles from './Inputs.module.scss';
 
 // COMPONENT Button
@@ -91,3 +92,36 @@ export function InputCheckbox ({name, children, isChecked, onChange}: InputCheck
       />
     </div>
   );}
+
+// COMPONENT InputCheckbox
+type InputRadioProps = {
+  children: React.ReactNode,
+  onChange: React.ChangeEventHandler<HTMLInputElement>,
+  value: string,
+  field: string,
+  state: any
+}
+/**
+ * return input type checkbox
+ * @param {function}  onChange            handler for onChange event
+ * @param {string}    field               radio fieldset name
+ * @param {string}    value               radio value
+ * @param {string}    state               state value container
+ */
+export function InputRadio ({children, state, value, onChange, field}: InputRadioProps) {
+  return(
+    <>
+      <label className={styles.inputs__radio}>
+        {children}
+        <input
+          type='radio'
+          name={field}
+          value={value}
+          onChange={onChange}
+          checked={state === value}
+          className={styles.inputs__radio__input}
+        />
+      </label>
+    </>
+  );
+}

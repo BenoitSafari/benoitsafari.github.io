@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { ReactComponent as SvgMail } from 'assets/ico_mail.svg';
-import { Button, InputText, InputCheckbox } from 'lib/Inputs';
+import { Button, InputText, InputCheckbox, InputRadio } from 'lib/Inputs';
 import Layout from 'components/Layout';
 
 const Container = styled.div`
@@ -27,8 +27,9 @@ const State = styled.div`
 `;
 
 function App() {
-  const [inputText, setInputText] = React.useState('');
-  const [inputCheckbox, setInputCheckbox] = React.useState(true);
+  const [inputText, setInputText]           = React.useState('');
+  const [inputCheckbox, setInputCheckbox]   = React.useState(true);
+  const [inputRadio, setInputRadio]         = React.useState('jambon');
 
   return(
     <Layout>
@@ -66,6 +67,26 @@ function App() {
           {inputCheckbox && <span style={{color: 'green'}}>{String(inputCheckbox)}</span>}
           {!inputCheckbox && <span style={{color: 'red'}}>{String(inputCheckbox)}</span>}
         </State>
+
+        {/* COMPONENT: InputRadio */}
+        <H2>InputCheckbox component</H2>
+        <InputRadio
+          field={'radio-test'}
+          value='jambon'
+          state={inputRadio}
+          onChange={(e) => {(e.target.checked) && setInputRadio(e.target.value);}}
+        >
+          Jambon
+        </InputRadio>
+        <InputRadio
+          field={'radio-test'}
+          value='pathe'
+          state={inputRadio}
+          onChange={(e) => {(e.target.checked) && setInputRadio(e.target.value);}}
+        >
+          Pathé
+        </InputRadio>
+        <State>State:<span>" {inputRadio} "</span></State>
       </Container>
     </Layout>
   );}
