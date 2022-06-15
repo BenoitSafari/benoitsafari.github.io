@@ -1,5 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import GlobalStyle from 'components/GlobalStyle';
 import App from './App';
 
 const appRootElement = document.querySelector('#app-root');
@@ -8,6 +9,7 @@ const root = createRoot(appRootElement);
 
 root.render(
   <>
+    <GlobalStyle/>
     <App/>
   </>
 );
