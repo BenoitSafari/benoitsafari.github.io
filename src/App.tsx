@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { ReactComponent as SvgMail } from 'assets/ico_mail.svg';
 import { Button, InputText, InputCheckbox, InputRadio } from 'lib/Inputs';
 import Layout from 'components/Layout';
@@ -39,15 +39,15 @@ function App() {
       <H1>Lib Inputs</H1>
       {/* COMPONENT: Button */}
       <Container>
-        <H2>Button component</H2>
+        <H2>Button</H2>
         <Button>OK</Button>
       </Container>
 
       {/* COMPONENT: InputText */}
       <Container>
-        <H2>InputText component</H2>
+        <H2>InputText</H2>
         <InputText
-          onChange={(e)=>{setInputText(e.target.value);}}
+          setter={setInputText}
           label={'Email'}
           name={'mail'}
           value={inputText}
@@ -61,9 +61,9 @@ function App() {
     
       {/* COMPONENT: InputCheckbox */}
       <Container>
-        <H2>InputCheckbox component</H2>
+        <H2>InputCheckbox</H2>
         <InputCheckbox
-          onChange={(e) => {setInputCheckbox(e.target.checked);}}
+          setter={setInputCheckbox}
           isChecked={inputCheckbox}
           name='newsletter'
         >
@@ -77,12 +77,12 @@ function App() {
 
       {/* COMPONENT: InputRadio */}
       <Container>
-        <H2>InputCheckbox component</H2>
+        <H2>InputCheckbox</H2>
         <InputRadio
           field={'radio-test'}
           value='jambon'
           state={inputRadio}
-          onChange={(e) => {(e.target.checked) && setInputRadio(e.target.value);}}
+          setter={setInputRadio}
         >
           Jambon
         </InputRadio>
@@ -90,7 +90,7 @@ function App() {
           field={'radio-test'}
           value='pathe'
           state={inputRadio}
-          onChange={(e) => {(e.target.checked) && setInputRadio(e.target.value);}}
+          setter={setInputRadio}
         >
           Pathé
         </InputRadio>

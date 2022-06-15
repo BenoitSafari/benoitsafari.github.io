@@ -1,4 +1,3 @@
-import { Value } from 'sass';
 import styles from './Inputs.module.scss';
 
 // COMPONENT Button
@@ -24,7 +23,7 @@ export function Button({ children, onClick, href }: ButtonProps)  {
 // COMPONENT InputText
 type InputTextProps = {
   children?: React.ReactNode,
-  onChange: React.ChangeEventHandler<HTMLInputElement>,
+  setter: (arg: string) => void,
   name: string,
   value: string,
   placeholder?: string,
@@ -34,7 +33,7 @@ type InputTextProps = {
 /**
  * return input type text | password
  * @param {HTMLSvgElement | HTMLImgElement} children  use this to pass an icon
- * @param {function}  onChange      handler for onChange event
+ * @param {function}  setter        setter for onChange event
  * @param {string}    name          Input name field
  * @param {string}    value         Input value field
  * @param {string}    placeholder   Input placeholder field
@@ -42,8 +41,11 @@ type InputTextProps = {
  * @param {string}    label         return \<label\> tag
  */
 export function InputText({
-  children, onChange, name, value, 
+  children, setter, name, value, 
   placeholder, password, label }: InputTextProps) {
+  const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setter(event.target.value);
+  };
   return (
     <>
       { label && <label className={styles.inputs__text__label}>{label}</label>
@@ -54,7 +56,7 @@ export function InputText({
           type={password ? 'password' : 'text'}
           placeholder={placeholder ? placeholder : ''}
           name={name}
-          onChange={onChange}
+          onChange={handleOnChange}
           value={value}
         />
         {children}
@@ -66,17 +68,20 @@ export function InputText({
 // COMPONENT InputCheckbox
 type InputCheckboxProps = {
   children: React.ReactNode,
-  onChange: React.ChangeEventHandler<HTMLInputElement>,
+  setter: (arg: boolean) => void,
   isChecked: boolean,
   name: string
 }
 /**
  * return input type checkbox
- * @param {function}  onChange    handler for onChange event
+ * @param {function}  setter      setter for onChange event
  * @param {boolean}   isChecked   define default state
- * @param {string}    name          Input name field
+ * @param {string}    name        Input name field
  */
-export function InputCheckbox ({name, children, isChecked, onChange}: InputCheckboxProps) {
+export function InputCheckbox ({name, children, isChecked, setter}: InputCheckboxProps) {
+  const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setter(event.target.checked);
+  };
   return(
     <div className={styles.inputs__checkbox}>
       <label htmlFor={name} className={styles.inputs__checkbox__label}>
@@ -86,29 +91,33 @@ export function InputCheckbox ({name, children, isChecked, onChange}: InputCheck
         type='checkbox'
         value={name}
         id={name}
-        onChange={onChange}
+        onChange={handleOnChange}
         checked={isChecked}
         className={styles.inputs__checkbox__input}
       />
     </div>
   );}
 
-// COMPONENT InputCheckbox
+// COMPONENT InputRadio
+
 type InputRadioProps = {
   children: React.ReactNode,
-  onChange: React.ChangeEventHandler<HTMLInputElement>,
+  setter: (arg: string) => void,
   value: string,
   field: string,
   state: any
 }
 /**
- * return input type checkbox
- * @param {function}  onChange            handler for onChange event
+ * return input type radio
+ * @param {function}  setter        setter for onChange event
  * @param {string}    field               radio fieldset name
  * @param {string}    value               radio value
  * @param {string}    state               state value container
  */
-export function InputRadio ({children, state, value, onChange, field}: InputRadioProps) {
+export function InputRadio ({children, state, value, setter, field}: InputRadioProps) {
+  const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setter(event.target.value);
+  };
   return(
     <>
       <label className={styles.inputs__radio}>
@@ -117,7 +126,7 @@ export function InputRadio ({children, state, value, onChange, field}: InputRadi
           type='radio'
           name={field}
           value={value}
-          onChange={onChange}
+          onChange={handleOnChange}
           checked={state === value}
           className={styles.inputs__radio__input}
         />

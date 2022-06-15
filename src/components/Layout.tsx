@@ -19,9 +19,9 @@ function Layout ({children}: LayoutProps) {
   );
 }
 
-const links = {
-  linkedin: 'https://www.linkedin.com/in/gregory-michalak-b1613b22a/',
-  github: 'https://github.com/BenoitSafari',
-};
+// const links = {
+//   linkedin: 'https://www.linkedin.com/in/gregory-michalak-b1613b22a/',
+//   github: 'https://github.com/BenoitSafari',
+// };
 
 export default Layout;
