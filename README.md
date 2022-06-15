@@ -1,2 +1,5 @@
 # 📦 benoitsafari.github.io
-Personnal React Library, feel free to use.
+
+## Personnal React library
+Check for documentation:  
+<https://benoitsafari.github.io/> 
