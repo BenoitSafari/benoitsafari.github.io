@@ -19,6 +19,8 @@ export function Button({ children, onClick, href }: ButtonProps)  {
     </>
   );};
 
+
+// COMPONENT InputText
 type InputTextProps = {
   children?: React.ReactNode,
   onChange: React.ChangeEventHandler<HTMLInputElement>,
@@ -28,9 +30,8 @@ type InputTextProps = {
   password?: boolean,
   label?: string
 } 
-// COMPONENT InputText
 /**
- * return input type text
+ * return input type text | password
  * @param {HTMLSvgElement | HTMLImgElement} children  use this to pass an icon
  * @param {function}  onChange      handler for onChange event
  * @param {string}    name          Input name field
@@ -48,7 +49,7 @@ export function InputText({
       }
       <div className={styles.inputs__text}>
         <input 
-          className={children ? styles['inputs__text__input--has-icon'] : styles['inputs__text__input']}
+          className={styles.inputs__text__input}
           type={password ? 'password' : 'text'}
           placeholder={placeholder ? placeholder : ''}
           name={name}
@@ -58,5 +59,35 @@ export function InputText({
         {children}
       </div>
     </>
-  );
+  );}
+
+
+// COMPONENT InputCheckbox
+type InputCheckboxProps = {
+  children: React.ReactNode,
+  onChange: React.ChangeEventHandler<HTMLInputElement>,
+  isChecked: boolean,
+  name: string
 }
+/**
+ * return input type checkbox
+ * @param {function}  onChange    handler for onChange event
+ * @param {boolean}   isChecked   define default state
+ * @param {string}    name          Input name field
+ */
+export function InputCheckbox ({name, children, isChecked, onChange}: InputCheckboxProps) {
+  return(
+    <div className={styles.inputs__checkbox}>
+      <label htmlFor={name} className={styles.inputs__checkbox__label}>
+        {children}
+      </label>
+      <input 
+        type='checkbox'
+        value={name}
+        id={name}
+        onChange={onChange}
+        checked={isChecked}
+        className={styles.inputs__checkbox__input}
+      />
+    </div>
+  );}
