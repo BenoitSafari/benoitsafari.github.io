@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ReactComponent as SvgMail } from 'assets/ico_mail.svg';
-import { Button, InputText, InputCheckbox, InputRadio } from 'lib/Inputs';
+import { Button, InputText, InputCheckbox, InputRadio, InputRange, InputDoubleRange } from 'lib/Inputs';
 import Layout from 'components/Layout';
 
 const Container = styled.div`
@@ -30,9 +30,12 @@ const State = styled.div`
 `;
 
 function App() {
-  const [inputText, setInputText]           = React.useState('');
-  const [inputCheckbox, setInputCheckbox]   = React.useState(true);
-  const [inputRadio, setInputRadio]         = React.useState('jambon');
+  const [inputText, setInputText]                     = React.useState('');
+  const [inputCheckbox, setInputCheckbox]             = React.useState(true);
+  const [inputRadio, setInputRadio]                   = React.useState('jambon');
+  const [inputRange, setInputRange]                   = React.useState(0);
+  const [inputDoubleRangeMin, setInputDoubleRangeMin] = React.useState(-400);
+  const [inputDoubleRangeMax, setInputDoubleRangeMax] = React.useState(400);
 
   return(
     <Layout>
@@ -95,6 +98,32 @@ function App() {
           Pathé
         </InputRadio>
         <State>State:<span>" {inputRadio} "</span></State>
+      </Container>
+
+      {/* COMPONENT: InputRange */}
+      <Container>
+        <H2>InputRange</H2>
+        <InputRange
+          minValue={-400}
+          maxValue={400}
+          stateValue={inputRange}
+          setter={setInputRange}
+        />
+        <State>State:<span>{inputRange}</span></State>
+      </Container>
+
+      {/* COMPONENT: InputDoubleRange */}
+      <Container>
+        <H2>InputDoubleRange</H2>
+        <InputDoubleRange
+          baseValueMin={-400}
+          baseValueMax={400}
+          stateValueMin={inputDoubleRangeMin}
+          stateValueMax={inputDoubleRangeMax}
+          minValueSetter={setInputDoubleRangeMin}
+          maxValueSetter={setInputDoubleRangeMax}
+        />
+        <State>State:<span>[Min] {inputDoubleRangeMin} [Max] {inputDoubleRangeMax}</span></State>
       </Container>
     </Layout>
   );}
