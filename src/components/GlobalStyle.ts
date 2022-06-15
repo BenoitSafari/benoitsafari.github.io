@@ -1,4 +1,5 @@
 import {createGlobalStyle} from 'styled-components';
+import styled from 'styled-components';
 
 export default createGlobalStyle`
   // RESET
@@ -70,5 +71,30 @@ export default createGlobalStyle`
     background-color: var(--background-color);
     color: var(--text-color);
     font-family: 'Lato', sans-serif;
+  }
+`;
+
+export const Container = styled.div`
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 4px;
+  background-color: var(--background-secondary-color);
+`;
+export const H2 = styled.h2`
+  font-size: 1.7rem;
+  font-weight: 600;
+  text-decoration: underline;
+  margin-bottom: 2.5rem;
+`;
+export const H3 = styled.h3`
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+`;
+export const State = styled.div`
+  font-size: .9rem;
+  font-style: italic;
+  margin-top: 2rem;
+  & span {
+    margin-left: .5rem;
   }
 `;
