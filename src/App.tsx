@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ReactComponent as SvgMail } from 'assets/ico_mail.svg';
-import { Button, InputText, InputCheckbox, InputRadio, InputRange, InputDoubleRange } from 'lib/Inputs';
+import { Button, InputToggle, InputText, InputCheckbox, InputRadio, InputRange, InputDoubleRange } from 'lib/Inputs';
 import Layout from 'components/Layout';
 
 const Container = styled.div`
@@ -30,6 +30,7 @@ const State = styled.div`
 `;
 
 function App() {
+  const [inputToggle, setInputToggle]                 = React.useState(false);
   const [inputText, setInputText]                     = React.useState('');
   const [inputCheckbox, setInputCheckbox]             = React.useState(true);
   const [inputRadio, setInputRadio]                   = React.useState('jambon');
@@ -44,6 +45,21 @@ function App() {
       <Container>
         <H2>Button</H2>
         <Button>OK</Button>
+      </Container>
+
+      {/* COMPONENT: InputToggle */}
+      <Container>
+        <H2>InputToggle</H2>
+        <InputToggle
+          state={inputToggle}
+          setter={setInputToggle}
+          valueTrue={'Off'}
+          valueFalse={'On'}
+        />
+        <State>State:
+          {inputToggle && <span style={{color: 'green'}}>{String(inputToggle)}</span>}
+          {!inputToggle && <span style={{color: 'red'}}>{String(inputToggle)}</span>}
+        </State>
       </Container>
 
       {/* COMPONENT: InputText */}
@@ -67,7 +83,7 @@ function App() {
         <H2>InputCheckbox</H2>
         <InputCheckbox
           setter={setInputCheckbox}
-          isChecked={inputCheckbox}
+          state={inputCheckbox}
           name='newsletter'
         >
           Yes! Send me a 100 newsletter mails per day

@@ -20,6 +20,33 @@ export function Button({ children, onClick, href }: ButtonProps)  {
   );};
 
 
+// COMPONENT InputToggle
+type InputToggleProps = {
+  state: boolean,
+  setter: (arg: boolean) => void,
+  valueTrue: string,
+  valueFalse: string
+}
+export function InputToggle ({valueTrue, valueFalse, setter, state}: InputToggleProps) {
+  const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setter(event.target.checked);
+  };
+  return(
+    <div className={styles.inputs__toggle}>
+      <span className={styles.false}>{valueFalse}</span>
+      <input 
+        type='checkbox' 
+        onChange={handleOnChange} 
+        value={valueFalse}
+        checked={state}/>
+      <label>
+        <span className={styles.true}>{valueTrue}</span>
+      </label>
+    </div>
+  );
+}  
+
+
 // COMPONENT InputText
 type InputTextProps = {
   children?: React.ReactNode,
@@ -69,7 +96,7 @@ export function InputText({
 type InputCheckboxProps = {
   children: React.ReactNode,
   setter: (arg: boolean) => void,
-  isChecked: boolean,
+  state: boolean,
   name: string
 }
 /**
@@ -78,7 +105,7 @@ type InputCheckboxProps = {
  * @param {boolean}   isChecked   define default state
  * @param {string}    name        Input name field
  */
-export function InputCheckbox ({name, children, isChecked, setter}: InputCheckboxProps) {
+export function InputCheckbox ({name, children, state, setter}: InputCheckboxProps) {
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setter(event.target.checked);
   };
@@ -92,7 +119,7 @@ export function InputCheckbox ({name, children, isChecked, setter}: InputCheckbo
         value={name}
         id={name}
         onChange={handleOnChange}
-        checked={isChecked}
+        checked={state}
         className={styles.inputs__checkbox__input}
       />
     </div>
