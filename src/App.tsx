@@ -5,22 +5,25 @@ import { Button, InputText, InputCheckbox, InputRadio } from 'lib/Inputs';
 import Layout from 'components/Layout';
 
 const Container = styled.div`
-    width: fit-content;
-    margin: 2rem auto;
-    display: flex; 
-    flex-direction: column;
-    `;
-const H2 = styled.h2<{first?: boolean}>`
-  margin: 3rem 0 1rem;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 4px;
+  background-color: var(--background-secondary-color);
+`;
+const H1 = styled.h1`
+  font-size: 1.7rem;
+  font-weight: 600;
+  text-decoration: underline;
+  margin-bottom: 2.5rem;
+`;
+const H2 = styled.h2`
   font-size: 1.2rem;
-  ${props => props.first && css`
-    margin-top: 1rem;
-  `}
+  margin-bottom: 2.5rem;
 `;
 const State = styled.div`
   font-size: .9rem;
   font-style: italic;
-  margin-top: .4rem;
+  margin-top: 2rem;
   & span {
     margin-left: .5rem;
   }
@@ -33,13 +36,15 @@ function App() {
 
   return(
     <Layout>
+      <H1>Lib Inputs</H1>
+      {/* COMPONENT: Button */}
       <Container>
-        {/* COMPONENT: Button */}
-        <H2 first>Button component</H2>
-        <Button>Valider</Button>
+        <H2>Button component</H2>
+        <Button>OK</Button>
+      </Container>
 
-
-        {/* COMPONENT: InputText */}
+      {/* COMPONENT: InputText */}
+      <Container>
         <H2>InputText component</H2>
         <InputText
           onChange={(e)=>{setInputText(e.target.value);}}
@@ -52,9 +57,10 @@ function App() {
         </InputText>
         <State >State:<span>{inputText}</span>
         </State>
-      
-
-        {/* COMPONENT: InputCheckbox */}
+      </Container>
+    
+      {/* COMPONENT: InputCheckbox */}
+      <Container>
         <H2>InputCheckbox component</H2>
         <InputCheckbox
           onChange={(e) => {setInputCheckbox(e.target.checked);}}
@@ -67,8 +73,10 @@ function App() {
           {inputCheckbox && <span style={{color: 'green'}}>{String(inputCheckbox)}</span>}
           {!inputCheckbox && <span style={{color: 'red'}}>{String(inputCheckbox)}</span>}
         </State>
+      </Container>
 
-        {/* COMPONENT: InputRadio */}
+      {/* COMPONENT: InputRadio */}
+      <Container>
         <H2>InputCheckbox component</H2>
         <InputRadio
           field={'radio-test'}
