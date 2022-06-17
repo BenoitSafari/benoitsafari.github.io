@@ -101,9 +101,24 @@ export const Summary = styled.summary`
     font-size: 1.3rem;
   }
 `;
+export const H2 = styled.h2`
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 2.5rem;
+  @media screen and (max-width: 580px) {
+    font-size: 1.3rem;
+  }
+`;
 export const H3 = styled.h3`
   font-size: 1.2rem;
   margin-bottom: 2.5rem;
+  @media screen and (max-width: 580px) {
+    font-size: 1.1rem;
+  }
+`;
+export const Usage = styled.summary`
+  font-size: 1.2rem;
+  margin: 2.5rem 0;
   @media screen and (max-width: 580px) {
     font-size: 1.1rem;
   }
