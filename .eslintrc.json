@@ -12,6 +12,7 @@
       "quotes": [ 1, "single" ],
       "semi": [ 1, "always" ],
       "no-loop-func": [0],
-      "default-case": [0]
+      "default-case": [0],
+      "no-useless-escape": [0]
   }
 }
