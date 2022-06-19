@@ -21,7 +21,7 @@ function LibInputs () {
         <details>
           <Usage>Usage</Usage>
           <CodeBlock>
-            {codeTest[0]}
+            {codeBlocks[0]}
           </CodeBlock>
         </details>
       </Container>
@@ -42,7 +42,7 @@ function LibInputs () {
         <details>
           <Usage>Usage</Usage>
           <CodeBlock>
-            {codeTest[1]}
+            {codeBlocks[1]}
           </CodeBlock>
         </details>
       </Container>
@@ -64,7 +64,7 @@ function LibInputs () {
         <details>
           <Usage>Usage</Usage>
           <CodeBlock>
-            {codeTest[2]}
+            {codeBlocks[2]}
           </CodeBlock>
         </details>
       </Container>
@@ -86,7 +86,7 @@ function LibInputs () {
         <details>
           <Usage>Usage</Usage>
           <CodeBlock>
-            {codeTest[3]}
+            {codeBlocks[3]}
           </CodeBlock>
         </details>
       </Container>
@@ -114,7 +114,7 @@ function LibInputs () {
         <details>
           <Usage>Usage</Usage>
           <CodeBlock>
-            {codeTest[4]}
+            {codeBlocks[4]}
           </CodeBlock>
         </details>
       </Container>
@@ -132,7 +132,7 @@ function LibInputs () {
         <details>
           <Usage>Usage</Usage>
           <CodeBlock>
-            {codeTest[5]}
+            {codeBlocks[5]}
           </CodeBlock>
         </details>
       </Container>
@@ -152,7 +152,7 @@ function LibInputs () {
         <details>
           <Usage>Usage</Usage>
           <CodeBlock>
-            {codeTest[6]}
+            {codeBlocks[6]}
           </CodeBlock>
         </details>
       </Container>
@@ -161,13 +161,13 @@ function LibInputs () {
         <details>
           <Usage>Inputs.tsx</Usage>
           <CodeBlock>
-            {codeTest[7]}
+            {codeBlocks[7]}
           </CodeBlock>
         </details>
         <details>
           <Usage>Inputs.module.scss</Usage>
           <CodeBlock>
-            {codeTest[8]}
+            {codeBlocks[8]}
           </CodeBlock>
         </details>
       </Container>
@@ -175,7 +175,7 @@ function LibInputs () {
   );
 }
 
-const codeTest = [`~~~jsx
+const codeBlocks = [`~~~jsx
 import { Button } from '...path-to-Inputs';
 
 function MyComponent () {
