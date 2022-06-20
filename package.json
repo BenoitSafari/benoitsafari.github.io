@@ -28,7 +28,7 @@
     "deploy": "gh-pages -d build",
     "dev": "craco start",
     "fix": "eslint --fix ./src/**/*.jsx",
-    "build": "env-cmd craco build",
+    "build": "craco build",
     "test": "craco test",
     "eject": "react-script eject"
   },
