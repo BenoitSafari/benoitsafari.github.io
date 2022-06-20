@@ -7,9 +7,9 @@ import CodeBlock from './CodeBlock';
 
 function LibInputs () {
   const [inputText, setInputText] = React.useState('Pikachu');
-  const [query, setsetQuery]      = React.useState('pikachu');
+  const [query, setQuery]      = React.useState('pikachu');
   const {data, error, loading}    = useFetch(`https://pokeapi.co/api/v2/pokemon/${query}`);
-  const handleSearch = () => {setsetQuery(inputText.toLowerCase());};
+  const handleSearch = () => {setQuery(inputText.toLowerCase());};
   return(
     <>
       <Container>
