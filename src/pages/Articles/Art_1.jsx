@@ -45,7 +45,7 @@ function Art1 () {
         {codeBlocks[7]}
       </CodeBlock>
       <section className='articles-layout__content__links'>
-        <a target='_blank' rel='noreferrer' href='https://github.com/BenoitSafari/benoitsafari.github.io/tree/lib-useModal'>Voir le repo git</a>
+        <a target='_blank' rel='noreferrer' href='https://benoitsafari.github.io/'>Voir la doc</a>
         <Link to='/index'>Retourner à l'index</Link>
       </section>
     </>
@@ -241,8 +241,7 @@ function Art1En () {
         {codeBlocksEN[7]}
       </CodeBlock>
       <section className='articles-layout__content__links'>
-        <a target='_blank' rel='noreferrer' href='https://github.com/BenoitSafari/benoitsafari.github.io/tree/lib-useModal'>
-          See git repo</a>
+        <a target='_blank' rel='noreferrer' href='https://benoitsafari.github.io/'>See documentation</a>
         <Link to='/index'>Go back</Link>
       </section>
     </>

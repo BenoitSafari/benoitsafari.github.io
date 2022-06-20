@@ -267,6 +267,7 @@ function Art2EN () {
         {codeBlocksEN[2]}
       </CodeBlock>
       <section className='articles-layout__content__links'>
+        <a target='_blank' rel='noreferrer' href='https://benoitsafari.github.io/'>See documentation</a>
         <Link to='/index'>Go back</Link>
       </section>
     </>

@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { useLang } from '@hooks/useLang';
 import { Art1, Art1En } from './Articles/Art_1';
 import { Art2, Art2EN } from './Articles/Art_2';
+import { Art3, Art3EN } from './Articles/Art_3';
 import './Article.scss';
 
 // Animations Setup
@@ -76,6 +77,14 @@ const articles = {
       content: <Art2/>,
       id: 2
     },
+    {
+      stack: 'react', 
+      title: 'Consommer une api avec un hook custom: useFetch',
+      date: '20 Juin 2022',
+      link: '/article/3',
+      content: <Art3/>,
+      id: 3
+    },
   ],
   en: [
     {
@@ -93,6 +102,14 @@ const articles = {
       link: '/article/2',
       content: <Art2EN/>,
       id: 2
+    },
+    {
+      stack: 'react', 
+      title: 'Fetch an api with a custom hook: useFetch',
+      date: '06-20-2022',
+      link: '/article/3',
+      content: <Art3EN/>,
+      id: 3
     },
   ]
 };
