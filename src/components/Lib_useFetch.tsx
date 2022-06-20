@@ -24,9 +24,7 @@ function LibInputs () {
               placeholder={'Pikachu'}
             />
           </div>
-          <Button onClick={handleSearch}>
-            {loading ? <Loader/> : 'Search'}
-          </Button>
+          {loading ? <Loader/> : <Button onClick={handleSearch}>Search</Button>}
         </div>
         <State>State: 
           {data?.count && <span>{data.count} results</span>}

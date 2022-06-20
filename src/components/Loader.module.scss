@@ -1,12 +1,14 @@
 .loader {
-  width: 14px;
-  height: 14px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   display: inline-block;
   position: relative;
   border: 2px solid;
   box-sizing: border-box;
   animation: animloader 1s linear infinite alternate;
+  margin-left: 16px;
+  margin-bottom: 8px;
 }
 @keyframes animloader {
   0% {
