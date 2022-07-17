@@ -1,12 +1,20 @@
-$shadow        : .2rem .4rem .1rem #000000;
-$back-color    : #36363636;
-$front-color   : #4e4e4e88;
-$light-color   : #e100ff;
+$shadow           : .2rem .4rem .1rem #000000;
+$back-color       : #36363636;
+$front-color      : #4e4e4e88;
+$light-color      : #e100ff;
+$media-max-desktop: rotate(-6deg); 
+$media-max-1080   : scale(.9) rotate(-6deg);
+$media-max-780    : scale(.8) rotate(-6deg);
+$media-max-680    : scale(.7) rotate(-6deg);
+$media-max-580    : scale(.5) rotate(-6deg);
+$media-max-420    : scale(.4) rotate(-6deg);
+$media-max-340    : scale(.3) rotate(-6deg);
 
 .neon {
   position: relative;
   font-family: allison;
-  transform: rotate(-6deg);
+  transform: $media-max-desktop;
+  -webkit-transform: $media-max-desktop;
   user-select: none;
   font-size: 260px;
   letter-spacing: -5px;
@@ -14,7 +22,6 @@ $light-color   : #e100ff;
     position: absolute;
     filter: drop-shadow($shadow);
     color: $back-color;
-    // opacity: 8;
   }
   &__outer {
     position: absolute;
@@ -30,6 +37,30 @@ $light-color   : #e100ff;
     -webkit-background-clip: text;
     -moz-background-clip:text;
     background-clip:text; 
+  }
+  @media screen and (max-width: 1080px) {
+    transform: $media-max-1080;
+    -webkit-transform: $media-max-1080;
+  }
+  @media screen and (max-width: 780px) {
+    transform: $media-max-780;
+    -webkit-transform: $media-max-780;
+  }
+  @media screen and (max-width: 680px) {
+    transform: $media-max-680;
+    -webkit-transform: $media-max-680;
+  }
+  @media screen and (max-width: 580px) {
+    transform: $media-max-580;
+    -webkit-transform: $media-max-580;
+  }
+  @media screen and (max-width: 420px) {
+    transform: $media-max-420;
+    -webkit-transform: $media-max-420;
+  }
+  @media screen and (max-width: 340px) {
+    transform: $media-max-340;
+    -webkit-transform: $media-max-340;
   }}
 .lights-on {
   text-shadow: 0 0 9rem $light-color;
