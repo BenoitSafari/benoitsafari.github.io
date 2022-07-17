@@ -1,7 +1,7 @@
 @use '@/styles/variables' as v;
 
 $color: v.$text-color;
-$secondary-color: v.$tertiary-color;
+$secondary-color: v.$secondary-color;
 $tertiary-color: v.$background-primary-color;
 $placeholder-color: v.$text-color;
 $font-size: 1rem;
@@ -94,68 +94,3 @@ $icon-ratio: 1.2;
   }}
 
 
-$toggle-back-color: v.$background-secondary-color;
-$toggle-selected-color: v.$tertiary-color;
-$toggle-unselected-color: v.$text-color;
-$toggle-button-color: v.$primary-color;
-$toggle-font-size: .8rem;
-$toggle-font-weight: 600;
-$toggle-letter-spacing: .05rem;
-$toggle-radius: 50px;
-$toggle-width: 80px;
-$toggle-padding: .3rem 0;
-$toggle-transition: transform 200ms;
-
-.lib__input-toggle {
-  position: relative;
-  background: $toggle-back-color;
-  border-radius: $toggle-radius;
-  color: $toggle-unselected-color;
-  fill: $toggle-unselected-color;
-  font-size: $toggle-font-size;
-  font-weight: $toggle-font-weight;
-  letter-spacing: $toggle-letter-spacing;
-  text-transform: uppercase;
-  text-align: center;
-  width: $toggle-width;
-  padding-right: calc($toggle-width / 2);
-  & span.right {
-    position: absolute;
-    top: 0; bottom: 0; right: 0;
-    width: calc($toggle-width / 2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 3;
-    pointer-events: none;
-  }
-  & input[type='checkbox'] {
-    cursor: pointer;
-    position: absolute;
-    top: 0; left: 0; bottom: 0;
-    width: 100%; height: 100%;
-    opacity: 0;
-    z-index: 2;
-    &:checked + label:before {
-      transform: translateX(calc($toggle-width / 2));
-      transition: $toggle-transition;
-    }
-    & + label {
-      position: relative;
-      padding: $toggle-padding;
-      display: block;
-      user-select: none;
-      pointer-events: none;
-      &:before {
-        content: '';
-        background: $toggle-button-color;
-        height: 100%; width: 100%;
-        position: absolute;
-        left: 0; top: 0;
-        border-radius: $toggle-radius;
-        transform: translateX(0);
-        transition: $toggle-transition;
-      }
-      span.left {
-        position: relative;
-      }}}}

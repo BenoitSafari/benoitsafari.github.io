@@ -1,0 +1,36 @@
+@use '@/styles/variables' as v;
+
+$color: rgba(v.$primary-color, .8);
+$color-hover: v.$secondary-color;
+$transition: .3s;
+
+.footer {
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    & a svg {
+      fill: $color;
+      max-width: 2.5rem;
+      transition: $transition;
+      filter: drop-shadow(1px 7px 7px #000);
+      -webkit-filter: drop-shadow(1px 7px 7px #000);
+      &:hover {
+        fill: $color-hover;
+        transition: $transition;
+      }}}
+  &__copyright {
+    color: $color;
+    font-size: .9rem;
+    text-align: center;
+    margin-top: 2rem;
+  }}
+
+@media screen and (max-width: 385px) {
+  .footer {
+    &__links {
+      gap: 1rem;
+      & a svg {
+        -webkit-transform: scale(.7);
+        transform: scale(.7);
+      }}}}

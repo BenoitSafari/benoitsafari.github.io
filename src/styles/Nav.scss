@@ -1,0 +1,83 @@
+@use '@/styles/variables' as v;
+
+$toggle-back-color: rgba(v.$background-secondary-color, .5);
+$toggle-unselected-color: rgba(v.$text-color, .5);
+$toggle-selected-color: v.$text-color;
+$toggle-button-color: v.$background-secondary-color;
+$toggle-font-size: .8rem;
+$toggle-font-weight: 600;
+$toggle-letter-spacing: .05rem;
+$toggle-radius: 50px;
+$toggle-width: 60px;
+$toggle-padding: .4rem 0;
+$toggle-transition: transform 200ms;
+
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 5vh;
+  padding: 0 1rem;
+}
+
+.nav__input-lang {
+  transform: scale(.8);
+  opacity: .5;
+  transition: .3s;
+  // position: relative;
+  background: $toggle-back-color;
+  border-radius: $toggle-radius;
+  font-size: $toggle-font-size;
+  color: $toggle-unselected-color;
+  font-weight: $toggle-font-weight;
+  letter-spacing: $toggle-letter-spacing;
+  text-transform: uppercase;
+  width: $toggle-width;
+  padding-right: calc($toggle-width / 2);
+  &:hover {
+    opacity: 1;
+  }
+  & > * {
+    user-select: none;
+  }
+  & span.right {
+    position: absolute;
+    top: 7px; bottom: 0; right: -5px;
+    width: calc($toggle-width / 2);
+    z-index: 3;
+    pointer-events: none;
+  }
+  span.left {
+    position: absolute;
+    top: 7px; bottom: 0; right: 6px;
+  }
+  &--selected {
+    color: $toggle-selected-color;
+  }
+  & input[type='checkbox'] {
+    cursor: pointer;
+    position: absolute;
+    width: 100%; height: 100%;
+    opacity: 0;
+    z-index: 2;
+    &:checked + label:before {
+      transform: translateX(calc($toggle-width / 2.12));
+      transition: $toggle-transition;
+    }
+    & + label {
+      position: relative;
+      height: 25px;
+      padding: $toggle-padding;
+      display: block;
+      user-select: none;
+      pointer-events: none;
+      &:before {
+        content: '';
+        background: $toggle-button-color;
+        height: 100%; width: 105%;
+        position: absolute;
+        left: 0; top: 0;
+        border-radius: $toggle-radius;
+        transform: translateX(0);
+        transition: $toggle-transition;
+      }}}}

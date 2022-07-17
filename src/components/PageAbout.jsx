@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useLang } from '@hooks/useLang';
-import { PageTitle, Title, SubTitle } from '@components/PageTitle';
-import './About.scss';
+import '@styles/PageAbout.scss';
 
 // Animations Setup
 const transition = { duration: .5 }; 
@@ -13,7 +12,6 @@ const variants  = {
 
 function About () {
   const { lang } = useLang();
-  const [ text, setText ] = useState((lang === 'fr') ? textContent.fr : textContent.en);
   const json = `
   <span class='counter'> 1</span>  <span class='curl'>&#123;</span>
   <span class='counter'> 2</span>  <span class='ind'> </span>  <span class='key'>"identity"</span><span class='sym'>: &#123;</span>
@@ -45,23 +43,6 @@ function About () {
   
   return(
     <>
-      <motion.div 
-        variants={variants}
-        initial='hidden'
-        animate='show'
-        exit='hidden'
-        className='about-title-wrapper'>
-        <PageTitle>
-          <Title>
-            {(lang === 'fr') && 'à propos'}
-            {(lang === 'en') && 'about page'}
-          </Title>
-          <SubTitle>
-            {(lang === 'fr') && 'Le résumé d\'une vie.'}
-            {(lang === 'en') && 'Story of my life.'}
-          </SubTitle>
-        </PageTitle>
-      </motion.div>
       <motion.div 
         variants={variants}
         initial='hidden'
@@ -111,18 +92,5 @@ function About () {
     </>
   );
 }
-
-const textContent = {
-  fr: {
-    pageTitle: 'à propos',
-    pageSubtitle: 'Le résumé d\'une vie.',
-    aboutTitle: 'À propos de moi',
-  },
-  en: {
-    pageTitle: 'about me',
-    pageSubtitle: 'Story of my life.',
-    aboutTitle: 'About me',
-  }
-};
 
 export default About;

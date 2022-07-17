@@ -1,5 +1,49 @@
 @use 'variables' as v;
 
+$link-color: v.$primary-color;
+$link-hover-color: v.$secondary-color;
+
+@mixin page {
+  height: 95vh;
+  width: 100vw;
+  overflow: hidden;
+}
+@mixin nav-link {
+  display: flex;
+  gap: 2rem;
+  & a {
+    position: relative;
+    transition: .3s;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: $link-color;
+    letter-spacing: .02rem;
+    cursor: pointer;
+    &:hover {
+      color: $link-hover-color;
+      transition: .3s;
+      &::before {
+        content: '';
+        animation: header-link-hover .15s ease-in;
+        position: absolute;
+        bottom: -5px;
+        width: 100%;
+        height: 2px;
+        background-color: $link-hover-color;
+      }}}}
+
+
+
+
+
+
+
+
+
+
+
+
+
 @mixin page-title {
   margin-top: calc(v.$layout-height + 3rem);
 }

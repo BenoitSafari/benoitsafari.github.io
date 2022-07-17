@@ -1,0 +1,13 @@
+@use '@/styles/variables' as v;
+@use '@/styles/mixins' as m;
+
+.home {
+  @include m.page;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  & nav {
+    @include m.nav-link;
+  }
+}

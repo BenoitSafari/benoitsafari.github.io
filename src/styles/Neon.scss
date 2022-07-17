@@ -1,0 +1,37 @@
+$shadow        : .2rem .4rem .1rem #000000;
+$back-color    : #36363636;
+$front-color   : #4e4e4e88;
+$light-color   : #e100ff;
+
+.neon {
+  position: relative;
+  font-family: allison;
+  transform: rotate(-6deg);
+  user-select: none;
+  font-size: 260px;
+  letter-spacing: -5px;
+  &__back {
+    position: absolute;
+    filter: drop-shadow($shadow);
+    color: $back-color;
+    // opacity: 8;
+  }
+  &__outer {
+    position: absolute;
+    color: $front-color;
+    opacity: 1;
+    -webkit-text-stroke: 5px $back-color;
+  }
+  &__inner {
+    opacity: .2;
+    background: url('./../assets/neon-back.webp');
+    background-size: cover;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -moz-background-clip:text;
+    background-clip:text; 
+  }}
+.lights-on {
+  text-shadow: 0 0 9rem $light-color;
+  color: $light-color;
+}

@@ -22,3 +22,7 @@ body {
   color: v.$text-color;
   font-family: 'Roboto', sans-serif;
 }
+
+@keyframes header-link-hover {
+  from  { width: 0%; }
+  to    { width: 100%; }}

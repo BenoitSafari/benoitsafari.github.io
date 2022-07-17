@@ -1,0 +1,21 @@
+{
+  "extends": ["react-app", "react-app/jest"],
+  "parserOptions": {
+    "ecmaFeatures": {"jsx": true},
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react", "prefer-arrow"],
+  "rules": {
+    "indent": [1, 2],
+    "quotes": [1, "single"],
+    "semi": [1, "always"],
+    "no-loop-func": [0],
+    "default-case": [0],
+    "array-callback-return": 0,
+    "react/function-component-definition": [2, {
+      "namedComponents": "function-declaration"
+      }],
+    "react-hooks/exhaustive-deps": [0]
+  }
+}
