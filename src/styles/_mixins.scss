@@ -19,6 +19,9 @@ $link-hover-color: v.$secondary-color;
     color: $link-color;
     letter-spacing: .02rem;
     cursor: pointer;
+    @media screen and (max-width: 385px) {
+      font-size: 1.3rem;
+    }
     &:hover {
       color: $link-hover-color;
       transition: .3s;
