@@ -1,13 +1,11 @@
-@use '@/styles/variables' as v;
-@use '@/styles/mixins' as m;
+@use '@/styles/globals' as style;
 
 .home {
-  @include m.page;
+  @include style.page;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   flex-direction: column;
   & nav {
-    @include m.nav-link;
-  }
-}
+    @include style.nav-link;
+  }}

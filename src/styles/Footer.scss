@@ -1,7 +1,7 @@
-@use '@/styles/variables' as v;
+@use '@/styles/globals' as style;
 
-$color: rgba(v.$primary-color, .8);
-$color-hover: v.$secondary-color;
+$color: rgba(style.$primary-color, .8);
+$color-hover: style.$secondary-color;
 $transition: .3s;
 
 .footer {

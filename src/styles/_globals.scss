@@ -1,5 +1,11 @@
-@use 'reset';
-@use 'variables' as v;
+$background-primary-color: #1b1b1b;
+$background-secondary-color: #474747;
+$text-color: #d4d4d4;
+$primary-color: #bbbbbb;
+$secondary-color: #e003fd;
+$boxshadow: rgba(0, 0, 0, 0.25);
+$link-color: $primary-color;
+$link-hover-color: $secondary-color;
 
 @font-face {
   font-family: 'roboto';
@@ -18,11 +24,43 @@
   box-sizing: border-box; 
 }
 body {
-  background-color: v.$background-primary-color;
-  color: v.$text-color;
+  background-color: $background-primary-color;
+  color: $text-color;
   font-family: 'Roboto', sans-serif;
 }
 
 @keyframes header-link-hover {
   from  { width: 0%; }
   to    { width: 100%; }}
+
+@mixin page {
+  height: 95vh;
+  width: 100vw;
+  overflow: hidden;
+}
+@mixin nav-link {
+  display: flex;
+  gap: 2rem;
+  & a {
+    position: relative;
+    transition: .3s;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: $link-color;
+    letter-spacing: .02rem;
+    cursor: pointer;
+    @media screen and (max-width: 385px) {
+      font-size: 1.3rem;
+    }
+    &:hover {
+      color: $link-hover-color;
+      transition: .3s;
+      &::before {
+        content: '';
+        animation: header-link-hover .15s ease-in;
+        position: absolute;
+        bottom: -5px;
+        width: 100%;
+        height: 2px;
+        background-color: $link-hover-color;
+      }}}}

@@ -1,23 +1,14 @@
-@use '@/styles/variables' as v;
-@use '@/styles/mixins' as mix;
-
-@keyframes header-link-hover {
-  from { width: 0%; }
-  to { width: 100%; }}
+@use '@/styles/globals' as style;
 
 $faded-purple: #534e68;
-$purple: v.$secondary-color;
+$purple: style.$secondary-color;
 $green: #6ff0c5;
 $soft-green: #6cb2c7;
 $pink: #ff00ff;
 $json-indent-border: #424242;
 $json-border-fade: #00000000 20px solid;
-$json-border: v.$text-color 1px solid;
+$json-border: style.$text-color 1px solid;
 
-.about-title-wrapper {
-  @include mix.container;
-  @include mix.page-title;
-}
 .about { 
   margin: auto;
   margin-top: 1rem;
@@ -30,12 +21,12 @@ $json-border: v.$text-color 1px solid;
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    align-items: end;
+    align-items: flex-end;
   }
   &__pic {
     margin: 5rem .625rem -1.5rem;
     width: 10rem;
-    border: v.$text-color 2px solid;
+    border: style.$text-color 2px solid;
     border-radius: 100%;
   }
   &__me {
@@ -45,7 +36,7 @@ $json-border: v.$text-color 1px solid;
     gap: .5rem;
     font-family: allison;
     font-size: 4rem;
-    color: v.$secondary-color;
+    color: style.$secondary-color;
     span {
       display: inline-block;
       margin: 1rem .8rem 0 0;
@@ -58,13 +49,13 @@ $json-border: v.$text-color 1px solid;
     border-left: $json-border-fade;
     border-right: $json-border-fade;
     width: 25rem;
-    color: v.$text-color;
+    color: style.$text-color;
     text-align: right;
     line-height: 1.45rem;
     letter-spacing: .02rem;
     & a { 
       position: relative;
-      color: v.$secondary-color;
+      color: style.$secondary-color;
       &:hover::before {
         content: '';
         animation: header-link-hover .15s ease-in;
@@ -72,7 +63,7 @@ $json-border: v.$text-color 1px solid;
         bottom: 0;
         width: 100%;
         height: 1px;
-        background-color: v.$secondary-color;
+        background-color: style.$secondary-color;
       }}}
   &__json {
     font-family: consola;
@@ -83,7 +74,7 @@ $json-border: v.$text-color 1px solid;
     max-width: 100vw;
   }}
 
-.about span.em       { color: v.$secondary-color;}
+.about span.em       { color: style.$secondary-color;}
 .about span.counter  { color: $faded-purple;}
 .about span.key      { color: $purple;}
 .about span.value    { color: $green;}
@@ -91,7 +82,7 @@ $json-border: v.$text-color 1px solid;
 .about span.arr      { color: $soft-green;}
 .about span.curl { 
   display: inline-block;
-  color: v.$secondary-color;      
+  color: style.$secondary-color;      
   height: 1.5rem;
 }
 .about span.ind {
@@ -119,8 +110,7 @@ $json-border: v.$text-color 1px solid;
     &__desc { 
       width: 19rem;
       margin-right: -20px;
-    }}
-}
+    }}}
 @media screen and (max-width: 812px) {
   .about {
     flex-direction: column;
@@ -159,5 +149,4 @@ $json-border: v.$text-color 1px solid;
       margin-left: -3.8rem;
       transform: scale(0.7); 
       -webkit-transform: scale(0.7);
-    }
-}}
+    }}}

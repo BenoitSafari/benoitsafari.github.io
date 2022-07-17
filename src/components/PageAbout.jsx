@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
 import { useLang } from '@hooks/useLang';
 import '@styles/PageAbout.scss';
 

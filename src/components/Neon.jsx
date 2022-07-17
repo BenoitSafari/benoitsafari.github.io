@@ -1,6 +1,5 @@
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import '@styles/Neon.scss';
-import { useState } from 'react';
 
 function Neon() {
   const neonString          = '<benoitsafari>';

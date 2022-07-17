@@ -1,9 +1,9 @@
-@use '@/styles/variables' as v;
+@use '@/styles/globals' as style;
 
-$toggle-back-color: rgba(v.$background-secondary-color, .5);
-$toggle-unselected-color: rgba(v.$text-color, .5);
-$toggle-selected-color: v.$text-color;
-$toggle-button-color: v.$background-secondary-color;
+$toggle-back-color: rgba(style.$background-secondary-color, .5);
+$toggle-unselected-color: rgba(style.$text-color, .5);
+$toggle-selected-color: style.$text-color;
+$toggle-button-color: style.$background-secondary-color;
 $toggle-font-size: .8rem;
 $toggle-font-weight: 600;
 $toggle-letter-spacing: .05rem;
@@ -22,9 +22,6 @@ $toggle-transition: transform 200ms;
 
 .nav__input-lang {
   transform: scale(.8);
-  opacity: .5;
-  transition: .3s;
-  // position: relative;
   background: $toggle-back-color;
   border-radius: $toggle-radius;
   font-size: $toggle-font-size;
@@ -34,9 +31,6 @@ $toggle-transition: transform 200ms;
   text-transform: uppercase;
   width: $toggle-width;
   padding-right: calc($toggle-width / 2);
-  &:hover {
-    opacity: 1;
-  }
   & > * {
     user-select: none;
   }
