@@ -9,9 +9,13 @@ $json-indent-border: #424242;
 $json-border-fade: #00000000 20px solid;
 $json-border: style.$text-color 1px solid;
 
-.about { 
+.page-about {
+  @include style.page;
+  overflow: scroll;
+}
+.about {
   margin: auto;
-  margin-top: 1rem;
+  margin-top: 5rem;
   font-size: 18px;
   gap: 2rem;
   display: flex;
@@ -114,6 +118,7 @@ $json-border: style.$text-color 1px solid;
 @media screen and (max-width: 812px) {
   .about {
     flex-direction: column;
+    margin-top: 1rem;
     gap: 0;
     &__profile {
       align-items: center;

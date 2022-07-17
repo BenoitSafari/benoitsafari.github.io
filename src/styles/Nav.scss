@@ -1,5 +1,7 @@
 @use '@/styles/globals' as style;
 
+$nav-padding: 1rem;
+$svg-color: rgba(style.$primary-color, .8);
 $toggle-back-color: rgba(style.$background-secondary-color, .5);
 $toggle-unselected-color: rgba(style.$text-color, .5);
 $toggle-selected-color: style.$text-color;
@@ -13,14 +15,21 @@ $toggle-padding: .4rem 0;
 $toggle-transition: transform 200ms;
 
 .nav {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  height: 5vh;
+  position: relative;
+  height: 0;
   padding: 0 1rem;
 }
+.nav__buttons {
+  position: absolute;
+  top: $nav-padding; left: $nav-padding;
+  & svg {
+    fill: $svg-color;
+    cursor: pointer;
+  }}
 
 .nav__input-lang {
+  top: $nav-padding; right: $nav-padding;
+  position: absolute;
   transform: scale(.8);
   background: $toggle-back-color;
   border-radius: $toggle-radius;

@@ -47,46 +47,48 @@ function About () {
         initial='hidden'
         animate='show'
         exit='hidden'
-        className='about'>
-        <div className='about__profile'>
-          <img className='about__pic' src='https://avatars.githubusercontent.com/u/88612813?v=4' alt='portrait de benoit safari'/>
-          <div className='about__me'>
-            <span>
-              {(lang === 'fr') && 'À propos de moi'}
-              {(lang === 'en') && 'About me'}
-            </span>
+        className='page-about'>
+        <div className='about'>
+          <div className='about__profile'>
+            <img className='about__pic' src='https://avatars.githubusercontent.com/u/88612813?v=4' alt='portrait de benoit safari'/>
+            <div className='about__me'>
+              <span>
+                {(lang === 'fr') && 'À propos de moi'}
+                {(lang === 'en') && 'About me'}
+              </span>
+            </div>
+            <div className='about__desc'>
+              <span className='em'>“
+                {(lang === 'fr') && 'Je suis Gregory MICHALAK'}
+                {(lang === 'en') && 'My name is Gregory MICHALAK'}
+              </span>,&nbsp;
+              {(lang === 'fr') && 'j’ai 30 ans et je suis'}
+              {(lang === 'en') && 'I\'m 30 and I\'m a'}
+              &nbsp;
+              <span className='em'>
+                {(lang === 'fr') && 'développeur'}
+                {(lang === 'en') && 'developer'}
+              </span>.
+              <br/>
+              <br/>
+              {(lang === 'fr') && 
+                <>Après 7 ans dans le commerce de jeux-vidéo et 5 ans de logistique,
+                j'ai décidé de faire de ma passion un métier en suivant le cursus fullstack
+                JavaScript de l'école</> }
+              {(lang === 'en') && 
+                <>After 7 year in the gaming business as a salesperson and 5 years as a logistician,
+                I've decided to get a job that I actually like. I've studied JavaScript web development online with 
+                </>}
+                &nbsp;<a target='_blank' href='https://oclock.io/' rel="noreferrer">O'Clock</a>
+              {(lang === 'fr') && 
+                <>,&nbsp;débouchant sur le titre professionnel
+                  <span className='em'> développeur Web et Web mobile.”</span>
+                </> }
+              {(lang === 'en') && <> to achieve that goal.</>}  
+            </div>
           </div>
-          <div className='about__desc'>
-            <span className='em'>“
-              {(lang === 'fr') && 'Je suis Gregory MICHALAK'}
-              {(lang === 'en') && 'My name is Gregory MICHALAK'}
-            </span>,&nbsp;
-            {(lang === 'fr') && 'j’ai 30 ans et je suis'}
-            {(lang === 'en') && 'I\'m 30 and I\'m a'}
-            &nbsp;
-            <span className='em'>
-              {(lang === 'fr') && 'développeur'}
-              {(lang === 'en') && 'developer'}
-            </span>.
-            <br/>
-            <br/>
-            {(lang === 'fr') && 
-              <>Après 7 ans dans le commerce de jeux-vidéo et 5 ans de logistique,
-              j'ai décidé de faire de ma passion un métier en suivant le cursus fullstack
-              JavaScript de l'école</> }
-            {(lang === 'en') && 
-              <>After 7 year in the gaming business as a salesperson and 5 years as a logistician,
-              I've decided to get a job that I actually like. I've studied JavaScript web development online with 
-              </>}
-              &nbsp;<a target='_blank' href='https://oclock.io/' rel="noreferrer">O'Clock</a>
-            {(lang === 'fr') && 
-              <>,&nbsp;débouchant sur le titre professionnel
-                <span className='em'> développeur Web et Web mobile.”</span>
-              </> }
-            {(lang === 'en') && <> to achieve that goal.</>}  
-          </div>
+          <pre className='about__json' dangerouslySetInnerHTML={{__html: json}}/>
         </div>
-        <pre className='about__json' dangerouslySetInnerHTML={{__html: json}}/>
       </motion.div>
     </>
   );
