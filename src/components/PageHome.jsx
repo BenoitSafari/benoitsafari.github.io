@@ -12,7 +12,7 @@ const variants = {
 };
 const data = {
   navMenu: [
-    {fr: 'À propos', en: 'About', to: '/'},
+    {fr: 'À propos', en: 'About', to: '/about'},
     {fr: 'Portfolio',en: 'Book', to: '/'}
   ]};
 

@@ -9,14 +9,16 @@ import '@styles/_globals.scss';
 function App() {
   const location = useLocation();
   return(
-    <AnimatePresence exitBeforeEnter>
+    <>
       <Nav/>
-      <Routes location={location} key={location.pathname}>
-        <Route path='/'       element={<Home/>}/>
-        <Route path='/about'  element={<About/>}/>
-        {/* <Route path='*' element={<Error/>}/> */}
-      </Routes>
-    </AnimatePresence>
+      <AnimatePresence exitBeforeEnter>
+        <Routes location={location} key={location.pathname}>
+          <Route path='/'       element={<Home/>}/>
+          <Route path='/about'  element={<About/>}/>
+          {/* <Route path='*' element={<Error/>}/> */}
+        </Routes>
+      </AnimatePresence>
+    </>
   );}
 
 export default App;
