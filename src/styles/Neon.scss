@@ -36,7 +36,7 @@ $media-max-340    : scale(.3) rotate(-6deg);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     -moz-background-clip:text;
-    background-clip:text; 
+    background-clip:text;
   }
   @media screen and (max-width: 1080px) {
     transform: $media-max-1080;
@@ -65,4 +65,10 @@ $media-max-340    : scale(.3) rotate(-6deg);
 .lights-on {
   text-shadow: 0 0 9rem $light-color;
   color: $light-color;
+}
+
+.tetris {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
 }

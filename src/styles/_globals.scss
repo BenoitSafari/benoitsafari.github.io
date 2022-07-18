@@ -42,6 +42,7 @@ body {
   display: flex;
   gap: 2rem;
   & a {
+    user-select: none;
     position: relative;
     transition: .3s;
     font-size: 1.4rem;

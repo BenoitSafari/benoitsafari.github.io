@@ -12,10 +12,11 @@ $json-border: style.$text-color 1px solid;
 .page-about {
   @include style.page;
   overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none; 
   &::-webkit-scrollbar {
     display: none;
-  }
-}
+  }}
 .about {
   margin: auto;
   margin-top: 5rem;
