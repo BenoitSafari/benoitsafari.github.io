@@ -1,155 +1,150 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { ReactComponent as SvgUser } from '@svg/ico_input-user.svg';
-import { ReactComponent as SvgMail } from '@svg/ico_input-mail.svg';
-import { ReactComponent as SvgSend } from '@svg/ico_send.svg';
-import { InputText, Button } from './Input';
+import { ReactComponent as SVGUser } from '@svg/ico_user.svg';
+import { ReactComponent as SVGMail } from '@svg/ico_mail.svg';
+import { ReactComponent as SVGSend } from '@svg/ico_send.svg';
 import { useLang } from '@hooks/useLang';
 import Loader from '@components/Loader';
-import './ContactForm.scss';
+import '@styles/PageContact.scss';
 
-const portalRoot = document.querySelector('#portal-root');
-if (!portalRoot) throw new Error('Cannot find \'#portal-root\' element');
+const maxLength = 2500;
+const data = {
+  title: {fr: 'Me Contacter', en: 'Contact me'},
+  button: {fr: 'Envoyer', en: 'Send'},
+  postResponse: {
+    error: {fr : 'Une erreur est survenue.', en: 'An error occured.'},
+    success: {fr: 'Votre message à bien été envoyé. Merci!', en: 'Thanks, your message has been sent successfully.'}
+  },
+  formError: {},
+  placeholder: {
+    name: 'Jean-Sabin', 
+    mail: 'js@gmail.com',
+    textArea: {
+      fr: 'Bonjour, je vous trouve super! D\'ailleurs, j\'aimerais beaucoup vous embaucher...',
+      en: 'Hi! I think you\'re great and I wish to hire you right away!'
+    }},
+  label: {
+    name: {fr: 'Nom', en: 'Name'}, 
+    mail: {fr: 'Adresse email', en: 'Email Address'},
+    textArea: {fr: 'Votre message', en: 'Your message'}
+  },
+};
 
 function ContactForm () {
-  const { lang } = useLang();
-  const [ text ] = useState((lang === 'fr') ? textContent.fr : textContent.en);
-  const form = useRef();
-  const maxLength = 2500;
-  const [ loading,     setLoading     ] = useState(false);
-  const [ response,    setResponse    ] = useState(false);
-  const [ nameField,   setNameField   ] = useState('');
-  const [ mailField,   setMailField   ] = useState('');
-  const [ isMailValid, setIsMailValid ] = useState(true);
-  const [ textField,   setTextField   ] = useState('');
-  const [ charLimit,   setCharLimit   ] = useState(`0 / ${maxLength}`);
-  const nameFieldHandler = (e) => {setNameField(e.target.value);};
-  const mailFieldHandler = (e) => {setMailField(e.target.value);};
-  const textFieldHandler = (e) => {
-    const value = e.target.value;
-    setTextField(value);
+  const {lang} = useLang();
+  const [loading,     setLoading]     = useState(false);
+  const [response,    setResponse]    = useState(false);
+  const [nameState,   setNameState]   = useState('');
+  const [mailState,   setMailState]   = useState('');
+  const [textState,   setTextState]   = useState('');
+  const [isMailValid, setIsMailValid] = useState(true);
+  const [charLimit,   setCharLimit]   = useState(`0 / ${maxLength}`);
+
+  const handleName = (e) => {
+    setNameState(e.currentTarget.value);
+  };
+  const handleMail = (e) => {
+    setMailState(e.currentTarget.value);
+  };
+  const handleText = (e) => {
+    const target = e.currentTarget;
+    const value = target.value;
+    setTextState(value);
     setCharLimit(`${value.length} / ${maxLength}`);
+    target.style.height = 'auto';
+    target.style.height = target.scrollHeight+'px';
+    target.scrollTop = target.scrollHeight;
+    window.scrollTo(window.scrollLeft, (target.scrollTop + target.scrollHeight));
   };
   const sendEmail = (e) => {
     e.preventDefault();
-    if (!nameField || !mailField || !textField || !isMailValid) return;
+    if (!nameState || !mailState || !textState || !isMailValid) return;
     setLoading(true);
     emailjs.sendForm(
-      process.env.REACT_APP_EMAILJS_SVRC_ID, 
-      process.env.REACT_APP_EMAILJS_TEMP_ID, 
-      form.current,
-      process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+      'service_9vw4e8d', 
+      'template_qmgdbcp', 
+      e.currentTarget,
+      'DJEEbKdP1XccqFQrX'
     ).then(
-      (res) => {setResponse(text.fetchRes.success);},
-      (error) => {setResponse(text.fetchRes.error);}
+      (res) => {
+        setResponse(data.postResponse.success[lang]);
+      },
+      (error) => {
+        setResponse(data.postResponse.error[lang]);
+      }
+    ).then(
+      () => {
+        setLoading(false);
+      }
     );
   };
+
   useEffect(() => {
     const mailformat = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    setIsMailValid(mailformat.test(mailField) ? true : false);
-  }, [mailField]);
+    setIsMailValid(mailformat.test(mailState) ? true : false);
+  }, [mailState]);
+
   return(
-    <>
-      { loading && !response &&
-        <div className='form-is-loading'>
-          <Loader/>
-        </div>
-      }
-      { loading && response &&
-        <div className='form-is-loading'>
-          <div>{response}</div>
-        </div>
-      }
-      { !loading && !response &&
-        <form 
-          ref={form} 
-          onSubmit={sendEmail}
-          className='contact-form'>
-          <div 
-            className={
-              `contact-form__inputs 
-              ${(!isMailValid && mailField) && 'contact-form__inputs--invalid-mail'}`
-            }>
-            <InputText 
-              name='user_name'
-              type='text' 
-              placeholder={text.placeholder.name}
-              onChange={nameFieldHandler}
-              value={nameField}
-            ><SvgUser/>
-            </InputText>
-            <InputText 
-              name='user_email'
-              type='email' 
-              placeholder={text.placeholder.mail}
-              onChange={mailFieldHandler}
-              value={mailField}
-            ><SvgMail/>
-            </InputText>
-          </div>
-          <div className='contact-form__text-area'>
-            <label className='contact-form__text-area__label'>
-              <span>{text.label}</span>
-              <span>{charLimit}</span>
-            </label>
-            <textarea
-              name='message'
-              placeholder={text.placeholder.textArea}
-              maxLength={maxLength}
-              value={textField}          
-              onChange={textFieldHandler}
+    <main className='contact'>
+      <h2>{data.title[lang]}</h2>
+      {loading && <Loader/>}
+      <form onSubmit={sendEmail}>
+        <div className='id-field'>
+          <fieldset>
+            {(nameState.length === 0) 
+              ? <label htmlFor='name'>{data.label.name[lang]}</label>
+              : <label style={{color: '#fda503'}} htmlFor='name'>{data.label.name[lang]}</label>}
+            <div className='id-field--icon-wraper'>
+              <SVGUser/>
+            </div>
+            <input
+              type='text'
+              maxLength={36}
+              placeholder={data.placeholder.name}
+              name='name'
+              onChange={handleName}
+              value={nameState}
             />
-          </div>
-          <div 
-            className={`button-field ${(!nameField || !mailField || !textField || !isMailValid) && 'button-field__forbidden'}`}>
-            { (!nameField || !mailField || !textField || !isMailValid) &&
-              <div className='button-field__warn'>
-                <span>{text.span.notice}</span>
-              </div>
-            }
-            <Button 
-              onClick={sendEmail}>
-              <SvgSend/>{text.button}</Button>
-          </div>
-        </form>
-      }
-    </>
+          </fieldset>
+          <fieldset>
+            {isMailValid 
+              ? <label style={{color: '#fda503'}} htmlFor='email'>{data.label.mail[lang]}</label>
+              : <label htmlFor='email'>{data.label.mail[lang]}</label>}
+            <div className='id-field--icon-wraper'>
+              <SVGMail/>
+            </div>
+            <input
+              type='email'
+              maxLength={64}
+              placeholder={data.placeholder.mail}
+              name='mail'
+              onChange={handleMail}
+              value={mailState}
+            />
+          </fieldset>
+        </div>
+        <div className='text-field'>
+          <label htmlFor='text'>
+            <span>{data.label.textArea[lang]}</span>
+            {(textState.length < 50) 
+              ? <span>{charLimit}</span>
+              : <span style={{color: '#fda503'}} >{charLimit}</span>}
+          </label>
+          <textarea 
+            name='text'
+            placeholder={data.placeholder.textArea[lang]}
+            maxLength={maxLength}
+            value={textState}          
+            onChange={handleText}
+          />
+          {((textState.length < 50) || !isMailValid || (nameState.length === 0))
+            ? <button style={{opacity: '.5', cursor: 'not-allowed'}}>{data.button[lang]}<SVGSend/></button>
+            : <button>{data.button[lang]}<SVGSend/></button>
+          }
+        </div>
+      </form>
+    </main>
   );
 }
-
-const textContent = {
-  fr: {
-    fetchRes: { 
-      error: 'Une erreur est survenue.', 
-      success: 'Votre message à bien été envoyé. Merci!'
-    },
-    placeholder: {
-      name: 'Nom',
-      mail: 'Adresse email',
-      textArea: 'Bonjour, je vous trouve super! D\'ailleurs, j\'aimerais beaucoup vous embaucher...'
-    },
-    label: 'Votre message',
-    button: 'Envoyer',
-    span: {
-      notice: 'Vous devez remplir tout les champs.'
-    }
-  },
-  en: {
-    fetchRes: { 
-      error: 'An error occured.', 
-      success: 'Thanks, your message has been sent successfully.'
-    },
-    placeholder: {
-      name: 'Name',
-      mail: 'Email Address',
-      textArea: 'Hi! I think you\'re great and I wish to hire you right away!'
-    },
-    label: 'Your message',
-    button: 'Send',
-    span: {
-      notice: 'You must fill out all the fields'
-    }
-  }
-};
 
 export default ContactForm;

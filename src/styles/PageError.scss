@@ -1,0 +1,22 @@
+@use '@/styles/globals' as style;
+
+.error {
+  @include style.page;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  & img {
+    opacity: .5;
+    height: 80%;
+    width: 80%;
+  }
+  & .error-label {
+    width: fit-content;
+    position: fixed;
+    user-select: none;
+    font-weight: 700;
+    font-size: 10rem;
+    font-family: allison;
+    text-shadow: #0000007a 1px 1px 3px;
+  }
+}

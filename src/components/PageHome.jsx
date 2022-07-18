@@ -26,7 +26,7 @@ const footerAnim = {
 const data = {
   navMenu: [
     {fr: 'À propos', en: 'About', to: '/about'},
-    {fr: 'Portfolio',en: 'Book', to: '/'}
+    {fr: 'Portfolio',en: 'Book', to: '/portfolio'}
   ]};
 
 function Home() {
@@ -37,8 +37,8 @@ function Home() {
       <Neon/>
       <nav>
         {data.navMenu.map((link, i) => (
-          <Link to={link.to}>
-            <motion.div key={i} {...navAnim}>
+          <Link key={i} to={link.to}>
+            <motion.div {...navAnim}>
               {link[lang]}
             </motion.div>
           </Link>))}

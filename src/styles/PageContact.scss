@@ -1,0 +1,144 @@
+@use '@/styles/globals' as style;
+
+$text-color: style.$text-color;
+$emphasis-color: style.$secondary-color;
+$input-back: rgba(style.$background-secondary-color, .5);
+$input-svg: rgba(style.$text-color, .4);
+$input-padding: .5rem;
+$input-font-size: 1rem;
+
+.contact {
+  @include style.page;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $text-color;
+  letter-spacing: .02rem;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none; 
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  & h2 {
+    width: 70%;
+    max-width: 800px;
+    margin-top: 5rem;
+    font-family: allison;
+    font-size: 4rem;
+    color: $emphasis-color;
+    margin-bottom: 3rem;
+  }
+  & form {
+    width: 70%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    & .id-field {
+      display: flex;
+      justify-content: space-between;
+      &--icon-wraper {
+        position: absolute;
+        top: - calc($input-font-size / 1.5);
+        left: - calc($input-padding / 2);
+        transform: scale(.4);
+        -webkit-transform: scale(.4);
+        fill: $input-svg;
+      }}
+    & .text-field {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      & button {
+        align-self: flex-end;
+        margin-top: 2rem;
+        color: $text-color;
+        fill: $text-color;
+        background-color: $input-back;
+        padding: .5rem 1rem;
+        gap: .5rem;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 3rem;
+        cursor: pointer;
+        transition: .3s;
+        user-select: none;
+      }}
+    & fieldset {
+      position: relative;
+      background-color: $input-back;
+      border-top: rgba($text-color, .5) solid 1px;
+      & label {
+        transition: .3s;
+        position: absolute;
+        top: - calc($input-font-size * 1.2);
+      }}
+    & input {
+      font-size: $input-font-size;
+      padding: $input-padding;
+      padding-left: 3rem;
+      &::placeholder {
+        font-style: italic;
+      }}
+      & span {
+        transition: .3s;
+      }
+    & label[for='text'] {
+      display: flex;
+      justify-content: space-between;
+    }
+    & textarea {
+      width: 100%;
+      overflow: hidden;
+      padding: $input-padding;
+      background-color: #ff00ff00;
+      font-size: $input-font-size;
+      font-family: roboto;
+      letter-spacing: .02rem;
+      color: $text-color;
+      resize: none;
+      outline: none;
+      border: none;
+      &::placeholder {
+        font-style: italic;
+        color: rgba($text-color, .8);
+      }
+      &::-webkit-input-placeholder {
+        font-style: italic;
+        color: rgba($text-color, .8);
+      }
+      &::-moz-placeholder {
+        font-style: italic;
+        color: rgba($text-color, .8);
+      }
+      &:-moz-placeholder {
+        font-style: italic;
+        color: rgba($text-color, .8);
+      }
+      &:-ms-input-placeholder {
+        font-style: italic;
+        color: rgba($text-color, .8);
+      }}}}
+
+@media screen and (max-width: 780px) {
+  .contact {
+    & form, h2 {
+      width: 80%;
+    }}}
+@media screen and (max-width: 680px) {
+  .contact {
+    & form, h2 {
+      width: 90%;
+    }}}
+@media screen and (max-width: 600px) {
+  .contact {
+    & form {
+      & .id-field {
+        flex-direction: column;
+        gap: 3rem;
+      }}
+    & textarea {
+      min-height: 4rem;
+    }}}

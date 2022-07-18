@@ -1,10 +1,10 @@
 @use '@/styles/globals' as style;
 
 $faded-purple: #534e68;
-$purple: style.$secondary-color;
+$purple: #d679fa;
 $green: #6ff0c5;
 $soft-green: #6cb2c7;
-$pink: #ff00ff;
+$pink: #ff6dbd;
 $json-indent-border: #424242;
 $json-border-fade: #00000000 20px solid;
 $json-border: style.$text-color 1px solid;
@@ -12,6 +12,9 @@ $json-border: style.$text-color 1px solid;
 .page-about {
   @include style.page;
   overflow: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 .about {
   margin: auto;
