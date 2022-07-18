@@ -9,16 +9,19 @@ $transition: .3s;
     display: flex;
     align-items: center;
     gap: 3rem;
-    & a svg {
-      fill: $color;
-      max-width: 2.5rem;
-      transition: $transition;
-      filter: drop-shadow(1px 7px 7px #000);
-      -webkit-filter: drop-shadow(1px 7px 7px #000);
-      &:hover {
-        fill: $color-hover;
+    & a {
+      box-sizing: content-box;
+      padding: 1rem;
+      & svg {
+        fill: $color;
+        max-width: 2.5rem;
         transition: $transition;
-      }}}
+        filter: drop-shadow(1px 7px 7px #000);
+        -webkit-filter: drop-shadow(1px 7px 7px #000);
+        &:hover {
+          fill: $color-hover;
+          transition: $transition;
+        }}}}
   &__copyright {
     color: $color;
     font-size: .9rem;

@@ -33,11 +33,11 @@ function Nav() {
   return(
     <nav className='nav'>
       {!isHome &&
-        <motion.div className='nav__buttons' {...backAnim}>
-          <Link to='/'>
+        <Link to='/'>
+          <motion.div className='nav__return' {...backAnim}>
             <SVGBack/>
-          </Link>
-        </motion.div>}
+          </motion.div>
+        </Link>}
       <LangInput/>
     </nav>
   );

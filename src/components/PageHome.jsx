@@ -37,9 +37,11 @@ function Home() {
       <Neon/>
       <nav>
         {data.navMenu.map((link, i) => (
-          <motion.div key={i} {...navAnim}>
-            <Link to={link.to}>{link[lang]}</Link>
-          </motion.div>))}
+          <Link to={link.to}>
+            <motion.div key={i} {...navAnim}>
+              {link[lang]}
+            </motion.div>
+          </Link>))}
       </nav>
       <motion.div {...footerAnim}>
         <Footer/>

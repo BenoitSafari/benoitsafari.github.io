@@ -19,14 +19,14 @@ $toggle-transition: transform 200ms;
   height: 0;
   padding: 0 1rem;
 }
-.nav__buttons {
+.nav__return {
   position: absolute;
-  top: $nav-padding; left: $nav-padding;
+  box-sizing: content-box;
+  padding: 1rem 1rem 1rem 0;
   & svg {
     fill: $svg-color;
     cursor: pointer;
   }}
-
 .nav__input-lang {
   top: $nav-padding; right: $nav-padding;
   position: absolute;
