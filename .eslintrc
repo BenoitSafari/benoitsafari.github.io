@@ -8,8 +8,8 @@
   "plugins": ["react", "prefer-arrow"],
   "rules": {
     "indent": [1, 2],
-    "quotes": [1, "single"],
-    "semi": [1, "always"],
+    "quotes": [2, "single"],
+    "semi": [2, "always"],
     "no-loop-func": [0],
     "default-case": [0],
     "array-callback-return": 0,

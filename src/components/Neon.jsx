@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import Tetris from './Tetris';
 import '@styles/Neon.scss';
 
 function Neon() {
@@ -42,7 +43,7 @@ function Neon() {
 
   return(
     <>
-      {isTetris && <canvas className='tetris'></canvas>}
+      {isTetris && <Tetris/>}
       <div className='neon'>
         <div className='neon__back'>
           {neonString}
