@@ -316,9 +316,6 @@
   margin: 0 auto;
   overflow: hidden;
   width: 500px;
-  & > * {
-    box-sizing:border-box;
-  }
 }
 
 .i div, .t div, .z div, .l div, .s div, .o div, .j div {
@@ -333,9 +330,6 @@
   -webkit-animation: div 2s;
   -webkit-animation-delay: 20s;
   -webkit-animation-fill-mode: forwards;
-  animation: div 2s;
-  animation-delay: 20s;
-  animation-fill-mode: forwards;  
 }
 
 .z {
@@ -345,15 +339,11 @@
   -webkit-transform: translate(200px,-100px);transform: translate(200px,-100px);
   -webkit-animation: z 2s linear;
   -webkit-animation-fill-mode:forwards;
-  transform: translate(200px,-100px);transform: translate(200px,-100px);
-  animation: z 2s linear;
-  animation-fill-mode:forwards;    
 }
 
 .z div {
   background: #3b3b3b; 
   -webkit-transform: rotate(-90deg);transform: rotate(-90deg);
-  transform: rotate(-90deg);transform: rotate(-90deg);
 }
 
 .z div:nth-of-type(2) {
@@ -373,10 +363,7 @@
   -webkit-animation: t 2s linear;
   -webkit-animation-delay: 2s;
   -webkit-animation-fill-mode:forwards;
-  transform: translate(200px,-100px);transform: translate(200px,-100px);
-  animation: t 2s linear;
-  animation-delay: 2s;
-  animation-fill-mode:forwards;    
+
 }
 
 .t div {
@@ -401,10 +388,7 @@
   -webkit-animation: s 2s linear;
   -webkit-animation-delay: 4s;
   -webkit-animation-fill-mode:forwards;
-  transform: translate(200px,-100px);transform: translate(200px,-100px);
-  animation: s 2s linear;
-  animation-delay: 4s;
-  animation-fill-mode:forwards;
+
 }
 
 .s div {
@@ -424,10 +408,7 @@
   -webkit-animation: i 2s linear;
   -webkit-animation-delay: 6s;
   -webkit-animation-fill-mode:forwards;
-  transform: translate(200px,-200px);transform: translate(200px,-200px);
-  animation: i 2s linear;
-  animation-delay: 6s;
-  animation-fill-mode:forwards;    
+ 
 }
 
 .i div {
@@ -443,10 +424,7 @@
   -webkit-animation: o 2s linear;
   -webkit-animation-delay: 8s;    
   -webkit-animation-fill-mode:forwards;
-  transform: translate(200px,-100px);transform: translate(200px,-100px);
-  animation: o 2s linear;
-  animation-delay: 8s;    
-  animation-fill-mode:forwards;    
+  
 }
 
 .o div {
@@ -461,16 +439,12 @@
   -webkit-animation: l 2s linear;
   -webkit-animation-delay: 10s;
   -webkit-animation-fill-mode:forwards;
-  transform: translate(200px,-150px);transform: translate(200px,-150px);
-  animation: l 2s linear;
-  animation-delay: 10s;
-  animation-fill-mode:forwards;    
+  
 }
 
 .l div {
   background: #3b3b3b;
   -webkit-transform: rotate(-90deg);transform: rotate(-90deg);
-  transform: rotate(-90deg);transform: rotate(-90deg);
 }
 
 .l div:first-child, .l div:nth-of-type(2) {
@@ -481,9 +455,6 @@
   -webkit-animation: t2 2s linear;
   -webkit-animation-delay: 12s;
   -webkit-animation-fill-mode:forwards;
-  animation: t2 2s linear;
-  animation-delay: 12s;
-  animation-fill-mode:forwards;    
 }
 
 .t2 div {
@@ -498,16 +469,11 @@
   -webkit-animation: j 2s linear;
   -webkit-animation-delay: 14s;
   -webkit-animation-fill-mode:forwards;
-  transform: translate(200px,-150px);transform: translate(200px,-150px);
-  animation: j 2s linear;
-  animation-delay: 14s;
-  animation-fill-mode:forwards;    
 }
 
 .j div {
   background: #3b3b3b;
   -webkit-transform: rotate(90deg);transform: rotate(90deg);
-  transform: rotate(90deg);transform: rotate(90deg);
 }
 
 .j div:first-child, .j div:nth-of-type(2) {
@@ -518,18 +484,13 @@
   -webkit-animation: z2 2s linear;
   -webkit-animation-delay: 16s;
   -webkit-animation-fill-mode:forwards;
-  animation: z2 2s linear;
-  animation-delay: 16s;
-  animation-fill-mode:forwards;    
+
 }
 
 .l2 {
   -webkit-animation: l2 2s linear;
   -webkit-animation-delay: 18s;
   -webkit-animation-fill-mode:forwards;
-  animation: l2 2s linear;
-  animation-delay: 18s;
-  animation-fill-mode:forwards;    
 }
 
 .l2 div:nth-of-type(1n), .l2 div:nth-of-type(2n), .l2 div:nth-of-type(3n) {
@@ -545,9 +506,6 @@ div.tetris {
   -webkit-animation: tetris 2s;
   -webkit-animation-delay: 20s;
   -webkit-animation-fill-mode: forwards;
-  animation: tetris 2s;
-  animation-delay: 20s;
-  animation-fill-mode: forwards;    
 }
 
 div.tetris h1 {

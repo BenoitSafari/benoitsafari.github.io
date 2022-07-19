@@ -13,6 +13,7 @@ function Neon() {
     const letter = e.currentTarget.textContent;
     elementArray.current[index].classList.toggle('lights-on');
     setString(string + letter);
+    isTetris && setIsTetris(false);
   };
   const handleRef = (el) => {
     elementArray.current.push(el);
